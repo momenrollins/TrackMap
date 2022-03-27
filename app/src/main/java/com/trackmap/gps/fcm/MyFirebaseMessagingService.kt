@@ -53,7 +53,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         //Verify if the message contains data
 
         if (!serverData.contains("s3") && remoteMessage.data.isNotEmpty()) {
-//             Log.d(TAG, "Message data : " + remoteMessage.data)
+             Log.d(TAG, "Message data : " + remoteMessage.data)
             remoteMessage.data.let {
                 sendNotificationSound(it)
             }
