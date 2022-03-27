@@ -1,0 +1,180 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "com.trackmap.gps"
+        minSdkVersion 19
+
+        targetSdkVersion 31
+        versionCode 106
+        versionName "1.0.13"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            buildConfigField "String", "BaseURL", project.LIVE_BASE_URL
+            buildConfigField "String", "BaseVersion", project.LIVE_VERSION
+            buildConfigField "String", "BaseURLBrainvire", project.LIVE_BASE_URL_BRAINVIRE
+//            buildConfigField "String", "BaseURL", project.DEV_BASE_URL
+//            buildConfigField "String", "BaseVersion", project.DEV_VERSION
+//            buildConfigField "String", "BaseURLBrainvire", project.DEV_BASE_URL_BRAINVIRE
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+
+            buildConfigField "String", "BaseURL", project.LIVE_BASE_URL
+            buildConfigField "String", "BaseVersion", project.LIVE_VERSION
+            buildConfigField "String", "BaseURLBrainvire", project.LIVE_BASE_URL_BRAINVIRE
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    // Add this block and enable/disable the parameters as follows
+    bundle {
+        density {
+// Different APKs are generated for devices with different screen densities; true by default.
+            enableSplit true
+        }
+        abi {
+// Different APKs are generated for devices with different CPU architectures; true by default.
+            enableSplit true
+        }
+        language {
+// This is disabled so that the App Bundle does NOT split the APK for each language.
+// We're gonna use the same APK for all languages.
+            enableSplit false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+        implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
+//        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'androidx.appcompat:appcompat:1.4.1'
+        implementation 'androidx.core:core-ktx:1.7.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+        implementation 'com.github.tintinscorpion:CarMarker-Animation:1.1'
+
+        implementation 'com.intuit.sdp:sdp-android:1.0.6'
+        //Navigation Components
+        implementation "android.arch.navigation:navigation-fragment-ktx:$project.VERSION_NAVIGATION"
+        implementation "android.arch.navigation:navigation-ui-ktx:$project.VERSION_NAVIGATION"
+        //Activity Result API -- Dont update it without testing
+        implementation "androidx.activity:activity-ktx:$project.activityKtx"
+        implementation "androidx.fragment:fragment-ktx:$project.fragmentKtx"
+        //map
+        implementation 'com.google.android.gms:play-services-maps:18.0.2'
+        implementation 'com.google.maps.android:android-maps-utils:2.2.2'
+
+        //playservices
+        implementation 'com.google.android.gms:play-services-location:19.0.1'
+
+        implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+
+        //Lifecycle and viewmodel
+        implementation "androidx.lifecycle:lifecycle-extensions:$project.VERSION_LIFECYCLE_EXTENSIONS"
+
+        //Kotlin KTX
+        implementation "androidx.core:core-ktx:$project.VERSION_CORE"
+
+        // Coroutines
+        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$project.VERSION_COROUTINE_CORE"
+        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$project.VERSION_COROUTINE"
+
+        // retrofit, okhttp, gson
+        implementation "com.google.code.gson:gson:$project.GSON"
+        implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_GSON"
+        implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+        implementation "com.squareup.okhttp3:okhttp:$OKHTTP"
+//        implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+        implementation "com.squareup.retrofit2:retrofit:$RETROFIT"
+        implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
+        // required to avoid crash on Android 12 API 31
+        implementation 'androidx.work:work-runtime-ktx:2.7.1'
+
+        // Retrofit Coroutines Support
+        implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$project.VERSION_RETROFIT_COROUTINES_ADAPTER"
+
+        //Image downloading
+
+        api "com.github.bumptech.glide:glide:$project.GLIDE"
+        annotationProcessor "com.github.bumptech.glide:compiler:$project.GLIDE"
+//        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.VERSION_KOTLIN"
+
+        implementation 'com.google.firebase:firebase-messaging:23.0.0'
+        implementation 'com.android.support:multidex:1.0.3'
+
+//        implementation "com.squareup.picasso:picasso:$picassoVersion"
+
+        implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
+        implementation 'com.google.android.material:material:1.5.0'
+        //noinspection GradleCompatible
+        implementation 'com.android.support:cardview-v7:23.2.1'
+
+        // pdf viwer
+//        implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+        // bio metric
+        implementation "androidx.biometric:biometric-ktx:1.2.0-alpha04"
+
+        // firebase crashlytics
+        implementation 'com.google.firebase:firebase-analytics:20.1.0'
+        implementation 'com.google.firebase:firebase-crashlytics:18.2.8'
+        //Crashlytics App Center Dependency
+        implementation 'com.microsoft.appcenter:appcenter-analytics:3.3.0'
+        implementation 'com.microsoft.appcenter:appcenter-crashes:3.3.0'
+
+        //In App update Added.
+        implementation "com.google.android.play:core:1.10.3"
+        implementation 'androidx.work:work-runtime-ktx:2.8.0-alpha01'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+dependencies {
+    // implementation 'androidx.legacy:legacy-support-v4:+'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
+
+
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/zoneName"-->
+        <!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="@dimen/margin_15"-->
+        <!--            android:fontFamily="@font/sf_open_sans_bold"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:imeOptions="actionDone"-->
+        <!--            android:paddingStart="@dimen/padding_12"-->
+        <!--            android:paddingEnd="@dimen/_8sdp"-->
+        <!--            android:textColorHint="@color/color_black_60_opacity"-->
+        <!--            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/startGuideLine"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" >-->
+
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:id="@+id/et_zoneName"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:gravity="center|start"-->
+        <!--                android:hint="@string/zone_name"-->
+        <!--                android:layout_marginTop="@dimen/margin_15"-->
+        <!--                android:visibility="visible"-->
+        <!--                android:textSize="@dimen/_14sp"-->
+        <!--                android:textColorHint="@color/color_black_60_opacity"-->
+        <!--                android:fontFamily="@font/sf_open_sans_bold"-->
+        <!--                />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_zoneName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:paddingStart="@dimen/padding_12"
+            android:paddingEnd="@dimen/padding_12"
+            android:textSize="@dimen/_14sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_zoneName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="@dimen/margin_15"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:gravity="center|start"
+                android:hint="@string/zone_name"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:textColorHint="@color/color_black_60_opacity"
+                android:visibility="visible" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvColorList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/til_zoneName"
+            tools:listitem="@layout/layout_geo_color_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_color"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:background="@drawable/shadow"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="@dimen/padding_4"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintTop_toBottomOf="@+id/til_zoneName">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:backgroundTint="@color/color_black_60_opacity"
+                android:clickable="false"
+                android:focusable="false"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:gravity="center|start"
+                android:hint="@string/color"
+                android:paddingStart="@dimen/padding_12"
+                android:paddingEnd="@dimen/_8sdp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_10"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:adjustViewBounds="true"
+                android:background="@drawable/corner_curved_red_background"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_search"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="@dimen/margin_14"
+                android:adjustViewBounds="true"
+                android:rotation="180"
+                android:src="@drawable/ic_upper_arrow"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/et_search"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/save_setting"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@color/color_white"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_selectZoneOnMap"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_margin="15dp"
+                android:backgroundTint="@color/color_red"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="@string/select_zone_on_map"
+                android:textAllCaps="false"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.485" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

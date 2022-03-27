@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homemapFragment">
+
+    <fragment
+        android:id="@+id/homemapFragment"
+        android:name="com.trackmap.gps.homemap.ui.HomeFragment"
+        android:label="Book Search Fragment">
+
+        <!--<argument
+            android:name="carId"
+            app:argType="com.trackmap.gps.MapListDataModel"
+            app:nullable="false" />-->
+        <action
+            android:id="@+id/action_homemapFragment_to_vehicalsListFragment"
+            app:destination="@id/vehicalsListFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_commandFragment"
+            app:destination="@id/commandFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_geoZoneFragment"
+            app:destination="@id/geoZoneFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_dashFragment"
+            app:destination="@id/dashFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_tracksFragment"
+            app:destination="@id/tracksFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_notificationHome"
+            app:destination="@id/notificationHome"/>
+        <action
+            android:id="@+id/action_homemapFragment_to_bindVehicleFragment"
+            app:destination="@id/bindVehicleFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_userSettingFragment"
+            app:destination="@id/userSettingFragment" />
+        <action
+            android:id="@+id/action_homemapFragment_to_vehicleHistoryFragment"
+            app:destination="@id/vehicleHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicalsListFragment"
+        android:name="com.trackmap.gps.vehicallist.ui.VehicalsListFragment"
+        android:label="fragment_vehicals_list"
+        tools:layout="@layout/fragment_vehicals_list" >
+        <action
+            android:id="@+id/action_vehicalsListFragment_to_createGroupFragment"
+            app:destination="@id/createGroupFragment" />
+        <action
+            android:id="@+id/action_vehicalsListFragment_to_groupUnitListFragment"
+            app:destination="@id/groupUnitListFragment" />
+        <action
+            android:id="@+id/action_vehicalsListFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_vehicalsListFragment_to_commandFragment"
+            app:destination="@id/commandFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addunitsFragment"
+        android:name="com.trackmap.gps.addgroup.ui.AddUnitsFragment"
+        android:label="fragment_add_units"
+        tools:layout="@layout/fragment_add_units" >
+        <argument
+            android:name="coming_from"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addunitsFragment_to_vehicalsListFragment"
+            app:destination="@id/vehicalsListFragment"
+            app:popUpTo="@+id/vehicalsListFragment"/>
+        <action
+            android:id="@+id/action_addunitsFragment_to_notificationSetting"
+            app:destination="@id/notificationSetting" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupFragment"
+        android:name="com.trackmap.gps.addgroup.ui.CreateGroupFragment"
+        android:label="fragment_create_group"
+        tools:layout="@layout/fragment_create_group" >
+        <action
+            android:id="@+id/action_createGroupFragment_to_addGroupsFragment"
+            app:destination="@id/addunitsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupUnitListFragment"
+        android:name="com.trackmap.gps.addgroup.ui.GroupUnitListFragment"
+        android:label="fragment_group_unit_list"
+        tools:layout="@layout/fragment_group_unit_list" >
+        <action
+            android:id="@+id/action_groupUnitListFragment_to_createGroupFragment"
+            app:destination="@id/createGroupFragment" />
+        <action
+            android:id="@+id/action_groupUnitListFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_groupListFragment_to_commandFragment"
+            app:destination="@id/commandFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.trackmap.gps.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_notificationDetailMapFragment"
+            app:destination="@id/notificationDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationDetailFragment"
+        android:name="com.trackmap.gps.notification.ui.NotificationDetailMapFragment"
+        android:label="NotificationDetailMapFragment" />
+    <fragment
+        android:id="@+id/commandFragment"
+        android:name="com.trackmap.gps.command.ui.CommandsFragment"
+        android:label="CommandFragment" />
+    <fragment
+        android:id="@+id/geoZoneFragment"
+        android:name="com.trackmap.gps.geozone.ui.GeoZonesFragment"
+        android:label="GeoZoneFragment" >
+        <action
+            android:id="@+id/action_geoZoneFragment_to_addGeoZoneFragment"
+            app:destination="@id/addGeoZoneFragment" />
+        <argument
+            android:name="comingFrom"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_geoZoneFragment_to_addunitsFragment"
+            app:destination="@id/addunitsFragment" />
+        <action
+            android:id="@+id/action_geoZoneFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+        <action
+            android:id="@+id/action_geoZoneFragment_to_geoZoneMapFragment"
+            app:destination="@id/geoZoneMapFragment" >
+            <argument app:argType="com.trackmap.gps.geozone.model.GeoZonData"
+                android:name="model"/>
+        </action>
+        <action
+            android:id="@+id/action_geoZoneFragment_to_geoZoneMapFragmentGps3"
+            app:destination="@id/geoZoneMapFragment" >
+            <argument app:argType="com.trackmap.gps.geozone.model.GeoZoneModelItemGps3"
+                android:name="model"/>
+        </action>
+        <action
+            android:id="@+id/action_geoZoneFragment_to_addNotification"
+            app:destination="@id/addNotification" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGeoZoneFragment"
+        android:name="com.trackmap.gps.geozone.ui.AddGeoZoneFragment"
+        android:label="fragment_add_geo_zone"
+        tools:layout="@layout/fragment_add_geo_zone" >
+        <action
+            android:id="@+id/action_addGeoZoneFragment_to_commonMapFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/addGeoZoneFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/geoZoneMapFragment"
+        android:name="com.trackmap.gps.geozone.ui.GeoZoneMapFragment"
+        android:label="fragment_add_geo_zone"
+        tools:layout="@layout/fragment_geozone" >
+        <action
+            android:id="@+id/action_addGeoZoneFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.trackmap.gps.report.ui.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/dashFragment"
+        android:name="com.trackmap.gps.dashboard.ui.DashboardActivity"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/activity_dashboard" />
+    <fragment
+        android:id="@+id/tracksFragment"
+        android:name="com.trackmap.gps.track.TracksFragment"
+        android:label="fragment_tracks"
+        tools:layout="@layout/fragment_tracks" >
+
+        <action
+            android:id="@+id/action_tracksFragment_to_notificationSetting"
+            app:destination="@id/notificationSetting" />
+        <action
+            android:id="@+id/action_addTrackMapFragment_to_trackFragment"
+            app:destination="@+id/trackMapFragment">
+            <argument
+                app:argType="com.trackmap.gps.track.model.TrackPathModel"
+                android:name="model"/>
+
+        </action>
+        <action
+            android:id="@+id/action_addTrackMapFragmentMR_to_trackFragment"
+            app:destination="@+id/trackMapFragmentMR">
+            <argument
+                app:argType="com.trackmap.gps.track.model.TrackPathModel"
+                android:name="model"/>
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/trackMapFragment"
+        android:name="com.trackmap.gps.track.ui.TrackMapNewFragment"
+        android:label="track_map_fragment"
+        tools:layout="@layout/layout_track_map">
+
+    </fragment>
+    <fragment
+        android:id="@+id/commonMapFragment"
+        android:name="com.trackmap.gps.utils.CommonMapFragment"
+        android:label="fragment_common_map"
+        tools:layout="@layout/fragment_common_map" >
+        <argument
+            android:name="comingFrom"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationSetting"
+        android:name="com.trackmap.gps.notification.ui.NotificationSetting"
+        android:label="fragment_notification_setting"
+        tools:layout="@layout/fragment_notification_setting" >
+        <action
+            android:id="@+id/action_notificationSetting_to_geoZoneFragment"
+            app:destination="@id/geoZoneFragment" />
+        <action
+            android:id="@+id/action_notificationHomeFragment_to_addNotification"
+            app:destination="@id/addNotification" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationHome"
+        android:name="com.trackmap.gps.notification.ui.NotificationHomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_notification_home">
+        <action
+            android:id="@+id/action_notificationHomeFragment_to_notificationSetting"
+            app:destination="@id/notificationSetting" />
+        <!--<action
+            android:id="@+id/action_notificationHomeFragment_to_addNotification"
+            app:destination="@id/addNotification" />
+        <action
+            android:id="@+id/action_notificationHomeFragment_to_homeFragmnet"
+            app:destination="@id/homemapFragment" />-->
+    </fragment>
+    <fragment
+        android:id="@+id/addNotification"
+        android:name="com.trackmap.gps.notification.ui.AddNotificationFragment"
+        android:label="fragment_add_notification"
+        tools:layout="@layout/activity_add_notification">
+        <action
+            android:id="@+id/action_notificationHomeFragment_to_notificationSetting"
+            app:destination="@id/notificationSetting" />
+
+        <action
+            android:id="@+id/action_addNotification_to_addunitsFragment"
+            app:destination="@id/addunitsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bindVehicleFragment"
+        android:name="com.trackmap.gps.bindvehicle.BindVehicleFragment"
+        android:label="fragment_bind_vehicle"
+        tools:layout="@layout/fragment_bind_vehicle" >
+        <action
+            android:id="@+id/action_bindVehicleFragment_to_addBindUserFragment"
+            app:destination="@id/addBindUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addBindUserFragment"
+        android:name="com.trackmap.gps.bindvehicle.AddBindUserFragment"
+        android:label="fragment_add_bind_user"
+        tools:layout="@layout/fragment_add_bind_user" >
+        <argument
+            android:name="comingFrom"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.trackmap.gps.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.trackmap.gps.PrivacyPolicyFragment"
+        android:label="fragment_privacy_policy"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.trackmap.gps.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" />
+    <fragment
+        android:id="@+id/userSettingFragment"
+        android:name="com.trackmap.gps.usersettings.UserSettingFragment"
+        android:label="fragment_user_setting"
+        tools:layout="@layout/fragment_user_setting" >
+        <action
+            android:id="@+id/action_userSettingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleHistoryFragment"
+        android:name="com.trackmap.gps.history.ui.VehicleHistoryNewFragment"
+        android:label="fragment_vehicle_history"
+        tools:layout="@layout/fragment_vehicle_history" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.trackmap.gps.changepassword.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+
+</navigation>

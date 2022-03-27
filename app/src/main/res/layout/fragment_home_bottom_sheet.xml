@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".screens.bottomSheet.BottomSheetFragment">
+
+    <data>
+
+        <variable
+            name="carAddress"
+            type="String" />
+
+        <variable
+            name="driverName"
+            type="String" />
+
+        <variable
+            name="carSpeed"
+            type="String" />
+
+        <variable
+            name="selectedCar"
+            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+
+        <variable
+
+            name="selectedCarGPS3"
+            type="com.trackmap.gps.homemap.ui.ClusterRenderGPS3" />
+
+    </data>
+    <!--
+        app:layout_behavior="com.tawasolmap.gps.homemap.ui.AnchorSheetBehaviour"
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="0dp"
+        app:behavior_draggable="false"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_bg"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/startGuideLine"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/endGuideLine"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.96" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/const_carName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/invisibleView"
+                app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/img_topUpperArrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_upper_arrow"
+                    app:layout_constraintBottom_toTopOf="@+id/car_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/car_image"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/grey_border_background"
+                    android:contentDescription="@string/app_name"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/car_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_topUpperArrow"
+                    app:loadImage="@{selectedCar.snippet}" />
+
+                <TextView
+                    android:id="@+id/txt_min"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_open_sans_bold"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/color_black_60_opacity"
+                    android:textSize="@dimen/_12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/car_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/car_image"
+                    tools:text="0s" />
+
+                <TextView
+                    android:id="@+id/car_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/sf_open_sans_bold"
+                    android:text="@{selectedCar.mCarModel.nm}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/car_location"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/car_image"
+                    app:layout_constraintTop_toTopOf="@+id/car_image"
+                    tools:text="Car Name" />
+
+
+                <ImageView
+                    android:id="@+id/address_image"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_car_location"
+                    app:layout_constraintEnd_toStartOf="@+id/car_location"
+                    app:layout_constraintHorizontal_bias="0.07"
+                    app:layout_constraintStart_toStartOf="@+id/car_name"
+                    app:layout_constraintTop_toTopOf="@+id/car_location" />
+
+                <TextView
+                    android:id="@+id/car_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/sf_open_sans_regular"
+                    android:text="@{carAddress}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/address_image"
+                    app:layout_constraintTop_toBottomOf="@+id/car_name"
+                    tools:text="Car Location" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/invisibleView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_250sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                app:layout_constraintTop_toBottomOf="@+id/const_carName">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/padding_5"
+                    android:paddingBottom="@dimen/margin_5">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/const_carStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@+id/const_driverName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/grey_border_background"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/imgSpeedometer"
+                                android:layout_width="35dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="10dp"
+                                android:contentDescription="@string/app_name"
+                                android:src="@drawable/ic_speedometer"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+
+                                android:id="@+id/txt_speed"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/sf_open_sans_bold"
+                                android:text="@{String.valueOf(carSpeed)}"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/color_black_60_opacity"
+                                android:textSize="@dimen/_14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/lbl_speed"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imgSpeedometer"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="46 km/h" />
+
+                            <TextView
+                                android:id="@+id/lbl_speed"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/sf_open_sans_regular"
+                                android:text="@string/speed"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/txt_speed"
+                                app:layout_constraintTop_toBottomOf="@+id/txt_speed"
+                                tools:text="@string/speed" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:background="@drawable/grey_border_background"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/imgCarEngine"
+                                android:layout_width="35dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginBottom="8dp"
+                                android:contentDescription="@string/app_name"
+                                android:src="@drawable/ic_engine_on_off"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintHorizontal_bias="0.498"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/txtEngineStatus"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:fontFamily="@font/sf_open_sans_bold"
+                                android:text="@string/off"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/color_black_60_opacity"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/lbl_engineStatus"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toEndOf="@+id/imgCarEngine"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_engineStatus"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/sf_open_sans_regular"
+                                android:text="@string/engine_status"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="16sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/txtEngineStatus"
+                                app:layout_constraintTop_toBottomOf="@+id/txtEngineStatus"
+                                tools:text="@string/engine_status" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/const_driverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toTopOf="@+id/const_sensors"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/const_carStatus">
+
+                        <ImageView
+                            android:id="@+id/driver_image"
+                            android:layout_width="@dimen/margin_20"
+                            android:layout_height="@dimen/margin_20"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_taxi_driver"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_driverName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/img_googleMap" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/lbl_driverName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/driver_name"
+                            android:textAlignment="center"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_driverName"
+                            app:layout_constraintStart_toEndOf="@+id/driver_image"
+                            app:layout_constraintTop_toTopOf="@+id/img_googleMap"
+                            tools:text="@string/drivers_name" />
+
+                        <TextView
+                            android:id="@+id/txt_driverName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@={driverName}"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/_12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/lbl_driverName"
+                            app:layout_constraintTop_toBottomOf="@+id/lbl_driverName"
+                            app:layout_constraintVertical_bias="0.615"
+                            tools:text="name" />
+
+                        <ImageView
+                            android:id="@+id/img_googleMap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_google_maps"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/const_sensors"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintBottom_toTopOf="@+id/const_viewHistory"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/const_driverName">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/lbl_sensors"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_car_sensors"
+                            android:drawablePadding="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:paddingBottom="@dimen/_10sp"
+                            android:text="@string/sensor"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/sensor" />
+
+
+                        <ImageView
+                            android:id="@+id/imgSensorupperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/app_name"
+                            android:paddingStart="@dimen/_18sp"
+                            android:paddingTop="@dimen/_10sp"
+                            android:paddingEnd="@dimen/_10sp"
+                            android:paddingBottom="@dimen/_10sp"
+                            android:src="@drawable/ic_arrow_down"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/lbl_sensors" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_sensors"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lbl_sensors"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/sensor_list_adapter" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/noDataLay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/_10sp"
+                            android:paddingBottom="@dimen/_10sp"
+                            android:text="@string/no_sensor_found"
+                            android:textColor="@color/colorBlack"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lbl_sensors" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/const_viewHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingBottom="@dimen/padding_5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/const_sensors">
+
+                        <ImageView
+                            android:id="@+id/update_image"
+                            android:layout_width="@dimen/margin_20"
+                            android:layout_height="@dimen/margin_20"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_update_history"
+                            app:layout_constraintBottom_toTopOf="@+id/txtLastUpdatedTime"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/lbl_last_update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_5"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/last_update"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/txtLastUpdatedTime"
+                            app:layout_constraintStart_toEndOf="@+id/update_image"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/last_update" />
+
+                        <TextView
+                            android:id="@+id/txtLastUpdatedTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_viewHistory"
+                            app:layout_constraintStart_toStartOf="@+id/lbl_last_update"
+                            app:layout_constraintTop_toBottomOf="@+id/lbl_last_update"
+                            tools:text="2020-10-05 11:29:40 1 Min 30 Sec" />
+
+                        <Button
+                            android:id="@+id/btn_viewHistory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:backgroundTint="@color/color_red"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:text="@string/view_history"
+                            android:textAllCaps="false"
+                            android:textColor="@color/color_white"
+                            android:textSize="@dimen/_12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txtLastUpdatedTime"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

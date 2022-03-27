@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/layout_find_parking_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_12"
+            android:background="@color/color_white"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/img_carStatus"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="14dp"
+                android:src="@drawable/envolap"
+                android:contentDescription="@string/app_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_myCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:text="My Car"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_toEndOf="@+id/img_carStatus"/>
+
+            <ImageView
+                android:id="@+id/img_googleMap"
+                android:layout_width="@dimen/_35sp"
+                android:layout_height="@dimen/_35sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_google_maps"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/app_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_dateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="05/10/2020 07:20 pm"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_10sp"
+                android:layout_marginStart="8dp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="@dimen/padding_5"
+                android:layout_below="@+id/img_carStatus"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_notificationDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_dateTime"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginBottom="@dimen/margin_20"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_12sp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

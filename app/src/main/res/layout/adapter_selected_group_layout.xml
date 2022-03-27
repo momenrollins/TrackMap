@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_8">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:padding="@dimen/padding_8"
+            app:cardBackgroundColor="@color/color_white"
+            app:cardCornerRadius="@dimen/margin_12"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:targetApi="lollipop">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_carName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="lollipop">
+
+            <ImageView
+                android:id="@+id/img_topUpperArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:rotation="90"
+                android:src="@drawable/ic_upper_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/car_name_g"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/car_name_g"
+                app:layout_constraintTop_toTopOf="@+id/car_name_g"
+                android:contentDescription="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/car_image_g"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/grey_border_background"
+                android:padding="10dp"
+                android:src="@drawable/default_car"
+                app:layout_constraintEnd_toStartOf="@+id/car_name_g"
+                app:layout_constraintHorizontal_bias="0.07"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/car_name_g"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/car_lastUpdate_g"
+                app:layout_constraintEnd_toStartOf="@+id/img_topUpperArrow"
+                app:layout_constraintStart_toEndOf="@+id/car_image_g"
+                app:layout_constraintTop_toTopOf="@+id/car_image_g"
+                app:layout_constraintVertical_bias="0.615"
+                tools:text="Car Name" />
+
+            <TextView
+                android:id="@+id/car_lastUpdate_g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_10sp"
+                android:textStyle="bold"
+                android:padding="@dimen/padding_5"
+                android:background="@drawable/corner_curved_pink_background"
+                app:layout_constraintBottom_toTopOf="@+id/img_car_running"
+                app:layout_constraintStart_toStartOf="@+id/car_name_g"
+                app:layout_constraintTop_toBottomOf="@+id/car_name_g"
+                tools:text="Last Update: 1 min 30 sec" />
+
+
+
+            <ImageView
+                android:id="@+id/img_car_running"
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_speedometer"
+                app:layout_constraintStart_toStartOf="@+id/car_lastUpdate_g"
+                app:layout_constraintTop_toBottomOf="@+id/car_lastUpdate_g"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/car_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_car_running"
+                app:layout_constraintStart_toEndOf="@+id/img_car_running"
+                app:layout_constraintTop_toTopOf="@+id/img_car_running"
+                tools:text="46 km/h" />
+
+            <ImageView
+                android:id="@+id/engineOnOff"
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_car_off"
+                app:layout_constraintBottom_toBottomOf="@+id/car_speed"
+                app:layout_constraintStart_toEndOf="@+id/car_speed"
+                app:layout_constraintTop_toTopOf="@+id/car_speed"
+                android:contentDescription="@string/app_name" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

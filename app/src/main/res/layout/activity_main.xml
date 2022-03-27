@@ -1,0 +1,44 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/action_bar"
+                layout="@layout/layout_custom_action_bar" />
+
+            <fragment
+                android:id="@+id/myNavHostFragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph" />
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:itemIconTint="@color/colorPrimary"
+            android:layout_marginEnd="-65dp"
+            android:background="@color/colorBlack">
+            <include
+                android:id="@+id/layoutSideMenuDrawer"
+                layout="@layout/layout_nav_header" />
+        </com.google.android.material.navigation.NavigationView>
+<!--            app:menu="@menu/nav_menu"
+ app:headerLayout="@layout/layout_nav_header"/>-->
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

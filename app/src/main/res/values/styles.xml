@@ -1,0 +1,56 @@
+<resources>
+  <!--  Base application theme.  -->
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!--  Customize your theme here.  -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/color_red</item>
+    <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+  </style>
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+  <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+  <style name="circleImageView" parent="">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">50%</item>
+  </style>
+  <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+    <item name="bottomSheetStyle">@style/AppModalStyle</item>
+  </style>
+  <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+    <item name="android:background">@drawable/rounded_dialog</item>
+  </style>
+  <style name="TransparentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:backgroundDimEnabled">true</item>
+    <item name="colorPrimaryDark">@android:color/transparent</item>
+  </style>
+  <style name="Widget"> </style>
+  <style name="Widget.TextView"> </style>
+  <style name="Widget.TextView.SpinnerItem"> </style>
+  <style name="Widget.Holo.TextView.SpinnerItem" parent="Widget.TextView.SpinnerItem">
+    <item name="android:paddingStart">8dp</item>
+    <item name="android:paddingEnd">8dp</item>
+  </style>
+  <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+    <item name="android:windowNoTitle">true</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <!--  Set this to true if you want Full Screen without status bar  -->
+    <item name="android:windowFullscreen">false</item>
+    <item name="android:windowIsFloating">false</item>
+    <!--  This is important! Don't forget to set window background  -->
+    <item name="android:windowBackground">@color/color_white</item>
+  </style>
+  <style name="spinnerStyle" parent="@android:style/Widget.TextView.SpinnerItem">
+    <item name="android:padding">5sp</item>
+    <item name="android:animation">@anim/nav_default_enter_anim</item>
+  </style>
+</resources>

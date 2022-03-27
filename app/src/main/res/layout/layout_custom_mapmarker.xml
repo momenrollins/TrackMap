@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rotatedView"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:rotation="0">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_arrow"
+            android:layout_width="@dimen/_18sp"
+            android:layout_height="@dimen/_18sp"
+            android:layout_gravity="top|center_horizontal"
+            android:src="@drawable/uparrow"
+            android:tint="#1DA800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/markar_width"
+            android:layout_height="@dimen/markar_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:src="@drawable/default_car"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/text_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rotatedView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/margin_5"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginEnd="@dimen/margin_5"
+        android:layout_marginBottom="@dimen/margin_5"
+        android:freezesText="true"
+        android:textColor="@color/color_dark_blue"
+        android:textSize="@dimen/_10sp"
+        android:textStyle="bold" />
+</RelativeLayout>

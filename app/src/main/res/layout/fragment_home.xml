@@ -1,0 +1,53 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="carAddress"
+            type="String" />
+        <variable
+            name="driverName"
+            type="String" />
+
+        <variable
+            name="carSpeed"
+            type="String" />
+
+        <variable
+            name="selectedCar"
+            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+
+        <variable
+            name="selectedCarGPS3"
+            type="com.trackmap.gps.homemap.ui.ClusterRenderGPS3" />
+
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_find_parking_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+-->
+            <include layout="@layout/fragment_home_bottom_sheet"
+                bind:carAddress="@{carAddress}"
+                bind:driverName="@{driverName}"
+                bind:carSpeed="@{carSpeed}"
+                bind:selectedCar="@{selectedCar}"
+                bind:selectedCarGPS3="@{selectedCarGPS3}"
+
+                android:id="@+id/bottomSheet"/>
+      <!--  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

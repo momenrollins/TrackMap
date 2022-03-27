@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_dialog"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    tools:context=".screens.bottomSheet.BottomSheetFragment">
+
+    <data>
+
+        <variable
+            name="carAddress"
+            type="String" />
+
+        <variable
+            name="driverName"
+            type="String" />
+
+        <variable
+            name="carSpeed"
+            type="String" />
+
+        <variable
+            name="selectedCar"
+            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_carName"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="lollipop">
+
+            <ImageView
+                android:id="@+id/car_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/grey_border_background"
+                android:contentDescription="@string/app_name"
+                android:padding="10dp"
+                android:src="@drawable/default_car"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_trip_start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_trip_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:drawableStart="@drawable/ic_calender_red_color"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:paddingStart="@dimen/padding_5"
+                android:text="Trip Start"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_trip_end"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/car_image"
+                app:layout_constraintTop_toTopOf="@+id/car_image"
+                tools:text="Trip Start" />
+
+            <TextView
+                android:id="@+id/lbl_trip_end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_calender_red_color"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:paddingStart="@dimen/padding_5"
+                android:text="Trip End"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/lbl_trip_start"
+                app:layout_constraintTop_toTopOf="@+id/car_image"
+                app:layout_constraintVertical_bias="0.615"
+                tools:text="Trip End" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_startTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:paddingStart="@dimen/padding_22"
+                android:text="9:53 am"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_min"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_trip_start"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/car_image"
+                app:layout_constraintStart_toStartOf="@+id/lbl_trip_start"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_trip_start"
+                tools:text="9:53 am" />
+
+            <TextView
+                android:id="@+id/lbl_endTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:paddingStart="@dimen/padding_22"
+                android:text="10:05 am"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                android:tint="@color/color_red"
+                app:layout_constraintBottom_toTopOf="@+id/txt_km"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_startTime"
+                app:layout_constraintStart_toStartOf="@+id/lbl_trip_end"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_trip_end"
+                tools:text="10:05 am" />
+
+            <TextView
+                android:id="@+id/txt_min"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:drawableStart="@drawable/resize_idling_time"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="20 Min"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                android:tint="@color/color_red"
+                app:layout_constraintBottom_toBottomOf="@+id/car_image"
+                app:layout_constraintEnd_toStartOf="@+id/txt_km"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/car_image"
+                tools:text="20 Min" />
+
+            <TextView
+                android:id="@+id/txt_km"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_distance"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="6 KM"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                android:tint="@color/color_red"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_min"
+                app:layout_constraintEnd_toStartOf="@+id/txt_km_h"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_min"
+                tools:text="6 KM" />
+
+            <TextView
+                android:id="@+id/txt_km_h"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/resize_speedometer"
+                android:drawablePadding="@dimen/padding_5"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="90 km/h"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                android:tint="@color/color_red"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_km"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txt_km"
+                tools:text="90 km/h" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

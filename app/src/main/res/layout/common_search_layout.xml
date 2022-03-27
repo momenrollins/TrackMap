@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/start_layout"
+    android:layout_width="0dp"
+    android:layout_height="55dp"
+    android:layout_marginTop="@dimen/margin_15"
+    android:layout_marginStart="@dimen/margin_10"
+    android:layout_marginEnd="@dimen/margin_10"
+    android:clipToPadding="true"
+    android:gravity="center"
+    android:padding="@dimen/padding_4"
+    android:visibility="visible"
+    app:cardCornerRadius="@dimen/margin_10"
+    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+    app:layout_constraintTop_toTopOf="parent"
+    app:cardElevation="@dimen/padding_3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center|start"
+            android:hint="@string/search"
+            android:paddingStart="@dimen/padding_15"
+            android:paddingEnd="@dimen/_8sdp"
+            android:textAlignment="viewStart"
+            android:visibility="visible"
+            android:textColor="@color/color_black_60_opacity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:adjustViewBounds="true"
+            android:background="@color/colorBoaderGrey"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/margin_14"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_search_icon"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

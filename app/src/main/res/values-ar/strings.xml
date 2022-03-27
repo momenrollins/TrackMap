@@ -1,0 +1,304 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Track Map</string>
+    <string name="error_map_app">Please install a maps application</string>
+    <string name="internet_connection_slow_or_disconnected" tools:keep="@string/internet_connection_slow_or_disconnected">"Internet connection slow or disconnected please check network connection."</string>
+
+    <string name="ok">OK</string>
+    <string name="speed">السرعة</string>
+    <string name="Please_select_start_date">من فضلك إختر بداية التاريخ</string>
+    <string name="Please_select_end_date">من فضلك إختر نهاية التاريخ</string>
+    <string name="Please_select_vehicle">من فضلك إختر السيارة</string>
+    <string name="Please_select_type">من فضلك إختر النوع</string>
+    <string name="Please_select_format">من فضلك إختر الصيغة</string>
+
+    <string name="engine_status">حالة المحرك</string>
+    <string name="last_update">اخر تحديث</string>
+    <string name="view_history">تفاصيل الرحلات</string>
+    <string name="driver_name">اسم السائق</string>
+    <string name="sensor">الحساسات</string>
+    <string name="km_h">km/h</string>
+    <string name="TawasolMap">Track Map</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="login_to_your_acc">Login to Your Account</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="password">كلمة السر</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="sign_in_again">من فضلك سجل الدخول مجددا</string>
+    <string name="device_is_not_connected">الجهاز غير متصل!</string>
+    <string name="accept_permission">الرجاء قبول إذن الموقع من الإعدادات أو أعد تشغيل هذا التطبيق</string>
+    <string name="sign_in_your_acc">سجل دخولك على حسابك</string>
+    <string name="servers">السيرفرات</string>
+    <string name="go">اذهب</string>
+    <string name="choose_server">اختر السريفر</string>
+    <string name="no_tracks_founded">لا يوجد مسارات</string>
+    <string name="no_groups_found">لا يوجد مجموعات</string>
+    <string name="delete_report">مسح تقرير</string>
+    <string name="this_report_cant_be_generated">لا يمكن انشاء هذا التقرير!</string>
+
+    <string name="map">الخريطة</string>
+    <string name="vehicles">المركبات</string>
+    <string name="search">البحث</string>
+
+    <string name="drawer_map">الخريطة</string>
+    <string name="drawer_tracks">المسارات</string>
+    <string name="drawer_notification">@string/notification</string>
+    <string name="drawer_geo_zones">مناطق السياج</string>
+    <string name="drawer_reports">التقارير</string>
+    <string name="drawer_dashboard">لوحة التحكم</string>
+
+    <string name="drawer_user_setting">إعدادات المستخدم</string>
+    <string name="drawer_bind">ربط السائق</string>
+    <string name="drawer_contact_us">اتصل بنا</string>
+    <string name="drawer_about_us">عن الشركة</string>
+    <string name="drawer_privacy_policy">سياسة الخصوصية</string>
+
+    <string name="add_group">إضافة مجموعة</string>
+    <string name="group_name">Group Name</string>
+    <string name="add_unit">اضف المركبات</string>
+    <string name="show_on_map">عرض على الخريطة</string>
+    <string name="add_geo_unit">إضافة منطقة</string>
+    <string name="geo_zone">مناطق السياج</string>
+    <string name="reports">التقارير</string>
+    <string name="generated_reports">التقراير المسجلة</string>
+    <string name="tracks">المسارات</string>
+    <string name="notification_setting">إنشاء تبليغ</string>
+    <string name="notification_details">تفاصيل التبيلغ</string>
+    <string name="track">المسارات</string>
+    <string name="geo_zones">مناطق السياج</string>
+    <string name="bind_to_vehicle">ربط بالمركبة</string>
+    <string name="add_driver">إضافة سائق</string>
+    <string name="fingerprint">بصمة الاصبع</string>
+    <string name="face_detection">بصمة الوجه</string>
+    <string name="about_us">عن الشركة</string>
+    <string name="report_history">السجل</string>
+    <string name="privacy_fragment">سياسة الخصوصية</string>
+    <string name="commands">إرسال امر</string>
+    <string name="setting">الإعدادات</string>
+    <string name="history">الرحلات</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="car_name">Car Name</string>
+    <string name="show_my_position">أظهر موقعي على الخريطة</string>
+    <string name="show_traffic">مرور جوجل</string>
+    <string name="show_geozones">الأسوار الجغرافية</string>
+    <string name="map_type">نوع الخريطة</string>
+    <string name="sign_out">تسجيل الخروج</string>
+
+    <string name="no_events_found">لم يعثر على احداث</string>
+    <string name="add_notification">إضافة تبليغ جديد</string>
+    <string name="select_zone_on_map">تحديد المنطقة على الخريطة</string>
+    <string name="code">الكود</string>
+    <string name="register">تسجيل</string>
+    <string name="verify_code">تأكيد رمز السائق</string>
+    <string name="full_name">الاسم الثلاثي</string>
+    <string name="job_title">الاسم الوظيفي</string>
+    <string name="mobile_number">رقم الجوال</string>
+    <string name="company_id">كود الشركة</string>
+    <string name="id_number">هوية السائق</string>
+    <string name="zone_name">اسم المنطقة</string>
+    <string name="enter_notification_name">أدخل اسم التبليغ</string>
+    <string name="color">Color</string>
+    <string name="time_interval">الفترة الزمنية</string>
+    <string name="starts">البداية</string>
+    <string name="ends">النهاية</string>
+    <string name="object">المركبة</string>
+    <string name="execute">تنفيذ</string>
+    <string name="options">تفاصيل التقرير</string>
+    <string name="type">النوع</string>
+    <string name="template">نوع التقرير</string>
+    <string name="format">الصيغة</string>
+    <string name="select_format">اختر الصيغة..</string>
+    <string name="save_selection">حفظ التحديد</string>
+    <string name="email">البريد الألكتروني</string>
+    <string name="subject">الموضوع</string>
+    <string name="message">نص الرسالة</string>
+    <string name="submit">ارسال</string>
+    <string name="single">مركبة</string>
+    <string name="group">مجموعات</string>
+    <string name="add_unit_to_this_group">إضافة مركبات لهذه المجموعة</string>
+    <string name="create_notification">إنشاء تبليغ</string>
+    <string name="unit_list_is_empty">قائمة المركبات فارغة</string>
+    <string name="delete_group">حذف المجموعة</string>
+    <string name="reset">حفظ</string>
+    <string name="please_enter_new_password">الرجاء كتابة كلمة المرور جديدة</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="confirm_new_password">تأكيد كلمة المرور الجديدة</string>
+    <string name="bind_using">الربط بأستخدام</string>
+    <string name="add_user">إضافة سائق</string>
+    <string name="bind">ربط بالسائق</string>
+    <string name="cancel">إلغاء</string>
+    <string name="drivers_name">اسم السائق</string>
+    <string name="on">شغال</string>
+    <string name="off">طافي</string>
+    <string name="are_you_sure_n_you_want_to_delete_this_group">هل انت متأكد من حذف هذه المجموعة ؟</string>
+    <string name="are_you_sure_n_you_want_to_delete_this_report">هل انت متأكد من حذف هذا التقرير ؟</string>
+
+    <string name="days_remaining_for_bind">الايام المتبقية في اشتراك ربط السائق</string>
+    <string name="enter_code_here">ادخل الكود هنا</string>
+    <string name="done">اكتمل</string>
+    <string name="go_to_settings">الذهاب إلى الأعدادات</string>
+    <string name="total_time">مجموع الوقت :</string>
+    <string name="total_distance_travelled">مجموع المسافة المقطوعة :</string>
+    <string name="templates">التقارير</string>
+    <string name="show_push_notification">السماح بالاشعارات</string>
+    <string name="full_name_contact_us">اسم المستخدم</string>
+    <string name="full_name_bind">الاسم الثلاثي</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="no_sensor">لا يوجد حساسات</string>
+    <string name="no_sensor_found">لم يعثر على حساس</string>
+    <string name="start_engine">تشغيل المحرك</string>
+    <string name="get_notified_when_engine_starts">احصل على اشعار عند تشغيل المحرك</string>
+    <string name="get_notified_when_engine_stops">احصل على اشعار عند توقف المحرك</string>
+    <string name="stop_engine">إيقاف المحرك</string>
+    <string name="top_speed_limit">الحد الأقصى للسرعة</string>
+    <string name="hh">ساعات</string>
+    <string name="min">دقائق</string>
+    <string name="geo_zone_enter">دخول منطقة السياج</string>
+    <string name="geo_zone_exit">خروج من منطقة السياج</string>
+    <string name="get_notified_when_exit_geo_zone">احصل على اشعار عند الخروج من المنطقة</string>
+    <string name="insert_code">أدخل الرمز</string>
+    <string name="total_units">مجموع المركبات</string>
+    <string name="sign_in_your_account">سجل دخولك على حسابك</string>
+    <string name="idling_time">الوقت المهدر</string>
+    <string name="connection_loss_time">فقد الاتصال</string>
+
+    <string name="liked_your_post">Liked your post</string>
+    <string name="set_the_speed_limit_to_get_the_notified">حدد السرعة القصوى ليصلك الاشعار</string>
+    <string name="max_speed">اقصى سرعة</string>
+    <string name="enter_max_speed">ادخل اقصى سرعة!</string>
+    <string name="get_notified_when_enter_geo_zone">احصل على الاشعار عند دخول المنطقة</string>
+    <string name="add_unit_for_geozone_notifications">اضف مركبات لتبليغ منطقة السياج</string>
+    <string name="are_you_sure_you_want_to_delete_this_zone">هل انت متأكد من حذف منطقة السياج؟</string>
+    <string name="delete_zone">حذف منطقة السياج</string>
+    <string name="subscribed_to_you">Subscribed to you</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="Device_not_supported">"الجهاز غير مدعوم"</string>
+    <string name="you_are_far_from_the_vehicle">انت بعيد عن المركبة</string>
+    <string name="you_can_not_access_this_option">تواصل مع دعم الفني لتفعيل الخدمة</string>
+    <string name="please_enter_valid_group_name">ارجاء ادخال اسم مجموعة صحيح</string>
+    <string name="group_name_must_contain_more_than_3_characters">الاسم لابد ان يكون اكثر من 3 احرف</string>
+    <string name="group_name_must_contain_less_than_50_characters">الاسم لابد أن يكون اقل من 50 حرف</string>
+    <string name="please_enter_valid_zone_name">الرجاء ادخال اسم منطقة صحيح</string>
+    <string name="zone_name_must_contain_more_than_3_characters">الاسم لابد ان يكون اكثر من 3 احرف</string>
+    <string name="notification_name_must_contain_more_than_3_characters">الاسم لابد ان يكون اكثر من 3 احرف</string>
+    <string name="notification_name_must_contain_less_than_50_characters">الاسم لابد أن يكون اقل من 50 حرف</string>
+    <string name="please_select_template">الرجاء اختيار التقرير</string>
+    <string name="message_should_be_more_than_10_characters">نص الرسالة يجب ان يكون اكثر من 10 احرف</string>
+    <string name="new_password_and_confirm_password_does_not_match">كلمة المرور وتأكيد كلمة المرور غير متطابقة</string>
+    <string name="please_enter_your_current_password">الرجاء ادخال كلمة المرور الحالية</string>
+    <string name="please_enter_your_new_password">الرجاء ادخال كلمة المرور الجديدة</string>
+    <string name="password_length_error">الحد الأدنى لطول كلمة المرور 4 أحرف</string>
+    <string name="password_changed_successfully">تم تغيير كلمة المرور بنجاح</string>
+    <string name="no_data_found">لم يتم العثور على بيانات</string>
+    <string name="please_enter_company_id">الرجاء ادخال كود الشركة</string>
+    <string name="please_enter_ideal_time_hours">الرجاء ادخال الساعات المهدره</string>
+    <string name="please_enter_connection_time_hours">الرجاء ادخال الساعات المفقوده</string>
+    <string name="please_enter_start_range_of_weight">الرجاء ادخال بداية نطاق الوزن</string>
+    <string name="please_enter_end_range_of_weight">الرجاء ادخال نهاية نطاق الوزن</string>
+
+    <string name="please_enter_ideal_time_minutes">الرجاء ادخال الدقائق المهدره</string>
+    <string name="please_enter_connection_time_minutes">الرجاء ادخال الدقائق المفقوده</string>
+
+    <string name="please_enter_your_full_name">الرجاء ادخال اسمك كاملا</string>
+    <string name="please_enter_full_name_length_3_to_20_character">الرجاء ادخال اسم من 3 إلى 20 حرف</string>
+    <string name="please_enter_your_mobile_number">الرجاء ادخل رقم جوال</string>
+    <string name="please_enter_your_verify_code">الرجاء ادخال كود التأكيد</string>
+    <string name="please_enter_valid_mobile_number">الرجاء ادخال رقم جوال صحيح</string>
+    <string name="please_enter_your_company_id">الرجاء ادخال كود الشركة</string>
+    <string name="please_enter_your_code">الرجاء ادخال رمزك</string>
+    <string name="please_enter_code_length_6_character">الرجاء ادخال رمز مكون من 6 خانات</string>
+    <string name="your_code_and_verify_code_not_matched">رمزك وتأكيد الرمز غير متطابق</string>
+    <string name="you_have_logged_in_successfully">تم تسجيل الدخول بنجاح</string>
+    <string name="no_track_available_on_this_dates">المركبة لم تتحرك خلال الفترة المحددة</string>
+    <string name="some_problem_with_request_please_try_again">هناك مشكلة في الطلب , الرجاء محاولة مره اخرى</string>
+    <string name="something_goes_wrong">Something goes wrong</string>
+    <string name="zone_added_successfully">تم الإضافة بنجاح</string>
+    <string name="zone_deleted_successfully">تم الحذف بنجاح</string>
+    <string name="notification_added_successfully">تم الإضافة بنجاح</string>
+    <string name="no_template_to_select">لا يوجد تقرير مختار</string>
+    <string name="bind_driver_failed">فشل ربط السائق</string>
+    <string name="please_enter_valid_idle_time">الرجاء ادخل وقت صحيح</string>
+    <string name="please_enter_valid_connection_time">الرجاء ادخل وقت صحيح</string>
+    <string name="please_enter_valid_weight">الرجاء ادخل نطاق الوزن</string>
+    <string name="successfully_added_unit_in_group">تم الاضافة بنجاح</string>
+    <string name="successfully_removed_unit_in_group">تم حذف العربة من المجموعة</string>
+    <string name="unable_to_delete_group">لا يمكن حذف المجموعة</string>
+    <string name="enter_group_name">اكتب اسم المجموعة</string>
+    <string name="put_time_is_allowed_engine_on_and_parking">المدة المسموح بها المحرك يعمل وهي متوقفة</string>
+    <string name="put_time_is_allowed_connection_loss">المدة المسموح بها لفقد الاتصال</string>
+
+    <string name="please">الرجاء</string>
+    <string name="you_dont_have_access_to_this_feature">ليس لديك صلاحية إلى هذه الميزة!</string>
+    <string name="enter_valid">إدخال بشكل صحيح</string>
+    <string name="enter">أدخل</string>
+    <string name="notification">التبليغات</string>
+    <string name="website">موقع إلكتروني :</string>
+    <string name="contact_us">اتصل بنا :</string>
+    <string name="web_url"><u>http://www.tawasolmap.com/</u></string>
+    <!--<string name="notification_data_for_start_engine_off">(AVL)المركبة:%UNIT%,تم_إيقاف_التشغيل_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
+    <string name="notification_data_for_start_engine_on">(AVL)المركبة:%UNIT%,تم_تشغيل_المحرك_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
+    <string name="api_call_for_speed_notification_test">(AVL)المركبة:%UNIT%,متحركة_بسرعة:%SPEED%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
+    <string name="api_call_for_idle_time_notification_test">(AVL)المركبة:%UNIT%,تجاوزت_الوقت_المحدد_في:%LOCATION%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
+    <string name="api_call_for_geozone_in_notification">(AVL)المركبة:%UNIT%,دخلت_المنطقة:%ZONE%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
+    <string name="api_call_for_geozone_out_notification">(AVL)المركبة:%UNIT%,خرجت_من_المنطقة:%ZONE%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>-->
+
+    <string name="notification_data_for_start_engine_off">(AVL)المركبة:%UNIT%,تم_إيقاف_التشغيل_في:%LOCATION%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="notification_data_for_start_engine_on">(AVL)المركبة:%UNIT%,تم_تشغيل_المحرك_في:%LOCATION%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="api_call_for_speed_notification_test">(AVL)المركبة:%UNIT%,متحركة_بسرعة:%SPEED%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="api_call_for_weight_notification_test">(AVL)المركبة:%UNIT%,الحالة:%SENSOR_NAME%,with value of:%SENSOR_VALUE%,At:%POS_TIME%, it moved with speed :%SPEED%,near :%LOCATION%</string>
+    <string name="api_call_for_connection_loss_notification_test">(AVL)المركبة:%UNIT%,الحالة:%تم فقد الاتصال%,At:%POS_TIME%, it moved with speed :%SPEED%,near :%LOCATION%</string>
+    <string name="api_call_for_idle_time_notification_test">(AVL)المركبة:%UNIT%,تجاوزت_الوقت_المحدد_في:%LOCATION%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="api_call_for_geozone_in_notification">(AVL)المركبة:%UNIT%,دخلت_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="api_call_for_geozone_out_notification">(AVL)المركبة:%UNIT%,خرجت_من_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
+    <string name="server_1_gps">http://www.avltracmap.com</string>
+    <string name="server_2_gps2">http://gps2.tawasolmap.com</string>
+    <string name="pls_chs_srvr">من فضلك اختر السيرفر!</string>
+    <string name="group_units">تجميع المركبات</string>
+    <string name="add_background">إضافة خلفية لأسامي الوحدات</string>
+<!--    <string name="no_coordinates">لا توجد رحلات هنا</string>-->
+    <string name="trip_ends">انتهت الرحلة</string>
+    <string name="choose_srvr">اختر السيرفر!</string>
+    <string name="notif_title">اسم التبليغ</string>
+    <string name="unit_name">اسم المركبة</string>
+    <string name="in_location">في المكان</string>
+    <string name="in_time">في الوقت</string>
+    <string name="pass_incorrect">كلمة المرور الحالية غير صحيحة</string>
+
+    <!-- dash -->
+    <string name="online">متصل</string>
+    <string name="offline">غير متصل على الانترنت</string>
+    <string name="stationary">ثابت</string>
+    <string name="stationary_with_ignition_on">ثابت مع تشغيل المحرك</string>
+    <string name="moving">متحرك</string>
+    <string name="lbs_detected_data">البيانات المكشتفة من خلال LBS</string>
+    <string name="no_actual_state">لا توجد حالة فعلية</string>
+    <string name="no_messages">لا توجد رسائل</string>
+    <!-- array object -->
+    <string-array name="type_array">
+        <item>@string/object</item>
+        <item>@string/group</item>
+        <!--<item>المركبة</item>
+        <item>المجموعات</item>-->
+    </string-array>
+    <!-- array object -->
+    <string-array name="type_array_map">
+        <item>الافتراضي</item>
+        <item>الاقمار الصناعية</item>
+        <item>التضاريس</item>
+        <item>مختلطة</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_video_maps">VideoMapsActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="click_on_map_to_draw">اضغط على الخريطة للرسم</string>
+    <string name="failed">فشل الحذف</string>
+    <string name="username_or_password_is_invalid">أسم المستخدم او كلمة السر خطأ</string>
+
+    <string name="add_unit_to_this_zone">اضف وحدة لهذه المنطقة</string>
+    <string name="this_group_is_empty">هذه المجموعة فارغة</string>
+    <string name="over_weight">Over Weight</string>
+    <string name="put_range_of_weight">Put range of weight</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+
+</resources>

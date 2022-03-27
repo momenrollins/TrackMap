@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_find_parking_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/const_save_selection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/pinView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mapView"
+            app:layout_constraintEnd_toEndOf="@+id/mapView"
+            app:layout_constraintStart_toStartOf="@+id/mapView"
+            app:layout_constraintTop_toTopOf="@+id/mapView"
+            app:shapeAppearanceOverlay="@style/circleImageView" />
+
+        <!--       <View
+                   android:id="@+id/centerPin"
+                   android:layout_width="2dp"
+                   android:layout_height="2dp"
+                   android:background="@color/colorPrimary"
+                   app:layout_constraintBottom_toBottomOf="@+id/pinView"
+                   app:layout_constraintEnd_toEndOf="@+id/pinView"
+                   app:layout_constraintStart_toStartOf="@+id/pinView"
+                   app:layout_constraintTop_toTopOf="@+id/pinView" />-->
+
+        <View
+            android:id="@+id/leftPin"
+            android:layout_width="0dp"
+            android:layout_height="0px"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/pinView"
+            app:layout_constraintStart_toStartOf="@+id/pinView"
+            app:layout_constraintTop_toTopOf="@+id/pinView" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/distance_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/tranparent_black"
+            android:padding="@dimen/padding_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_totalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_17"
+                android:layout_marginTop="@dimen/margin_10"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:text="@string/total_time"
+                android:textColor="@color/color_white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_totalTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_totalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="1 hrs 05 mins"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_totalTime"
+                app:layout_constraintStart_toEndOf="@+id/lbl_totalTime"
+                app:layout_constraintTop_toTopOf="@+id/lbl_totalTime" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lbl_totalDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:text="Total Distance Travelled: "
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txt_totalDistance"
+                app:layout_constraintStart_toStartOf="@+id/lbl_totalTime"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_totalTime" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_totalDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="26 KM"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_totalDistance"
+                app:layout_constraintStart_toEndOf="@+id/lbl_totalDistance"
+                app:layout_constraintTop_toTopOf="@+id/lbl_totalDistance" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_18sdp"
+            android:backgroundTint="#848BB8"
+            android:src="@drawable/ic_baseline_cleaning_services_24"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/mapView"
+            app:layout_constraintStart_toStartOf="@+id/mapView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/text_card"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:backgroundTint="#99FFFFFF"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/mapView"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:gravity="center"
+                android:text="@string/click_on_map_to_draw"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_12sdp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_save_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/btn_save_selection"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/color_red"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="@string/done"
+                android:textAllCaps="false"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:targetApi="lollipop" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

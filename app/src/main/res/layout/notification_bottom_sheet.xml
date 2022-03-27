@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    tools:context=".screens.bottomSheet.BottomSheetFragment"
+    android:background="@drawable/rounded_dialog">
+
+    <data>
+
+        <variable
+            name="carAddress"
+            type="String" />
+
+        <variable
+            name="driverName"
+            type="String" />
+
+        <variable
+            name="carSpeed"
+            type="String" />
+
+        <variable
+            name="selectedCar"
+            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.03"
+            android:orientation="vertical" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintGuide_percent="0.97"
+            android:orientation="vertical" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_carName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+            app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="lollipop">
+
+            <ImageView
+                android:id="@+id/img_carStatus"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/app_name"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="14dp"
+                android:src="@drawable/ic_car_on"
+                app:layout_constraintEnd_toStartOf="@+id/txt_myCar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_myCar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:text="@string/car_name"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_carStatus"
+                app:layout_constraintEnd_toStartOf="@+id/img_googleMap"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_carStatus"
+                app:layout_constraintTop_toTopOf="@+id/img_carStatus"
+                tools:text="My Car" />
+
+            <ImageView
+                android:id="@+id/img_googleMap"
+                android:layout_width="@dimen/_35sp"
+                android:layout_height="@dimen/_35sp"
+                android:contentDescription="@string/app_name"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_google_maps"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txt_myCar"
+                app:layout_constraintTop_toTopOf="@+id/txt_myCar" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_dateTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_10sp"
+                android:drawableStart="@drawable/ic_calender"
+                android:drawablePadding="@dimen/padding_5"
+                app:layout_constraintEnd_toStartOf="@+id/img_googleMap"
+                app:layout_constraintStart_toStartOf="@+id/img_carStatus"
+                app:layout_constraintTop_toBottomOf="@+id/img_carStatus"
+                app:layout_constraintBottom_toTopOf="@+id/txt_notificationDetails"
+                tools:text="05/10/2020 07:20 pm" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_notificationDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_black_60_opacity"
+                android:textSize="@dimen/_12sp"
+                android:layout_marginBottom="@dimen/margin_20"
+                app:layout_constraintEnd_toStartOf="@+id/img_googleMap"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/img_carStatus"
+                app:layout_constraintTop_toBottomOf="@+id/txt_dateTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

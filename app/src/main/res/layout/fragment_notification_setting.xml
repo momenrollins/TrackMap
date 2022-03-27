@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--
+            app:layout_constraintBottom_toTopOf="@+id/save_setting"
+            -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_20">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/startGuideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="12dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/endGuideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.97" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_startEngine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_19"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:targetApi="lollipop">
+
+                        <ImageView
+                            android:id="@+id/engine_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_car_engine_on"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_start_engine"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.47" />
+
+                        <TextView
+                            android:id="@+id/txt_start_engine"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_11"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/start_engine"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_get_notified"
+                            app:layout_constraintEnd_toStartOf="@+id/img_topUpperArrow"
+                            app:layout_constraintStart_toEndOf="@+id/engine_image"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/start_engine" />
+
+                        <TextView
+                            android:id="@+id/txt_get_notified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@string/get_notified_when_engine_starts"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_start_engine"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_start_engine"
+                            tools:text="@string/get_notified_when_engine_starts" />
+
+                        <ImageView
+                            android:id="@+id/img_topUpperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_start_engine"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_stopEngine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_startEngine">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/engine_stop"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_engine_on_off"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_stop_engine"
+                            app:layout_constraintHorizontal_bias="0.07"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txt_stop_engine"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_11"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/stop_engine"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_liked_post"
+                            app:layout_constraintEnd_toStartOf="@+id/img_stopUpperArrow"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/engine_stop"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.615"
+                            tools:text="@string/stop_engine" />
+
+                        <TextView
+                            android:id="@+id/txt_liked_post"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@string/get_notified_when_engine_stops"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_stop_engine"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_stop_engine"
+                            tools:text="@string/get_notified_when_engine_stops" />
+
+                        <ImageView
+                            android:id="@+id/img_stopUpperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_stop_engine"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_top_speed_limit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_stopEngine">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_top_speed_limit"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_speedometer"
+                            app:layout_constraintBottom_toTopOf="@+id/seekBar_speed0"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_top_speed_limit"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.355" />
+
+                        <TextView
+                            android:id="@+id/txt_top_speed_limit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/top_speed_limit"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_subscriber_to_you"
+                            app:layout_constraintEnd_toStartOf="@+id/imgtopSpeedArrow"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/img_top_speed_limit"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/top_speed_limit" />
+
+                        <TextView
+                            android:id="@+id/txt_subscriber_to_you"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_22"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@string/set_the_speed_limit_to_get_the_notified"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/seekBar_speed0"
+                            app:layout_constraintStart_toStartOf="@+id/txt_top_speed_limit"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_top_speed_limit" />
+
+                        <ImageView
+                            android:id="@+id/imgtopSpeedArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_top_speed_limit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_top_speed_limit"
+                            app:layout_constraintTop_toTopOf="@+id/txt_top_speed_limit" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginVertical="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/imgtopSpeedArrow"
+                            app:layout_constraintStart_toStartOf="@+id/img_top_speed_limit"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_subscriber_to_you">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/seekBar_speed0"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_weight="8"
+                                android:background="@drawable/grey_border_background"
+                                android:hint="@string/max_speed"
+                                android:inputType="number"
+                                android:paddingHorizontal="@dimen/_10sdp"
+                                android:textSize="@dimen/_14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/txt_speed"
+                                app:layout_constraintEnd_toEndOf="@+id/imgtopSpeedArrow"
+                                app:layout_constraintStart_toStartOf="@+id/img_top_speed_limit" />
+
+                            <TextView
+                                android:id="@+id/txt_speed"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:fontFamily="@font/sf_open_sans_regular"
+                                android:padding="@dimen/padding_8"
+                                android:text="@string/km_h"
+                                android:textAlignment="viewEnd"
+                                android:textColor="@color/color_black_60_opacity"
+                                android:textSize="@dimen/_14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/txt_speed"
+                                app:layout_constraintEnd_toEndOf="@+id/imgtopSpeedArrow"
+                                app:layout_constraintStart_toStartOf="@+id/img_top_speed_limit" />
+                        </LinearLayout>
+
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_idling_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_top_speed_limit">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_idling_time"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_idling_time"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_idling_time"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.505" />
+
+                        <TextView
+                            android:id="@+id/txt_idling_time"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/idling_time"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/imgidlingArrow"
+                            app:layout_constraintStart_toEndOf="@+id/img_idling_time"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/idling_time" />
+
+                        <TextView
+                            android:id="@+id/txt_subscribe"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:paddingTop="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_5"
+                            android:text="@string/put_time_is_allowed_engine_on_and_parking"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_idling_time"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_idling_time"
+                            tools:text="@string/subscribed_to_you" />
+
+                        <ImageView
+                            android:id="@+id/imgidlingArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_idling_time"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_idling_time"
+                            app:layout_constraintTop_toTopOf="@+id/txt_idling_time" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_hh"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="@dimen/margin_4"
+                            android:layout_marginBottom="@dimen/margin_14"
+                            android:background="@drawable/grey_border_background"
+                            android:gravity="center"
+                            android:hint="00"
+                            android:inputType="number"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_subscribe"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_subscribe" />
+
+                        <TextView
+                            android:id="@+id/txt_HH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:padding="@dimen/padding_8"
+                            android:text="@string/hh"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/et_hh"
+                            app:layout_constraintStart_toEndOf="@+id/et_hh"
+                            app:layout_constraintTop_toTopOf="@+id/et_hh"
+                            tools:text="@string/hh" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_Min"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/grey_border_background"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:gravity="center"
+                            android:hint="30"
+                            android:inputType="number"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_HH"
+                            app:layout_constraintStart_toEndOf="@+id/txt_HH"
+                            app:layout_constraintTop_toTopOf="@+id/txt_HH" />
+
+                        <TextView
+                            android:id="@+id/txt_Min"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:padding="@dimen/padding_8"
+                            android:text="@string/min"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/et_Min"
+                            app:layout_constraintStart_toEndOf="@+id/et_Min"
+                            app:layout_constraintTop_toTopOf="@+id/et_Min"
+                            tools:text="@string/min" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_connectio_loss"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_idling_time">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_conn_time"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_baseline_close_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_connection_loss"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.505" />
+
+                        <TextView
+                            android:id="@+id/txt_connection_loss"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/connection_loss_time"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/img_connection_Arrow"
+                            app:layout_constraintStart_toEndOf="@+id/img_conn_time"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="@string/connection_loss_time" />
+
+                        <TextView
+                            android:id="@+id/txt_conn_subscribe"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:paddingTop="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_5"
+                            android:text="@string/put_time_is_allowed_connection_loss"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_connection_loss"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_connection_loss"
+                            tools:text="@string/put_time_is_allowed_connection_loss" />
+
+                        <ImageView
+                            android:id="@+id/img_connection_Arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/img_conn_time"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_connection_loss"
+                            app:layout_constraintTop_toTopOf="@+id/txt_connection_loss" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/connection_et_hh1"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="@dimen/margin_4"
+                            android:layout_marginBottom="@dimen/margin_14"
+                            android:background="@drawable/grey_border_background"
+                            android:gravity="center"
+                            android:hint="00"
+                            android:inputType="number"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_conn_subscribe"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_conn_subscribe" />
+
+                        <TextView
+                            android:id="@+id/txt_connection_HH1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:padding="@dimen/padding_8"
+                            android:text="@string/hh"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/connection_et_hh1"
+                            app:layout_constraintStart_toEndOf="@+id/connection_et_hh1"
+                            app:layout_constraintTop_toTopOf="@+id/connection_et_hh1"
+                            tools:text="@string/hh" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/connection_et_Min1"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/grey_border_background"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:gravity="center"
+                            android:hint="59"
+                            android:inputType="number"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_connection_HH1"
+                            app:layout_constraintStart_toEndOf="@+id/txt_connection_HH1"
+                            app:layout_constraintTop_toTopOf="@+id/txt_connection_HH1" />
+
+                        <TextView
+                            android:id="@+id/txt_connection_Min"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:padding="@dimen/padding_8"
+                            android:text="@string/min"
+                            android:textAlignment="viewEnd"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/connection_et_Min1"
+                            app:layout_constraintStart_toEndOf="@+id/connection_et_Min1"
+                            app:layout_constraintTop_toTopOf="@+id/connection_et_Min1"
+                            tools:text="@string/min" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_connectio_loss">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_weight_time"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_baseline_show_chart_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_weight"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.505" />
+
+                        <TextView
+                            android:id="@+id/txt_weight"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/over_weight"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/img_weight_Arrow"
+                            app:layout_constraintStart_toEndOf="@+id/img_weight_time"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="277dp"
+                            android:layout_height="37dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toStartOf="@+id/img_weight_Arrow"
+                            app:layout_constraintStart_toEndOf="@+id/img_weight_time"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_weight_subscribe">
+
+                            <RadioButton
+                                android:id="@+id/out_range"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="@color/color_black_60_opacity"
+                                android:text="Out of range" />
+
+                            <RadioButton
+                                android:id="@+id/in_range"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="@color/color_black_60_opacity"
+                                android:text="In range" />
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/txt_weight_subscribe"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:paddingTop="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_5"
+                            android:text="@string/put_range_of_weight"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/txt_weight"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_weight" />
+
+                        <ImageView
+                            android:id="@+id/img_weight_Arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/img_weight_time"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_weight_loss"
+                            app:layout_constraintTop_toTopOf="@+id/txt_weight" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txt_weight_HH1"
+                            android:layout_width="65dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="@dimen/margin_4"
+                            android:background="@drawable/grey_border_background"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:gravity="center"
+                            android:hint="0"
+                            android:inputType="number"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/weight_et_hh1"
+                            app:layout_constraintStart_toEndOf="@+id/weight_et_hh1"
+                            app:layout_constraintTop_toTopOf="@+id/weight_et_hh1" />
+
+                        <TextView
+                            android:id="@+id/weight_et_hh1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="@dimen/margin_4"
+                            android:layout_marginBottom="@dimen/margin_16"
+                            android:gravity="center"
+                            android:padding="@dimen/_7sdp"
+                            android:text="@string/from"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+                        <TextView
+                            android:id="@+id/weight_et_Min1"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:gravity="center"
+                            android:hint="@string/to"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_weight_HH1"
+                            app:layout_constraintStart_toEndOf="@+id/txt_weight_HH1"
+                            app:layout_constraintTop_toTopOf="@+id/txt_weight_HH1" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txt_weight_Min"
+                            android:layout_width="65dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="@dimen/margin_4"
+                            android:background="@drawable/grey_border_background"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:gravity="center"
+                            android:hint="00"
+                            android:inputType="number"
+                            android:padding="@dimen/padding_8"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/weight_et_Min1"
+                            app:layout_constraintStart_toEndOf="@+id/weight_et_Min1"
+                            app:layout_constraintTop_toTopOf="@+id/weight_et_Min1" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_geoZoneEnter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_weight">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_geo_zone"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_geo_zone_enter"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_geo_zone_enter"
+                            app:layout_constraintHorizontal_bias="0.07"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.581" />
+
+                        <TextView
+                            android:id="@+id/txt_geo_zone_enter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/geo_zone_enter"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_geoZoneSubscribe"
+                            app:layout_constraintEnd_toStartOf="@+id/img_geoZoneUpperArrow"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/img_geo_zone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.615"
+                            tools:text="@string/geo_zone_enter" />
+
+                        <TextView
+                            android:id="@+id/txt_geoZoneSubscribe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:paddingTop="@dimen/padding_5"
+                            android:paddingBottom="@dimen/padding_5"
+                            android:text="@string/get_notified_when_enter_geo_zone"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txt_geo_zone_enter"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_geo_zone_enter"
+                            tools:text="Get notified when Enter Geo Zone" />
+
+                        <ImageView
+                            android:id="@+id/img_geoZoneUpperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/txt_geo_zone_enter"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txt_geo_zone_enter"
+                            app:layout_constraintTop_toTopOf="@+id/img_geo_zone" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/const_geoZoneExit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_marginBottom="@dimen/margin_32"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="visible"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="@dimen/padding_3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
+                    app:layout_constraintTop_toBottomOf="@+id/const_geoZoneEnter">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_6">
+
+                        <ImageView
+                            android:id="@+id/img_geoZoneExit"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_geo_zone_exit"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.515" />
+
+                        <TextView
+                            android:id="@+id/txtGeoZoneExit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/geo_zone_exit"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toStartOf="@+id/img_geoZoneExitUpperArrow"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/img_geoZoneExit"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.615"
+                            tools:text="@string/geo_zone_exit" />
+
+                        <!-- <ImageView
+                            android:id="@+id/img_geoZoneExitUpperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintTop_toTopOf="@+id/img_geoZoneExit" />-->
+
+                        <TextView
+                            android:id="@+id/txt_geoZoneExitSubscribe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@string/get_notified_when_exit_geo_zone"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintTop_toBottomOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintVertical_bias="0.0"
+                            tools:text="Get notified when Exit Geo Zone" />
+
+                        <ImageView
+                            android:id="@+id/img_geoZoneExitUpperArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/txtGeoZoneExit"
+                            app:layout_constraintTop_toTopOf="@+id/txtGeoZoneExit" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/save_setting"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="@color/color_white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/nav_red_bacakground"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="Save Settings"
+                android:textAllCaps="false"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

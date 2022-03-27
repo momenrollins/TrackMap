@@ -1,0 +1,66 @@
+<resources>
+
+    <dimen name="default_corner_radius">30dp</dimen>
+
+    <!--These two are only used when an icon is applied to the StyleableToast. previous 22 -->
+    <dimen name="toast_horizontal_padding_icon_side">20dp</dimen>
+    <dimen name="toast_horizontal_padding_empty_side">25dp</dimen>
+
+    <dimen name="toast_vertical_padding">11.2dp</dimen>
+
+    <dimen name="icon_size">19dp</dimen>
+
+    <dimen name="markar_height">40dp</dimen>
+    <dimen name="markar_width">30dp</dimen>
+
+
+    <dimen name="margin_2">2.00dp</dimen>
+    <dimen name="margin_4">4.00dp</dimen>
+    <dimen name="margin_5">5.00dp</dimen>
+    <dimen name="margin_6">6.00dp</dimen>
+    <dimen name="margin_8">8.00dp</dimen>
+    <dimen name="margin_10">10.00dp</dimen>
+    <dimen name="margin_12">12.00dp</dimen>
+    <dimen name="margin_14">14.00dp</dimen>
+    <dimen name="margin_15">15.00dp</dimen>
+    <dimen name="margin_16">16.00dp</dimen>
+    <dimen name="margin_17">17.00dp</dimen>
+    <dimen name="margin_18">18.00dp</dimen>
+    <dimen name="margin_19">19.00dp</dimen>
+    <dimen name="margin_20">20.00dp</dimen>
+    <dimen name="margin_32">32.00dp</dimen>
+    <dimen name="margin_67">67.00dp</dimen>
+
+    <dimen name="padding_4">4.00dp</dimen>
+    <dimen name="padding_5">5.00dp</dimen>
+    <dimen name="padding_8">8.00dp</dimen>
+    <dimen name="padding_10">10.00dp</dimen>
+    <dimen name="padding_12">12.00dp</dimen>
+    <dimen name="padding_15">15.00dp</dimen>
+    <dimen name="padding_18">18.00dp</dimen>
+    <dimen name="padding_20">20.00dp</dimen>
+    <dimen name="padding_22">22dp</dimen>
+
+
+    <dimen name="_16sp">16.00sp</dimen>
+    <dimen name="_10sp">10.00sp</dimen>
+    <dimen name="_11sp">11.00sp</dimen>
+    <dimen name="_12sp">12.00sp</dimen>
+    <dimen name="_14sp">14.00sp</dimen>
+    <dimen name="_18sp">18.00sp</dimen>
+    <dimen name="_30sp">30.00sp</dimen>
+    <dimen name="_35sp">35.00sp</dimen>
+    <dimen name="_24sp">24.00sp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_26">26dp</dimen>
+    <dimen name="margin_9">9dp</dimen>
+    <dimen name="padding_2">2dp</dimen>
+    <dimen name="margin_21">21dp</dimen>
+    <dimen name="margin_13">13dp</dimen>
+    <dimen name="margin_11">11dp</dimen>
+    <dimen name="margin_22">22dp</dimen>
+    <dimen name="margin_27">27dp</dimen>
+    <dimen name="padding_3">3dp</dimen>
+
+
+</resources>

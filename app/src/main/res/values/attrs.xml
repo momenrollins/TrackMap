@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--SelectableRoundedImageView-->
+    <declare-styleable name="RoundedCornerImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension" />
+        <attr name="sriv_right_top_corner_radius" format="dimension" />
+        <attr name="sriv_left_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_right_bottom_corner_radius" format="dimension" />
+        <attr name="sriv_border_width" format="dimension" />
+        <attr name="sriv_border_color" format="color" />
+        <attr name="sriv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <!--Zoom Image View-->
+
+    <declare-styleable name="ZoomageView" tools:ignore="MissingDefaultResource">
+        <attr name="zoomage_zoomable" format="boolean"/>
+        <attr name="zoomage_translatable" format="boolean"/>
+        <attr name="zoomage_restrictBounds" format="boolean"/>
+        <attr name="zoomage_animateOnReset" format="boolean"/>
+        <attr name="zoomage_doubleTapToZoom" format="boolean"/>
+        <attr name="zoomage_doubleTapToZoomScaleFactor" format="float"/>
+        <attr name="zoomage_autoCenter" format="boolean"/>
+        <attr name="zoomage_minScale" format="float"/>
+        <attr name="zoomage_maxScale" format="float"/>
+        <attr name="zoomage_autoResetMode" format="enum">
+            <enum name="UNDER" value="0"/>
+            <enum name="OVER" value="1"/>
+            <enum name="ALWAYS" value="2"/>
+            <enum name="NEVER" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <!--Stylable Toast-->
+    <declare-styleable name="StyleableToast">
+        <attr name="stTextBold" format="boolean" />
+        <attr name="stTextColor" format="color" />
+        <attr name="stFont" format="reference" />
+        <attr name="stTextSize" format="dimension" />
+        <attr name="stColorBackground" format="color" />
+        <attr name="stSolidBackground" format="boolean" />
+        <attr name="stRadius" format="dimension" />
+        <attr name="stStrokeWidth" format="dimension" />
+        <attr name="stStrokeColor" format="color" />
+        <attr name="stIconStart" format="reference" />
+        <attr name="stIconEnd" format="reference" />
+        <attr name="stLength" format="integer">
+            <enum name="LONG" value="1" />
+            <enum name="SHORT" value="0" />
+        </attr>
+        <attr name="stGravity" format="integer">
+            <enum name="center" value="1" />
+            <enum name="top" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <!--Custom RecyclerView-->
+
+    <declare-styleable name="CustomRecyclerview">
+        <attr name="errorTextWhenNoInternet" format="string" />
+        <attr name="errorTextWhilePagination" format="string" />
+        <attr name="isLoading" format="boolean" />
+        <attr name="isPagination" format="boolean" />
+        <attr name="isNoInternetError" format="boolean" />
+        <attr name="isPaginationError" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+</resources>

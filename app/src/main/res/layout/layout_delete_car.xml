@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20"
+            android:background="@drawable/nav_white_bacakground">
+
+            <TextView
+                android:id="@+id/lbl_delete_car"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:fontFamily="@font/sf_open_sans_bold"
+                android:text="@string/delete_group"
+                android:textAlignment="center"
+                android:textColor="@color/color_red"
+                android:textSize="@dimen/_16sp"
+                app:layout_constraintBottom_toTopOf="@+id/lbl_descriptive_msg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbl_descriptive_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_12"
+                android:fontFamily="@font/sf_pro_text_regular"
+                android:padding="@dimen/padding_8"
+                android:text="@string/are_you_sure_n_you_want_to_delete_this_group"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_16sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_yes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_delete_car" />
+
+
+            <Button
+                android:id="@+id/btn_yes"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="@string/yes"
+                android:textSize="@dimen/_18sp"
+                android:textColor="@color/color_white"
+                android:backgroundTint="@color/color_red"
+                android:layout_marginStart="@dimen/margin_19"
+                android:layout_marginEnd="@dimen/margin_5"
+                android:layout_marginBottom="@dimen/margin_20"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_no"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_no"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/sf_open_sans_regular"
+                android:text="@string/no"
+                android:layout_marginStart="@dimen/margin_5"
+                android:layout_marginEnd="@dimen/margin_19"
+                android:textSize="@dimen/_18sp"
+                android:textColor="@color/color_white"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginBottom="@dimen/margin_20"
+                app:layout_constraintStart_toEndOf="@+id/btn_yes"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>
