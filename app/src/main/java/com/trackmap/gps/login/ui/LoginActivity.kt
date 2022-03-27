@@ -40,14 +40,12 @@ class LoginActivity : BaseActivity() {
         accountList = arrayOf(
             getString(R.string.choose_srvr),
             "http://www.avltracmap.com",
-            "http://gps2.tawasolmap.com",
-            "http://gps3.tawasolmap.com"
+            "http://apptracmap.com",
         ).toList()
         accountList1 = arrayOf(
             getString(R.string.choose_srvr),
             "http://www.avltracmap.com/",
-            "http://gps2.tawasolmap.com/",
-            "http://gps3.tawasolmap.com/"
+            "http://apptracmap.com",
         ).toList()
         val arrayAdapter = ArrayAdapter(
             this,

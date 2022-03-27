@@ -31,12 +31,12 @@ class SplashActivity : BaseActivity() {
         splashViewModel =
             ViewModelProviders.of(this@SplashActivity).get(SplashViewModel::class.java)
 
-        val animFadein: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.left_to_right)
+      /*  val animFadein: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.right_to_left)
 
         // start the animation
 
         binding.txtName.startAnimation(animFadein)
-
+*/
         //Check For Permission
         //checkPermision()
         handler = Handler()

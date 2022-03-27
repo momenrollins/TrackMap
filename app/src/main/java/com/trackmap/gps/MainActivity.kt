@@ -117,19 +117,16 @@ class MainActivity : BaseActivity() {
                             navController.navigate(R.id.action_homemapFragment_to_geoZoneFragment)
                             return
                         }
+
                         4 -> {
-                            navController.navigate(R.id.action_homemapFragment_to_dashFragment)
-                            return
-                        }
-                        5 -> {
                             navController.navigate(R.id.action_homemapFragment_to_userSettingFragment)
                             return
                         }
-                        6 -> {
+                        5 -> {
                             navController.navigate(R.id.action_homemapFragment_to_reportFragment)
                             return
                         }
-                        7 -> {
+                        6 -> {
                             val checkFlag = MyPreference.getValueBoolean(PrefKey.IS_CEO_DATA, false)
                             val subscriptionDyas =
                                 MyPreference.getValueBoolean(PrefKey.SUBSCRIPTION_DAYS, false)
@@ -154,15 +151,15 @@ class MainActivity : BaseActivity() {
                             }
                             return
                         }
-                        8 -> {
+                        7 -> {
                             navController.navigate(R.id.action_homemapFragment_to_contactUsFragment)
                             return
                         }
-                        9 -> {
+                        8 -> {
                             navController.navigate(R.id.action_homemapFragment_to_aboutUsFragment)
                             return
                         }
-                        10 -> {
+                        9 -> {
                             navController.navigate(R.id.action_homemapFragment_to_privacyPolicyFragment)
                             return
                         }
