@@ -33,7 +33,7 @@
             android:layout_gravity="start"
             app:itemIconTint="@color/colorPrimary"
             android:layout_marginEnd="-65dp"
-            android:background="@color/colorBlack">
+       >
             <include
                 android:id="@+id/layoutSideMenuDrawer"
                 layout="@layout/layout_nav_header" />

@@ -56,23 +56,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_notification"
                 android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="@dimen/margin_15"
                 android:layout_marginEnd="@dimen/margin_15"
-                android:backgroundTint="@color/color_red"
                 android:fontFamily="@font/sf_open_sans_regular"
                 android:text="@string/add_notification"
                 android:textAllCaps="false"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/_18sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/color_red"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:targetApi="lollipop" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

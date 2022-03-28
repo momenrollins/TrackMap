@@ -20,7 +20,7 @@ class SplashActivity : BaseActivity() {
     lateinit var splashViewModel: SplashViewModel
     lateinit var binding: ActivitySplashBinding
     private lateinit var handler: Handler
-    var timeDelay : Long = 1100
+    var timeDelay : Long = 1000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,12 +31,12 @@ class SplashActivity : BaseActivity() {
         splashViewModel =
             ViewModelProviders.of(this@SplashActivity).get(SplashViewModel::class.java)
 
-      /*  val animFadein: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.right_to_left)
+       /* val animFadein: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.left_to_right)
 
         // start the animation
 
-        binding.txtName.startAnimation(animFadein)
-*/
+        binding.txtName.startAnimation(animFadein)*/
+
         //Check For Permission
         //checkPermision()
         handler = Handler()

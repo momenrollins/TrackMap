@@ -299,7 +299,8 @@ class HomeMapViewModel : BaseViewModel() {
                 try {
                     // this will run on a thread managed by Retrofit
                     val response = client.callSignIn(signInRequest)
-                    DebugLog.d("ResponseBody callSignIn =1 ${response.body()?.data?.accessToken} ${response.body()?.data?.userDetail?.ownerId}")
+                    Log.d(TAG, "callSignInMethod:((${signInRequest.toString()})) ${signInRequest.email_username} ${signInRequest.device_token} ${signInRequest.domain_name} ")
+                    DebugLog.d("callSignInMethod callSignIn =1 ${response.body()?.data.toString()}")
 
                     MyPreference.setValueString(
                         PrefKey.ACCESS_TOKEN_BRAINVIRE,
