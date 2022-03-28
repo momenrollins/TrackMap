@@ -229,7 +229,7 @@
     <string name="notification">Notifications</string>
     <string name="website">Website : </string>
     <string name="contact_us">Call us : </string>
-    <string name="web_url"><u>http://www.tawasolmap.com/</u></string>
+    <string name="web_url"><u>http://gpstracmap.com/</u></string>
     <!--<string name="notification_data_for_start_engine_off">Vehicle:%UNIT%,EngineOFFLocation:%LOCATION%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
     <string name="notification_data_for_start_engine_on">Vehicle:%UNIT%,EngineOnLocaton:%LOCATION%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
     <string name="api_call_for_speed_notification_test">Vehicle:%UNIT%,SPEED:%SPEED%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>

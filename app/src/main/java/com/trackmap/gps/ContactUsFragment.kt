@@ -117,12 +117,12 @@ class ContactUsFragment : BaseFragment() {
         }
         binding.webSite.setOnClickListener {
             val myIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tawasolmap.com/"))
+                Intent(Intent.ACTION_VIEW, Uri.parse("http://gpstracmap.com/"))
             startActivity(myIntent)
         }
         binding.contactNumber.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse("tel:" + 920003972)
+            intent.data = Uri.parse("tel:" + 555089009)
             if (intent.resolveActivity(requireActivity().packageManager) != null) {
                 requireActivity().startActivity(intent)
             }

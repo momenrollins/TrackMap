@@ -234,7 +234,7 @@
     <string name="notification">التبليغات</string>
     <string name="website">موقع إلكتروني :</string>
     <string name="contact_us">اتصل بنا :</string>
-    <string name="web_url"><u>http://www.tawasolmap.com/</u></string>
+    <string name="web_url"><u>http://gpstracmap.com/</u></string>
     <!--<string name="notification_data_for_start_engine_off">(AVL)المركبة:%UNIT%,تم_إيقاف_التشغيل_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
     <string name="notification_data_for_start_engine_on">(AVL)المركبة:%UNIT%,تم_تشغيل_المحرك_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
     <string name="api_call_for_speed_notification_test">(AVL)المركبة:%UNIT%,متحركة_بسرعة:%SPEED%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>

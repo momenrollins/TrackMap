@@ -40,7 +40,7 @@ class AboutUsFragment : BaseFragment() {
         binding.webView.settings.allowFileAccess = true
         binding.webView.settings.loadWithOverviewMode = true
         binding.webView.settings.useWideViewPort = true
-        binding.webView.loadUrl("http://tawasolmap.com/en/aboutuse/")
+        binding.webView.loadUrl("http://gpstracmap.com/")
         binding.webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
                 // do your handling codes here, which url is the requested url
