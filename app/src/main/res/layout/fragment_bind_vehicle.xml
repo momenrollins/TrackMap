@@ -127,7 +127,7 @@
                 android:fontFamily="@font/sf_open_sans_regular"
                 android:text="@string/show_on_map"
                 android:textAllCaps="false"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/color_white"
                 android:textSize="@dimen/_18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

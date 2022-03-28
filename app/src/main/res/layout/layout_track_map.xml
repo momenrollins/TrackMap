@@ -197,7 +197,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#BC191B2B"
+            app:cardBackgroundColor="#BC2B1919"
             android:layout_margin="@dimen/_1sdp"
             app:layout_constraintTop_toTopOf="parent">
 

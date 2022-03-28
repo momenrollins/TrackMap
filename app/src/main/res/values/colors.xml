@@ -3,13 +3,13 @@
 
 
 
-    <color name="colorPrimary">#191B2B</color>
-    <color name="colorPrimaryDark">#191B2B</color>
+    <color name="colorPrimary">#400F0F</color>
+    <color name="colorPrimaryDark">#2E0A0A</color>
     <color name="colorAccent">#D81B60</color>
     <color name="default_text_color">#ffffff</color>
     <color name="default_background_color">#555555</color>
-    <color name="color_red">#E3000F</color>
-    <color name="color_blue">#3387E8</color>
+    <color name="color_red">#ec1c24</color>
+    <color name="color_blue">#0A3669</color>
     <color name="color_green">#1F8004</color>
     <color name="color_white">#ffffff</color>
     <color name="color_white_shfaf">#CCFFFFFF</color>
@@ -31,9 +31,9 @@
     <color name="button_back_grey">#2A2E4333</color>
     <color name="light_pink">#FFEFEF</color>
 
-    <color name="drawer_blue">#3B3F57</color>
-    <color name="light_blue">#803B3F57</color>
-    <color name="light_blue2">#323549</color>
+    <color name="drawer_blue">#701A1A</color>
+    <color name="light_blue">#701A1A</color>
+    <color name="light_blue2">#601111</color>
     <color name="tranparent_black">#222639</color>
     <color name="selected_color">#EEEEEE</color>
     <color name="selected_colo2r">#EEEEEE</color>
