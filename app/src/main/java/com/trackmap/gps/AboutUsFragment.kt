@@ -32,8 +32,7 @@ class AboutUsFragment : BaseFragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_about_us, container, false)
 
         handleActionBarAString(getString(R.string.about_us))
-       Utils.showProgressBar(requireContext())
-
+        binding.pdf.fromAsset("build/about.pdf").show();
         return binding.root
     }
 }

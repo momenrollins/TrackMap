@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Track Map</string>
+    <string name="app_name">Tracking Maps</string>
     <string name="default_notification_channel_id" translatable="false">TawasolMap_app_channel</string>
     <string name="google_maps_key">AIzaSyCVSid0VeNHYZOnCwkppsm8O9x7lhO4krE</string>
     <string name="error_map_app">Please install a maps application</string>
@@ -22,7 +22,7 @@
     <string name="driver_name">Driver\'s Name</string>
     <string name="sensor">Sensors</string>
     <string name="km_h">km/h</string>
-    <string name="TawasolMap">Track Map</string>
+    <string name="TawasolMap">Tracking Maps</string>
     <string name="sign_in">SIGN IN</string>
     <string name="login_to_your_acc">Login to Your Account</string>
     <string name="sign_in_again">Please sign in again</string>

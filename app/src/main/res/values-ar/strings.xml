@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Track Map</string>
+    <string name="app_name">Tracking Maps</string>
     <string name="error_map_app">Please install a maps application</string>
     <string name="internet_connection_slow_or_disconnected" tools:keep="@string/internet_connection_slow_or_disconnected">"Internet connection slow or disconnected please check network connection."</string>
 
@@ -17,7 +17,7 @@
     <string name="driver_name">اسم السائق</string>
     <string name="sensor">الحساسات</string>
     <string name="km_h">km/h</string>
-    <string name="TawasolMap">Track Map</string>
+    <string name="TawasolMap">Tracking Maps</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="login_to_your_acc">Login to Your Account</string>
     <string name="user_name">اسم المستخدم</string>
