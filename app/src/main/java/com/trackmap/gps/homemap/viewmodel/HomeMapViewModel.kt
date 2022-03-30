@@ -204,7 +204,6 @@ class HomeMapViewModel : BaseViewModel() {
                 if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
                     _status.value = ApiStatus.NOINTERNET
                 } else {
-/*
                     try {
                         // this will run on a thread managed by Retrofit
                         val response = client.callSetToken(body)
@@ -249,7 +248,6 @@ class HomeMapViewModel : BaseViewModel() {
                         DebugLog.d("errorToken" + error.printStackTrace())
                         tokenExpiredCall.postValue(false)
                     }
-*/
                 }
             }
         }

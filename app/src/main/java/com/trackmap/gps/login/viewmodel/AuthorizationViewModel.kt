@@ -59,7 +59,6 @@ class AuthorizationViewModel : BaseViewModel() {
                     val response = client.callSetToken(body)
                     DebugLog.d("RequestBody login =${response} EID ")
 
-/*
                     if (response.eid != null && response.eid!!.isNotEmpty()) {
                         DebugLog.d("e_id" + response.eid)
                         launch(Dispatchers.Main) {
@@ -103,7 +102,6 @@ class AuthorizationViewModel : BaseViewModel() {
                         requireContext.startActivity(myIntent)
                         (requireContext as BaseActivity).finish()
                     }
-*/
                 } catch (error: Throwable) {
                     _status.value = ApiStatus.ERROR
                     DebugLog.d("error" + error.printStackTrace())
