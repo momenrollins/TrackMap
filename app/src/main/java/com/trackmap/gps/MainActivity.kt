@@ -121,11 +121,11 @@ class MainActivity : BaseActivity() {
                         }
 
                         4 -> {
-                            navController.navigate(R.id.action_homemapFragment_to_userSettingFragment)
+                            navController.navigate(R.id.action_homemapFragment_to_reportFragment)
                             return
                         }
                         5 -> {
-                            navController.navigate(R.id.action_homemapFragment_to_reportFragment)
+                            navController.navigate(R.id.action_homemapFragment_to_userSettingFragment)
                             return
                         }
                         6 -> {

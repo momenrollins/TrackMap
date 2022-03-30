@@ -50,13 +50,16 @@ class AuthorizationViewModel : BaseViewModel() {
             body["svc"] = "token/login"
             body["params"] = jsonObj.toString()
             _status.value = ApiStatus.LOADING
-            DebugLog.d("RequestBody =$body")
+            DebugLog.d("RequestBody login =$body")
             if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
                 _status.value = ApiStatus.NOINTERNET
             } else {
                 try {
                     // this will run on a thread managed by Retrofit
                     val response = client.callSetToken(body)
+                    DebugLog.d("RequestBody login =${response} EID ")
+
+/*
                     if (response.eid != null && response.eid!!.isNotEmpty()) {
                         DebugLog.d("e_id" + response.eid)
                         launch(Dispatchers.Main) {
@@ -100,6 +103,7 @@ class AuthorizationViewModel : BaseViewModel() {
                         requireContext.startActivity(myIntent)
                         (requireContext as BaseActivity).finish()
                     }
+*/
                 } catch (error: Throwable) {
                     _status.value = ApiStatus.ERROR
                     DebugLog.d("error" + error.printStackTrace())

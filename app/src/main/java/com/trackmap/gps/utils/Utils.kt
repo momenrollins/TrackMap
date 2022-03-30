@@ -461,12 +461,11 @@ object Utils {
 
         dialog = Dialog(mContext/*, android.R.style.Theme_Translucent*/)
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog!!.setCancelable(false)
         val inflater = mContext
             .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val viewChild: View = inflater.inflate(R.layout.layout_progress_dialog, null)
         val imgLoader = viewChild.findViewById<ImageView>(R.id.loader)
-        Glide.with(mContext).load(R.drawable.ic_drawer_image).into(imgLoader)
+        Glide.with(mContext).load(R.drawable.ic_drawer_image_white).into(imgLoader)
         dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog!!.setContentView(viewChild)
 
