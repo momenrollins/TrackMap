@@ -33,37 +33,7 @@ class AboutUsFragment : BaseFragment() {
 
         handleActionBarAString(getString(R.string.about_us))
        Utils.showProgressBar(requireContext())
-        binding.webView.visibility = View.GONE
-        binding.webView.settings.allowFileAccessFromFileURLs = true
-        binding.webView.settings.javaScriptEnabled = true
-        binding.webView.settings.domStorageEnabled = true
-        binding.webView.settings.allowFileAccess = true
-        binding.webView.settings.loadWithOverviewMode = true
-        binding.webView.settings.useWideViewPort = true
-        binding.webView.loadUrl("http://gpstracmap.com/")
-        binding.webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-                // do your handling codes here, which url is the requested url
-                // probably you need to open that url rather than redirect:
-                binding.webView.visibility = View.VISIBLE
-                Utils.hideProgressBar()
-                return true // then it is not handled by default action
-            }
 
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-                binding.webView.visibility = View.VISIBLE
-                Utils.hideProgressBar()
-                //binding.layProgress.progressbar.visibility = View.GONE
-            }
-
-            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError) {
-                //Your code to do
-                //  binding.layProgress.progressbar.visibility = View.GONE
-                binding.webView.visibility = View.VISIBLE
-                Utils.hideProgressBar()
-            }
-        }
         return binding.root
     }
 }

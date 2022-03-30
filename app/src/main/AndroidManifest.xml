@@ -38,7 +38,8 @@
         <activity
             android:name="com.trackmap.gps.dashboard.ui.DashboardActivity"
             android:noHistory="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.trackmap.gps.login.ui.LoginActivityGps3"
             android:exported="false"
