@@ -219,7 +219,7 @@ import com.trackmap.gps.databinding.LayoutDeleteCarBinding
         val viewChild: View = inflater.inflate(R.layout.layout_progress_dialog, null)
         val imgLoader = viewChild.findViewById<ImageView>(R.id.loader)
 
-        Glide.with(context).load(R.drawable.ic_drawer_image).into(imgLoader)
+        Glide.with(context).load(R.drawable.ic_drawer_image_white).into(imgLoader)
         dialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog!!.setContentView(viewChild)
 

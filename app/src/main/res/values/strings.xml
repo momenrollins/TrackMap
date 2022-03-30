@@ -254,6 +254,9 @@
     <!--    <string name="no_coordinates">There are no tracks here</string>-->
     <string name="trip_ends">Trip Ends</string>
     <string name="choose_srvr">Choose Server!</string>
+    <string name="server_1">Server 1</string>
+    <string name="server_2">Server 2</string>
+    <string name="server_3">Server 3</string>
     <string name="notif_title">Title</string>
     <string name="unit_name">Unit name</string>
     <string name="in_location">Location</string>

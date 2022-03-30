@@ -255,9 +255,12 @@
     <string name="pls_chs_srvr">من فضلك اختر السيرفر!</string>
     <string name="group_units">تجميع المركبات</string>
     <string name="add_background">إضافة خلفية لأسامي الوحدات</string>
-<!--    <string name="no_coordinates">لا توجد رحلات هنا</string>-->
+    <!--    <string name="no_coordinates">لا توجد رحلات هنا</string>-->
     <string name="trip_ends">انتهت الرحلة</string>
     <string name="choose_srvr">اختر السيرفر!</string>
+    <string name="server_1">السيرفر الأول</string>
+    <string name="server_2">السيرفر الثاني</string>
+    <string name="server_3">السيرفر الثالث</string>
     <string name="notif_title">اسم التبليغ</string>
     <string name="unit_name">اسم المركبة</string>
     <string name="in_location">في المكان</string>

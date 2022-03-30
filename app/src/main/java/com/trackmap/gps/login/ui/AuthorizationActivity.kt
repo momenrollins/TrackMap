@@ -31,7 +31,7 @@ class AuthorizationActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         authorizationViewModel = ViewModelProvider(this)[AuthorizationViewModel::class.java]
         setContentView(R.layout.layout_authorization)
-        url = "http://www.avltracmap.com/login.html?client_id=tawasolmap&access_type=-1&activation_time=0&duration=0&flags=1"
+        url = MyPreference.getValueString(PrefKey.SELECTED_SERVER_DATA, BuildConfig.BaseURL) + "login.html?client_id=tawasolmap&access_type=-1&activation_time=0&duration=0&flags=1"
         webView.loadUrl(url)
         webView.settings.setSupportZoom(true)
         webView.settings.javaScriptEnabled = true

@@ -3,5 +3,9 @@
   <domain-config cleartextTrafficPermitted="true">
     <domain includeSubdomains="true">avltracmap.com</domain>
     <domain includeSubdomains="true">gpstracmap.com</domain>
+    <domain includeSubdomains="true">apptracmap.com</domain>
+    <domain includeSubdomains="true">tracmap1.com</domain>
+    <domain includeSubdomains="true">tracmap2.com</domain>
+    <domain includeSubdomains="true">tawasolmap.com</domain>
   </domain-config>
 </network-security-config>
