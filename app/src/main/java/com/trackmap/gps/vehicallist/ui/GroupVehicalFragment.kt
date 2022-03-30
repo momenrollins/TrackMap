@@ -248,7 +248,7 @@ class GroupVehicalFragment : BaseFragment() {
             override fun onYesClick(selected: Int, selectedPosition: Int) {
                 if (serverData.contains("s3")) {
                     viewmodel.callApiForDeleteGroupGps3(selected)
-                    groupListDetailGps3?.removeAt(selectedPosition)
+                    adapterGps3.getList()?.removeAt(selectedPosition)
                     binding.btnShowOnMap.isEnabled = false
                     adapterGps3.notifyDataSetChanged()
                 } else {

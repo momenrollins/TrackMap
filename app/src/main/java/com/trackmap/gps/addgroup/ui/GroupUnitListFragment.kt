@@ -54,8 +54,6 @@ class GroupUnitListFragment : BaseFragment() {
     private lateinit var binding: FragmentGroupUnitListBinding
     private lateinit var viewModel: AddUnitsViewModel
     private lateinit var viewmodel: VehiclesListViewModel
-    private var carDetailList: MutableList<Item>? = null
-    private var carDetailListGps3: ArrayList<ItemGps3>? = null
     private var carIdList = ArrayList<String>()
     private var selectedCarList = java.util.ArrayList<Item>()
     private var selectedCarListGps3 = java.util.ArrayList<ItemGps3>()
@@ -430,6 +428,7 @@ class GroupUnitListFragment : BaseFragment() {
             override fun onRemoveClick(position: Int) {
                 recyclerViewState = binding.rvGroupCar.layoutManager!!.onSaveInstanceState()
                 groupName.u.removeAt(position)
+
                 selectedCarList.removeAt(position)
                 adapter.notifyDataSetChanged()
                 if (selectedCarList.size == 0) {

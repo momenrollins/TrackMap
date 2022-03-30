@@ -29,7 +29,8 @@ class DisplayReportsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_display_reports)
         textView = findViewById(R.id.txt_toolbar_title)
         arrowImageView = findViewById(R.id.backArrow)
-        if (Locale.getDefault().getDisplayLanguage().equals("العربية")) arrowImageView!!.rotation=180F
+        if (Locale.getDefault().getDisplayLanguage().equals("العربية")) arrowImageView!!.rotation =
+            180F
 
         textView!!.text = getString(R.string.generated_reports)
         textView!!.isSelected = true
@@ -41,7 +42,7 @@ class DisplayReportsActivity : AppCompatActivity() {
         savedInstanceState = intent.extras
         mItemList =
             savedInstanceState!!.getSerializable("list") as ArrayList<GeneratedReportModelGps3>?
-        var onItemClick=object :ReportAdapter.OnItemClickListener{
+        var onItemClick = object : ReportAdapter.OnItemClickListener {
             override fun onItemClick(
                 position: Int,
                 generatedReportModelGps3s: ArrayList<GeneratedReportModelGps3>?
@@ -70,7 +71,8 @@ class DisplayReportsActivity : AppCompatActivity() {
         }
 
 
-        reportAdapter = ReportAdapter(this@DisplayReportsActivity,handlerAlertDialog, mItemList!!,onItemClick)
+        reportAdapter =
+            ReportAdapter(this@DisplayReportsActivity, handlerAlertDialog, mItemList!!, onItemClick)
         recyclerview.adapter = reportAdapter
 
         et_search.addTextChangedListener(object : TextWatcher {
