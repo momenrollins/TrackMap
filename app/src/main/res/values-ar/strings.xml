@@ -226,7 +226,9 @@
     <string name="enter_group_name">اكتب اسم المجموعة</string>
     <string name="put_time_is_allowed_engine_on_and_parking">المدة المسموح بها المحرك يعمل وهي متوقفة</string>
     <string name="put_time_is_allowed_connection_loss">المدة المسموح بها لفقد الاتصال</string>
-
+    <string name="server1">سيرفر 1</string>
+    <string name="server2">سيرفر 2</string>
+    <string name="server3">سيرفر 3</string>
     <string name="please">الرجاء</string>
     <string name="you_dont_have_access_to_this_feature">ليس لديك صلاحية إلى هذه الميزة!</string>
     <string name="enter_valid">إدخال بشكل صحيح</string>

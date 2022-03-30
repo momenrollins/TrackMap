@@ -6,6 +6,10 @@
     <string name="internet_connection_slow_or_disconnected" tools:keep="@string/internet_connection_slow_or_disconnected">"Internet connection slow or disconnected please check network connection."</string>
 
     <string name="ok">OK</string>
+    <string name="server1">Server 1</string>
+    <string name="server2">Server 2</string>
+    <string name="server3">Server 3</string>
+
     <string name="speed">Speed</string>
     <string name="Please_select_start_date">Please select start date</string>
     <string name="Please_select_end_date">Please select end date</string>
