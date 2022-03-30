@@ -35,6 +35,8 @@ class ContactUsFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_contact_us, container, false)
 
+
+
         handleActionBarHidePlusIcon(R.string.drawer_contact_us)
 
         binding.btnSubmit.setOnClickListener {

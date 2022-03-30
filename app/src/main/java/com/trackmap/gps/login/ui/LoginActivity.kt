@@ -39,13 +39,15 @@ class LoginActivity : BaseActivity() {
             ViewModelProvider(this@LoginActivity).get(LoginViewModel::class.java)
         accountList = arrayOf(
             getString(R.string.choose_srvr),
-            "http://www.avltracmap.com",
-            "http://apptracmap.com",
+            getString(R.string.server1),
+            getString(R.string.server2),
+            getString(R.string.server3)
         ).toList()
         accountList1 = arrayOf(
             getString(R.string.choose_srvr),
-            "http://www.avltracmap.com/",
-            "http://apptracmap.com",
+            "http://tracmap1.com/",
+            "http://tracmap2.com/",
+            "http://gps3.tawasolmap.com/"
         ).toList()
         val arrayAdapter = ArrayAdapter(
             this,
