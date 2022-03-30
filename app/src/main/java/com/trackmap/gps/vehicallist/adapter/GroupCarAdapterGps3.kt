@@ -109,6 +109,9 @@ class GroupCarAdapterGps3(
         value = filterList
         notifyDataSetChanged()
     }
+    fun getList( ): ArrayList<ItemGroupDataModelGps3>? {
+        return value
+    }
 
     interface GroupOnclickGps3 {
         fun onClickGps3(position: Int, groupName: String)
