@@ -164,6 +164,9 @@ class GeoZoneAdapter(
         geoList = filterList
         notifyDataSetChanged()
     }
+    fun getList(): MutableList<GeoZoneListModel.ZLObj>{
+        return geoList
+    }
 
     interface SelectedZoneOnclick {
         fun onClick(zlObj: GeoZoneListModel.ZLObj)

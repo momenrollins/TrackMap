@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -61,16 +62,17 @@ class DisplayReportsActivity : AppCompatActivity() {
             @SuppressLint("NotifyDataSetChanged")
             override fun onYesClick(selected: Int, selectedPosition: Int) {
                 reportViewModel!!.callApiForDeleteReportGps3(
-                    Objects.requireNonNull(
-                        selected.toString()
-                    )
+                    Objects.requireNonNull(selected.toString())
                 )
-                mItemList!!.removeAt(selectedPosition)
+                val filteredList = reportAdapter!!.getFilteredList()
+                Log.d(TAG, "onYesClick: ${filteredList.size} - ${mItemList?.size}")
+
+                if (filteredList.size != mItemList?.size)
+                    mItemList?.remove(filteredList[selectedPosition])
+                filteredList.remove(filteredList[selectedPosition])
                 reportAdapter!!.notifyDataSetChanged()
             }
         }
-
-
         reportAdapter =
             ReportAdapter(this@DisplayReportsActivity, handlerAlertDialog, mItemList!!, onItemClick)
         recyclerview.adapter = reportAdapter
@@ -92,4 +94,6 @@ class DisplayReportsActivity : AppCompatActivity() {
             }
         })
     }
+
+    private val TAG = "DisplayReportsActivity"
 }

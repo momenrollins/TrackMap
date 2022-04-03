@@ -44,7 +44,8 @@ class GroupVehicalFragment : BaseFragment() {
     private var serverData: String = ""
     private var positionItem: Int? = null
     private var groupNameItem: String? = null
-
+    var filterList = mutableListOf<GroupListDataModel.Item>()
+    var filterListGps3 = ArrayList<ItemGroupDataModelGps3>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -67,6 +68,7 @@ class GroupVehicalFragment : BaseFragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun addObserver() {
         if (serverData.contains("s3")) {
+
             viewmodel.itemGroupDataGps3.observe(viewLifecycleOwner) {
                 val imeisModel: GroupImeisModelGps3
                 if (MyPreference.getValueString("SHowgroup", "").equals("ShowItems")) {
@@ -126,6 +128,8 @@ class GroupVehicalFragment : BaseFragment() {
                 it.let {
                     if (it.status) {
                         if (groupListDetailGps3.isNullOrEmpty()) {
+                            binding.rvGroupCar.visibility = View.VISIBLE
+                            binding.txtNoDatagroub.visibility = View.GONE
                             groupListDetailGps3 = it.data as ArrayList<ItemGroupDataModelGps3>?
                             Utils.hideProgressBar()
                             initializeRecyclerview()
@@ -160,7 +164,11 @@ class GroupVehicalFragment : BaseFragment() {
 
     private fun initializeRecyclerview() {
         val handler = object : GroupCarAdapter.GroupOnclick {
-            override fun itemOnClick(position: Int, selected: Boolean) {
+            override fun itemOnClick(
+                position: Int,
+                selected: Boolean,
+                idsList: MutableList<String>
+            ) {
                 positionItem = position
 
                 /* if (selected) {
@@ -180,15 +188,11 @@ class GroupVehicalFragment : BaseFragment() {
                     )
                     carId.clear()
                     if (!serverData.contains("s3")) {
-                        for (gId in groupId) {
-                            for (item in groupListDetail!!) {
-                                if (item.id.toString().equals(gId, true)) {
-                                    for (ut in item.u) {
-                                        carId.add(ut)
-                                    }
-                                }
-                            }
+                        Log.d(TAG, "itemOnClick: POS $position")
+                        for (ut in idsList) {
+                            carId.add(ut)
                         }
+
                     }
                     //car_Id = Utils.getUniqueList(car_Id)
                 } else {
@@ -248,12 +252,37 @@ class GroupVehicalFragment : BaseFragment() {
             override fun onYesClick(selected: Int, selectedPosition: Int) {
                 if (serverData.contains("s3")) {
                     viewmodel.callApiForDeleteGroupGps3(selected)
-                    adapterGps3.getList()?.removeAt(selectedPosition)
+                    if (filterListGps3.isNotEmpty()) {
+                        val item = filterListGps3[selectedPosition]
+                        filterListGps3.remove(item)
+                        groupListDetailGps3?.remove(item)
+                        adapterGps3.notifyDataSetChanged()
+                    } else groupListDetailGps3?.removeAt(selectedPosition)
+                    groupListDetailGps3?.map { itemGroupDataModelGps3 ->
+                        itemGroupDataModelGps3.isSelected = false
+                    }
                     binding.btnShowOnMap.isEnabled = false
                     adapterGps3.notifyDataSetChanged()
+                    if (groupListDetailGps3?.size == 0) {
+                        binding.rvGroupCar.visibility = View.GONE
+                        binding.txtNoDatagroub.visibility = View.VISIBLE
+                    }
                 } else {
                     viewmodel.callApiForDeleteGroup(selected)
-                    groupListDetail?.removeAt(selectedPosition)
+                    adapter
+                    if (filterList.isNotEmpty()) {
+                        val item: GroupListDataModel.Item = filterList[selectedPosition]
+                        filterList.remove(item)
+                        groupListDetail?.remove(item)
+                        adapter.updateList(filterList)
+                    } else {
+                        groupListDetail?.removeAt(selectedPosition)
+                    }
+                    groupListDetail?.map { item -> item.isSelected = false }
+                    if (groupListDetail?.size == 0) {
+                        binding.rvGroupCar.visibility = View.GONE
+                        binding.txtNoDatagroub.visibility = View.VISIBLE
+                    }
                     binding.btnShowOnMap.isEnabled = false
                     adapter.notifyDataSetChanged()
                 }
@@ -274,6 +303,15 @@ class GroupVehicalFragment : BaseFragment() {
                     "comingFrom" to "ShowOnGroupVehicle", "carId" to carId
                 )
                 MyPreference.setValueString(PrefKey.SELECTED_CAR_LISTING, setListOfCar())
+                Log.d(
+                    TAG,
+                    "initializeRecyclerview:carid ${carId.size}  ${
+                        MyPreference.getValueString(
+                            PrefKey.SELECTED_CAR_LISTING,
+                            ""
+                        )
+                    } "
+                )
                 findNavController().navigate(
                     R.id.homemapFragment, bundle
                 )
@@ -287,8 +325,9 @@ class GroupVehicalFragment : BaseFragment() {
             }
 
             override fun afterTextChanged(editable: Editable) {
-                val filterList = mutableListOf<GroupListDataModel.Item>()
-                val filterListGps3 = ArrayList<ItemGroupDataModelGps3>()
+
+                filterList = mutableListOf()
+                filterListGps3 = ArrayList()
                 if (serverData.contains("s3")) {
                     for (name in groupListDetailGps3!!) {
                         if (name.group_name.lowercase().trim()
@@ -326,6 +365,10 @@ class GroupVehicalFragment : BaseFragment() {
         try {
             if (ConvertModel().isGroupPage) Utils.showProgressBar(context!!)
             if (serverData.contains("s3")) {
+                if (!filterListGps3.isEmpty()) {
+                    filterListGps3.clear()
+                    binding.etSearch.setText("")
+                }
                 if (!groupListDetailGps3.isNullOrEmpty()) {
 
                     groupListDetailGps3?.clear()
@@ -334,6 +377,8 @@ class GroupVehicalFragment : BaseFragment() {
             } else {
                 if (!groupListDetail.isNullOrEmpty()) {
                     groupListDetail?.clear()
+                    filterList.clear()
+                    binding.etSearch.setText("")
                     viewmodel.callApiForGroupListData()
                 }
             }

@@ -97,12 +97,16 @@ class ReportAdapter(
 //                )
 //            )
 //            generatedReportModelGps3s.removeAt(position)
-//            notifyDataSetChanged()
+            notifyDataSetChanged()
         }
     }
 
     override fun getItemCount(): Int {
         return generatedReportModelGps3s.size
+    }
+
+    fun getFilteredList(): ArrayList<GeneratedReportModelGps3> {
+        return generatedReportModelGps3s
     }
 
     @SuppressLint("NotifyDataSetChanged")

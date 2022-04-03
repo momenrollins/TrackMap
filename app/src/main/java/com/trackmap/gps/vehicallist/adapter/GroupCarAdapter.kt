@@ -32,7 +32,9 @@ class GroupCarAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(value?.get(position), position)
-    private  val TAG = "GroupCarAdapter"
+
+    private val TAG = "GroupCarAdapter"
+
     inner class ViewHolder(var binding: View) : RecyclerView.ViewHolder(binding.rootView) {
         @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
         fun bind(
@@ -49,10 +51,10 @@ class GroupCarAdapter(
                 itemView.car_lastUpdate.text =
                     context.getString(R.string.total_units) + " " + itemList?.u?.size.toString()
                 Glide.with(context)
-                    .load("http://www.avltracmap.com" + itemList?.uri)
+                    .load("https://gps.tawasolmap.com" + itemList?.uri)
                     .placeholder(R.drawable.default_car)
                     .into(itemView.car_image)
-                Log.d(TAG, "bind: URI Group ${"http://www.avltracmap.com" + itemList?.uri}")
+                Log.d(TAG, "bind: URI Group ${"https://gps.tawasolmap.com" + itemList?.uri}")
                 if (itemList != null && itemList.isSelected)
                     itemView.const_cardetails.setBackgroundColor(
                         ContextCompat.getColor(context!!, R.color.selected_color)
@@ -78,16 +80,17 @@ class GroupCarAdapter(
                 itemView.const_cardetails.tag = position
                 itemView.const_cardetails.setOnClickListener {
 
-                    if (itemList?.u?.size!=0){
+                    if (itemList?.u?.size != 0) {
                         for (i in 0 until value!!.size) {
                             value!![i].isSelected = false
                         }
                         value!![it.tag as Int].isSelected = true
-                        viewOnclick.itemOnClick(it.tag as Int, value!![it.tag as Int].isSelected)
+                        viewOnclick.itemOnClick(it.tag as Int, value!![it.tag as Int].isSelected,
+                            value!![position].u)
                     }else{
                         Toast.makeText(context,AppBase.instance.getText(R.string.this_group_is_empty), Toast.LENGTH_SHORT).show()
-                    }
 
+                    }
                     notifyDataSetChanged()
                     //binding.const_cardetails.setBackgroundColor(ContextCompat.getColor(context,R.color.selected_color))
                 }
@@ -102,8 +105,13 @@ class GroupCarAdapter(
         notifyDataSetChanged()
     }
 
+    fun getList():
+            MutableList<GroupListDataModel.Item> {
+        return value!!
+    }
+
     interface GroupOnclick {
         fun onClick(nm: GroupListDataModel.Item)
-        fun itemOnClick(position: Int, selected: Boolean)
+        fun itemOnClick(position: Int, selected: Boolean,idsList: MutableList<String>)
     }
 }

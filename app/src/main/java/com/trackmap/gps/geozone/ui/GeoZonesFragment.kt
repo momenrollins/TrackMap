@@ -37,6 +37,7 @@ import com.trackmap.gps.geozone.viewmodel.GeoZoneViewModel
 import com.trackmap.gps.preference.MyPreference
 import com.trackmap.gps.preference.PrefKey
 import com.trackmap.gps.utils.Utils
+import com.trackmap.gps.vehicallist.model.GroupImeisModelGps3
 import com.trackmap.gps.vehicallist.model.GroupListDataModel
 import kotlinx.android.synthetic.main.layout_custom_action_bar.*
 import org.json.JSONObject
@@ -69,6 +70,7 @@ class GeoZonesFragment : BaseFragment() {
     var cFrom = ""
     private lateinit var dashID: ArrayList<String>
     var unitsMode = GroupListDataModel.Item()
+    var filterListGps3 = mutableListOf<GeoZoneModelItemGps3>()
 
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("UseRequireInsteadOfGet")
@@ -116,7 +118,8 @@ class GeoZonesFragment : BaseFragment() {
             viewmodel.geoZoneListGps3.observe(this) {
                 if (it.getStatus()) {
                     geoZoneListGps3 = it.data as ArrayList<GeoZoneModelItemGps3>?
-
+                    filterListGps3.clear()
+                    filterListGps3.addAll(geoZoneListGps3!!)
                     getZoneCars(geoZoneListGps3)
                     if (geoZoneListGps3!!.size > 0) {
                         binding.noDataLay.visibility = View.GONE
@@ -235,10 +238,11 @@ class GeoZonesFragment : BaseFragment() {
         }
     }
 
-//    @RequiresApi(Build.VERSION_CODES.N)
+    //    @RequiresApi(Build.VERSION_CODES.N)
     private fun getZoneCars(geoZoneListGps3: MutableList<GeoZoneModelItemGps3>?) {
-        val unitList = ArrayList<String>()
+        var unitList = ArrayList<String>()
         val latlanList = ArrayList<LatLng>()
+        val cars = ArrayList<ArrayList<String>>()
         var map: GoogleMap? = null
 
         geoZoneListGps3!!.forEach { geoZoneModelItemGps3 ->
@@ -252,20 +256,24 @@ class GeoZonesFragment : BaseFragment() {
                     )
                 );
             }
-            unitList.clear()
+            unitList = ArrayList()
             for (item in Utils.getCarListingDataGps3(context!!).items) {
-                var nside = PolyUtil.containsLocation(LatLng(item.lat.toDouble(), item.lng.toDouble()), latlanList, true);
+                var nside = PolyUtil.containsLocation(
+                    LatLng(item.lat.toDouble(), item.lng.toDouble()),
+                    latlanList,
+                    true
+                );
 
-                if (nside)
+                if (nside) {
                     unitList.add(item.imei)
+
+                }
             }
             geoZoneModelItemGps3.setZone_cars(unitList)
             Log.d(TAG, "getZoneCars: ${geoZoneModelItemGps3.zone_cars.size}")
 
         }
-        geoZoneListGps3.forEach { geoZoneModelItemGps3 -> Log.d(TAG, "getZoneCars:lol ${geoZoneModelItemGps3.zone_cars.size}")  }
         initializeAdapterGps3(geoZoneListGps3!!)
-
 
 
     }
@@ -321,7 +329,7 @@ class GeoZonesFragment : BaseFragment() {
                         "geoZoneId" to geozone_ids
                     )
                     findNavController()?.navigate(
-                             R.id.action_geoZoneFragment_to_addNotification,
+                        R.id.action_geoZoneFragment_to_addNotification,
                         bundle
                     )
                 } else if (typeFrom.equals("geoZoneExitNotification", true)) {
@@ -330,7 +338,7 @@ class GeoZonesFragment : BaseFragment() {
                         "geoZoneId" to geozone_ids
                     )
                     findNavController()?.navigate(
-                         R.id.action_geoZoneFragment_to_addNotification,
+                        R.id.action_geoZoneFragment_to_addNotification,
                         bundle
                     )
                 }
@@ -352,16 +360,16 @@ class GeoZonesFragment : BaseFragment() {
 
                 try {
                     if (serverData.contains("s3")) {
-                        var filterList = mutableListOf<GeoZoneModelItemGps3>()
+                        filterListGps3 = mutableListOf<GeoZoneModelItemGps3>()
                         for (name in geoZoneListGps3!!) {
-                            if (name.zone_name.toLowerCase()
-                                    .contains(editable.toString().toLowerCase())
+                            if (name.zone_name.lowercase()
+                                    .contains(editable.toString().lowercase())
                             ) {
-                                filterList.add(name)
+                                filterListGps3.add(name)
                             }
                         }
 
-                        adapterGps3.updateList(filterList)
+                        adapterGps3.updateList(filterListGps3)
                     } else {
                         var filterList = mutableListOf<GeoZoneListModel.ZLObj>()
                         for (name in zlObjectList!!) {
@@ -391,7 +399,7 @@ class GeoZonesFragment : BaseFragment() {
                 binding.btnShowOnMap.setTextColor(
                     ContextCompat.getColor(
                         context!!,
-                          R.color.color_white
+                        R.color.color_white
                     )
                 )
                 // findNavController().navigate(R.id.action_geoZoneFragment_to_geoZoneMapFragment)
@@ -418,7 +426,7 @@ class GeoZonesFragment : BaseFragment() {
                         "comingFrom" to "GeoZonesFragment"
                     )
                     findNavController().navigate(
-                           R.id.groupUnitListFragment,
+                        R.id.groupUnitListFragment,
                         bundle
                     )
                 } else
@@ -431,8 +439,7 @@ class GeoZonesFragment : BaseFragment() {
 
             @SuppressLint("NotifyDataSetChanged")
             override fun onDeleteClick(selName: String, selId: String, position: Int) {
-                openDeleteDialog(position, selId, selName, zlObjectList = zlObjectList)
-
+                openDeleteDialog(position, selId, selName, zlObjectList1 = adapter.getList())
             }
         }
 
@@ -455,7 +462,7 @@ class GeoZonesFragment : BaseFragment() {
                 binding.btnShowOnMap.setTextColor(
                     ContextCompat.getColor(
                         context!!,
-                         R.color.color_white
+                        R.color.color_white
                     )
                 )
                 // findNavController().navigate(R.id.action_geoZoneFragment_to_geoZoneMapFragment)
@@ -491,7 +498,7 @@ class GeoZonesFragment : BaseFragment() {
         zoneId: String = "",
         selName: String = "",
         geoZoneList: MutableList<GeoZoneModelItemGps3> = ArrayList(),
-        zlObjectList: MutableList<GeoZoneListModel.ZLObj> = ArrayList()
+        zlObjectList1: MutableList<GeoZoneListModel.ZLObj> = ArrayList()
     ) {
         val builder = AlertDialog.Builder(requireContext())
         //set title for alert dialog
@@ -503,7 +510,11 @@ class GeoZonesFragment : BaseFragment() {
         builder.setPositiveButton(getString(R.string.yes)) { dialogInterface, which ->
             if (serverData.contains("s3")) {
                 viewmodel.callApiForDeleteGeoZonesGps3(zoneId)
-                geoZoneList.removeAt(position)
+                if (filterListGps3.isNotEmpty()) {
+                    val itemGps3 = filterListGps3[position]
+                    filterListGps3.remove(itemGps3)
+                    geoZoneList.remove(itemGps3)
+                } else geoZoneList.removeAt(position) //here
                 adapterGps3.notifyDataSetChanged()
                 viewmodel.geoZoneDeletedGps3.observeOnce { b: Boolean? ->
                     if (b == true) {
@@ -523,7 +534,11 @@ class GeoZonesFragment : BaseFragment() {
                 }
             } else {
                 viewmodel.callApiForDeleteGeoZone(selName, zoneId)
-                zlObjectList?.removeAt(position)
+                var item=zlObjectList1[position]
+
+                zlObjectList1?.remove(item)
+                zlObjectList?.remove(item)
+
                 viewmodel.isGeoZoneDeleted.observeOnce { b: Boolean? ->
                     if (b == true) {
                         Toast.makeText(
@@ -570,7 +585,7 @@ class GeoZonesFragment : BaseFragment() {
             binding.btnShowOnMap.setTextColor(
                 ContextCompat.getColor(
                     requireContext(),
-                          R.color.color_white
+                    R.color.color_white
                 )
             )
 
