@@ -153,10 +153,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <TextView
+                <ImageView
                     android:id="@+id/txLblContact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="@dimen/_40sdp"
                     android:fontFamily="@font/sf_open_sans_bold"
@@ -167,6 +167,7 @@
                     android:paddingBottom="@dimen/_5sdp"
                     android:textSize="@dimen/_16sp"
                     android:textStyle="bold"
+                    android:src="@drawable/whats"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
 
@@ -175,12 +176,12 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:fontFamily="@font/sf_open_sans_semibold"
-                    android:text="0555089009"
+                    android:text="966555089009"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/_16sp"
                     android:textAlignment="viewStart"
-                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_12sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/txLblContact"
