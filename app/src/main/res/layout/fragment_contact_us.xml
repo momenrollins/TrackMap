@@ -27,10 +27,10 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputFullName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="@dimen/margin_20"
                     android:layout_marginEnd="@dimen/margin_12"
                     android:hint="@string/full_name_contact_us"
@@ -53,13 +53,13 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputMobileNo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12"
                     android:layout_marginTop="@dimen/margin_20"
                     android:layout_marginEnd="@dimen/margin_12"
                     android:hint="@string/mobile_number"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textInputFullName">
@@ -78,8 +78,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:id="@+id/textInputEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12"
@@ -103,8 +103,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:id="@+id/textInputSubject"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12"
@@ -128,8 +128,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:id="@+id/textInputMessage"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_12"
@@ -153,72 +153,53 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <ImageView
-                    android:id="@+id/txLblContact"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="@dimen/_40sdp"
-                    android:fontFamily="@font/sf_open_sans_bold"
-                    android:text="@string/contact_us"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorBlack"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:textSize="@dimen/_16sp"
-                    android:textStyle="bold"
-                    android:src="@drawable/whats"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
-
-                <TextView
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/contactNumber"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:fontFamily="@font/sf_open_sans_semibold"
-                    android:text="966555089009"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_16sp"
-                    android:textAlignment="viewStart"
-                    android:paddingTop="@dimen/_12sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txLblContact"
-                    app:layout_constraintBottom_toBottomOf="@+id/txLblContact"
-                    app:layout_constraintTop_toTopOf="@+id/txLblContact" />
-                <TextView
-                    android:id="@+id/txLblWebSite"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_10sdp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/sf_open_sans_bold"
-                    android:text="@string/website"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txLblContact" />
-
-                <TextView
-                    android:id="@+id/webSite"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:drawableStart="@drawable/whats"
                     android:fontFamily="@font/sf_open_sans_regular"
-                    android:text="@string/web_url"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/_16sp"
-                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:text="966555089009"
+                    android:textColor="#20AE00"
+                    android:textSize="20sp"
                     android:textStyle="bold"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/whatsapp"
+                    app:iconSize="20dp"
+                    app:iconTint="#20AE00"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txLblWebSite"
-                    app:layout_constraintBottom_toBottomOf="@+id/txLblWebSite"
-                    app:layout_constraintTop_toTopOf="@+id/txLblWebSite" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputMessage"
+                    app:strokeColor="#20AE00"
+                    app:strokeWidth="1dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/webSite"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableStart="@drawable/whats"
+                    android:fontFamily="@font/sf_open_sans_regular"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:text="@string/web_url"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/global"
+                    app:iconSize="20dp"
+                    app:iconTint="@color/colorAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/contactNumber"
+                    app:strokeColor="@color/colorAccent"
+                    app:strokeWidth="1dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
