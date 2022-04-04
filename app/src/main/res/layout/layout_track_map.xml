@@ -18,8 +18,8 @@
             android:layout_marginStart="9dp"
             android:layout_marginEnd="9dp"
             android:layout_marginBottom="10dp"
-            android:visibility="invisible"
-            app:cardBackgroundColor="@android:color/white"
+            android:visibility="gone"
+            app:cardBackgroundColor="#BC471A1A"
             app:cardCornerRadius="7dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,6 @@
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/main_card_bg"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -197,8 +196,9 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#BC2B1919"
-            android:layout_margin="@dimen/_1sdp"
+            app:cardBackgroundColor="#BC471A1A"
+            android:layout_marginVertical="@dimen/_1sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -277,7 +277,6 @@
             app:layout_constraintEnd_toEndOf="@+id/mapView"
             app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
             app:layout_constraintVertical_bias="1.0"
             app:rippleColor="@android:color/black"
             tools:ignore="VectorDrawableCompat"

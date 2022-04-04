@@ -238,7 +238,7 @@ class CarOnMapRendererGPS3(
         Glide.with(AppBase.instance).asBitmap()
             .placeholder(R.drawable.default_car)
             .error(R.drawable.default_car)
-            .load("http://www.avltracmap.com" + clusterItem.snippet).fitCenter()
+            .load("http://gps.tawasolmap.com" + clusterItem.snippet).fitCenter()
             .into(object : SimpleTarget<Bitmap?>(80, 80) {
                 override fun onResourceReady(
                     resource: Bitmap,

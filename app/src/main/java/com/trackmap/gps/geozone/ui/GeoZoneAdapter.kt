@@ -84,10 +84,10 @@ class GeoZoneAdapter(
                 binding.imgDelete.visibility = View.VISIBLE
                 binding.constCarName.tag = position
                 Log.d(TAG, "bind: ZONE ID ${model.id}")
-                var counter = model.getUnitIds().size
-
+//                var counter = model.getUnitIds().size
+/*
                 binding.numberOfCars.visibility = View.VISIBLE
-                binding.numberOfCars.text = "$counter cars"
+                binding.numberOfCars.text = "$counter cars"*/
                 binding.constCarName.setOnClickListener {
                     selectedZoneOnclick.onClick(geoList[position])
                     binding.constCarName.setBackgroundColor(

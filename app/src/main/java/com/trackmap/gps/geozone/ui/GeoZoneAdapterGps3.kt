@@ -82,9 +82,9 @@ class GeoZoneAdapterGps3(
                 binding.imgTopUpperArrow.visibility = View.VISIBLE
                 binding.imgDelete.visibility = View.VISIBLE
                 binding.constCarName.tag = position
-                binding.numberOfCars.visibility = View.VISIBLE
+            /*    binding.numberOfCars.visibility = View.VISIBLE
                 Log.d("TAG", "bind:sii ${model.zone_cars.size} ")
-                binding.numberOfCars.text = "${model.zone_cars.size} cars"
+                binding.numberOfCars.text = "${model.zone_cars.size} cars"*/
 
                 binding.constCarName.setOnClickListener {
                     selectedZoneOnclick.onClick(geoList[binding.constCarName.tag as Int])

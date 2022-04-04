@@ -31,7 +31,7 @@ class PrivacyPolicyFragment : BaseFragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_about_us, container, false)
         handleActionBarAString(getString(R.string.drawer_privacy_policy))
-        binding.pdf.fromAsset("build/privacy_policy.pdf").show();
+        binding.pdf.fromAsset("build/privacy.pdf").show();
 
 
         return binding.root

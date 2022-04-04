@@ -136,7 +136,7 @@ class SingleCarAdapter(
                     Log.d("TAG", "bind: trip_m ${itemList.trip_m}")
 
                     Glide.with(context)
-                        .load("http://www.avltracmap.com" + itemList?.uri)
+                        .load("http://gps.tawasolmap.com" + itemList?.uri)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.default_car)
                         .into(itemView.car_image)

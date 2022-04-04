@@ -206,7 +206,7 @@ class GeoZonesFragment : BaseFragment() {
 //                initializeAdapter(nameList, colorList, idList)
 
 
-                    initZoneUnitList(zlObjectList)
+//                    initZoneUnitList(zlObjectList)
                     initializeAdapter(zlObjectList)
                     binding.noDataLay.visibility = View.GONE
                     if (zlObjectList.size > 0) {
@@ -256,7 +256,7 @@ class GeoZonesFragment : BaseFragment() {
                     )
                 );
             }
-            unitList = ArrayList()
+           /* unitList = ArrayList()
             for (item in Utils.getCarListingDataGps3(context!!).items) {
                 var nside = PolyUtil.containsLocation(
                     LatLng(item.lat.toDouble(), item.lng.toDouble()),
@@ -269,8 +269,8 @@ class GeoZonesFragment : BaseFragment() {
 
                 }
             }
-            geoZoneModelItemGps3.setZone_cars(unitList)
-            Log.d(TAG, "getZoneCars: ${geoZoneModelItemGps3.zone_cars.size}")
+            geoZoneModelItemGps3.setZone_cars(unitList)*/
+//            Log.d(TAG, "getZoneCars: ${geoZoneModelItemGps3.zone_cars.size}")
 
         }
         initializeAdapterGps3(geoZoneListGps3!!)

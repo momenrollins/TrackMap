@@ -56,7 +56,7 @@ class AddUnitAdapter(
             try {
                 itemView.car_name.text = itemList?.nm
                 Glide.with(mContext!!)
-                    .load("http://www.avltracmap.com" + itemList?.uri)
+                    .load("http://gps.tawasolmap.com" + itemList?.uri)
                     .into(itemView.car_image)
 
                 itemView.chk_check.isChecked = itemList?.isSelected!!

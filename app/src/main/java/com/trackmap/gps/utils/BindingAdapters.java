@@ -11,7 +11,7 @@ public class BindingAdapters {
     public static void loadImage(ImageView view, String imageUrl) {
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Glide.with(view.getContext())
-                    .load("http://www.avltracmap.com" + imageUrl)
+                    .load("http://gps.tawasolmap.com" + imageUrl)
                     .placeholder(R.drawable.default_car)
                     .into(view);
         } else {

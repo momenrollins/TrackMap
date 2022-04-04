@@ -359,7 +359,7 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
     @SuppressLint("SetTextI18n")
     private fun setCarDetailData(car: Item) {
         Glide.with(this)
-            .load("http://www.avltracmap.com" + car.uri)
+            .load("http://gps.tawasolmap.com" + car.uri)
             .placeholder(R.drawable.default_car)
             .into(binding.carImage)
 
@@ -963,7 +963,7 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
             Glide.with(requireContext()).asBitmap()
                 .placeholder(R.drawable.default_car)
                 .error(R.drawable.default_car)
-                .load("http://www.avltracmap.com" + clusterItem.snippet).fitCenter()
+                .load("http://gps.tawasolmap.com" + clusterItem.snippet).fitCenter()
 
                 .into(object : CustomTarget<Bitmap?>(30, 40) {
                     override fun onResourceReady(

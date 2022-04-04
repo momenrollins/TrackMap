@@ -440,7 +440,7 @@ class TrackMapNewFragment : BaseFragment(), OnMapReadyCallback, Serializable,
             Glide.with(requireContext()).asBitmap()
                 .placeholder(R.drawable.default_car)
                 .error(R.drawable.default_car)
-                .load("http://www.avltracmap.com" + carDetails.uri).fitCenter()
+                .load("http://gps.tawasolmap.com" + carDetails.uri).fitCenter()
                 .into(object : CustomTarget<Bitmap?>(30, 40) {
                     override fun onResourceReady(
                         resource: Bitmap,
@@ -1047,7 +1047,7 @@ class TrackMapNewFragment : BaseFragment(), OnMapReadyCallback, Serializable,
         if (serverData.contains("s3")) {
             img.load(R.drawable.default_car)
         } else img.load(
-            "http://www.avltracmap.com" +
+            "http://gps.tawasolmap.com" +
                     MyPreference.getValueString(PrefKey.CAR_URI, "")
         )
         img.diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -1832,7 +1832,7 @@ class TrackMapNewFragment : BaseFragment(), OnMapReadyCallback, Serializable,
             .placeholder(R.drawable.default_car)
             .error(R.drawable.default_car)
             .load(
-                "http://www.avltracmap.com" + MyPreference.getValueString(
+                "http://gps.tawasolmap.com" + MyPreference.getValueString(
                     PrefKey.CAR_URI, ""
                 )
             ).fitCenter().into(object : CustomTarget<Bitmap?>(100, 100) {
