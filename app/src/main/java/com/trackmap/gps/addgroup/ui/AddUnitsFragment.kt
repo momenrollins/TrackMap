@@ -193,12 +193,10 @@ class AddUnitsFragment : BaseFragment() {
                         selectedCarList =
                             arguments!!.get("UnitList") as ArrayList<Item>
                     }
-
                     binding.btnAddUnit.text = getString(R.string.add_unit_to_this_group)
                 }
             }
         }
-
 
         if (serverData != "s3") {
             if (Utils.getCarListingData(requireContext()).items.size > 0)
@@ -678,10 +676,7 @@ class AddUnitsFragment : BaseFragment() {
 
 
         (activity as MainActivity).chk_check.tag = isAllChecked
-        if (isAllChecked == 0)
-            (activity as MainActivity).chk_check.isChecked = false
-        else
-            (activity as MainActivity).chk_check.isChecked = true
+        (activity as MainActivity).chk_check.isChecked = isAllChecked != 0
     }
 
     override fun onResume() {

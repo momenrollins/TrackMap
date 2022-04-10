@@ -63,7 +63,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_signIn"
                     tools:text="@string/sign_in_your_account" />
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/spinner_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,6 +73,7 @@
                     android:layout_marginEnd="@dimen/margin_20"
                     android:paddingStart="5dp"
                     android:paddingTop="10dp"
+                    app:cardElevation="@dimen/_5sdp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="10dp"
                     app:cardCornerRadius="10dp"
@@ -92,7 +93,7 @@
                         android:textAlignment="viewStart"
                         android:textColorHint="@color/colorBlack" />
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
                 <Button
                     android:id="@+id/btn_go"

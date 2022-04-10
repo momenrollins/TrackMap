@@ -74,7 +74,6 @@ class SingleVehicalFragment :
         viewmodel = ViewModelProvider(this)[VehiclesListViewModel::class.java]
         binding.lifecycleOwner = this
         addObserver()
-        Log.d(TAG, "onCreateView: ${context!!.javaClass.canonicalName}")
         Utils.hideProgressBar()
         return binding.root
     }
@@ -110,7 +109,7 @@ class SingleVehicalFragment :
                         )
                         Log.d(TAG, "addObserver: LIST Obs")
                         val vehicleList1 = Utils.getCarListingData(requireContext()).items
-                        for (i in 0 until vehicleList!!.size) {
+                        for (i in 0 until vehicleList.size) {
                             for (j in 0 until vehicleList1.size) {
                                 if (vehicleList1[j].id.toString()
                                         .equals(vehicleList!![i].id.toString(), true)
@@ -191,10 +190,10 @@ class SingleVehicalFragment :
                 }
 
                 override fun onItemClick(model: ItemGps3, selected: Boolean) {
-                    if (selected)
+                    /*if (selected)
                         carId.add(model.imei)
                     else
-                        carId.remove(model.imei)
+                        carId.remove(model.imei)*/
                     manageCheckBox()
                 }
 
@@ -291,7 +290,7 @@ class SingleVehicalFragment :
                     adapterGps3.notifyDataSetChanged()
                 } else {
                     val t = ArrayList<Item>()
-                    vehicleList?.forEach() { item ->
+                    vehicleList.forEach() { item ->
                         if (item.nm!!.lowercase().contains(charSequence.toString().lowercase()))
                             t.add(item)
                     }
@@ -338,15 +337,16 @@ class SingleVehicalFragment :
     fun manageCheckBox() {
         var isAllChecked = 1
         var isOneCheck = false
-        Log.d(TAG, "onCreateView: SELECTED carId ${carId.size}")
-        carId.clear()
+//        carId.clear()
         if (serverData.contains("s3")) {
             if (adapterGps3.getFilteredListGps3().isEmpty())
                 isAllChecked = 0
             else {
-                for (item in adapterGps3.getFilteredListGps3())
-                    if (item.isSelected)
-                        carId.add(item.imei)
+                for (item in vehicleListGps3)
+                    if (item.isSelected) {
+                        if (!carId.contains(item.imei)) carId.add(item.imei)
+                    } else carId.remove(item.imei)
+
                 for (int in 0 until adapterGps3.getFilteredListGps3().size) {
                     if (!carId.contains(adapterGps3.getFilteredListGps3()[int].imei.trim())) {
                         isAllChecked = 0
@@ -359,9 +359,10 @@ class SingleVehicalFragment :
             if (adapter.getFilteredList().isEmpty())
                 isAllChecked = 0
             else {
-                for (item in adapter.getFilteredList())
-                    if (item.isSelected)
-                        carId.add(item.id!!.toString())
+                for (item in vehicleList)
+                    if (item.isSelected) {
+                        if (!carId.contains(item.id!!.toString())) carId.add(item.id!!.toString())
+                    } else carId.remove(item.id!!.toString())
                 for (int in 0 until adapter.getFilteredList().size) {
                     if (!carId.contains(adapter.getFilteredList()[int].id.toString().trim())) {
                         isAllChecked = 0

@@ -14,10 +14,6 @@ import kotlinx.android.synthetic.main.adapter_add_unit_group.view.*
 import kotlinx.android.synthetic.main.adapter_group_vehical_layout.view.car_image
 import kotlinx.android.synthetic.main.adapter_group_vehical_layout.view.car_name
 import kotlinx.android.synthetic.main.layout_custom_action_bar.*
-import java.lang.Exception
-import kotlin.collections.ArrayList
-
-import java.util.HashSet
 
 class AddUnitAdapterGps3(
     private var mContext: Context?,
@@ -55,9 +51,9 @@ class AddUnitAdapterGps3(
             mContext: Context?
         ) {
             itemView.car_name.text = itemList?.name
-     /*       Glide.with(mContext!!)
-                .load(R.drawable.default_car)
-                .into(itemView.car_image)*/
+            /*       Glide.with(mContext!!)
+                       .load(R.drawable.default_car)
+                       .into(itemView.car_image)*/
 
             itemView.car_image.setImageResource(R.drawable.default_car)
 
@@ -75,21 +71,20 @@ class AddUnitAdapterGps3(
                     } else {
                         itemList.imei?.let { it1 -> selectedItem.add(itemList.imei.toLong()) }
                     }
-                    Log.d(TAG, "bind: SIZE ${selectedItem.size} ${value.size}")
 
-                    if (selectedItem.size == value.size) {
-                        Log.d(TAG, "bind: CHECKED 1")
-                        (mContext as MainActivity).chk_check.isChecked=true
-                        mContext.chk_check.tag = 1
-                    } else {
-                        Log.d(TAG, "bind: CHECKED 2")
-                        (mContext as MainActivity).chk_check.isChecked=false
-                        mContext.chk_check.tag = 0
-                    }
                 } catch (e: Exception) {
                     Log.e(TAG, "bind: CATCH ${e.message}")
                 }
                 value[position].isSelected = (!value[position].isSelected)
+                var selectedCounter = 0
+                value.map { if (it.isSelected) selectedCounter++ }
+                if (selectedCounter == value.size) {
+                    (mContext as MainActivity).chk_check.isChecked = true
+                    mContext.chk_check.tag = 1
+                } else {
+                    (mContext as MainActivity).chk_check.isChecked = false
+                    mContext.chk_check.tag = 0
+                }
 //                notifyDataSetChanged()
             }
         }
@@ -97,7 +92,7 @@ class AddUnitAdapterGps3(
 
     private val TAG = "AddUnitAdapterGps3"
     fun selectDeselectAll(check: Boolean) {
-        selectedItem.clear()
+//        selectedItem.clear()
         for (f in value!!) {
             try {
                 if (check) {
@@ -138,12 +133,10 @@ class AddUnitAdapterGps3(
 
     fun updateList(filterList: ArrayList<ItemGps3>) {
         value = filterList
-        selectedItem.clear()
+        /*selectedItem.clear()
         value.forEach(){
            itemGps3 -> if (itemGps3.isSelected) selectedItem.add(itemGps3.imei.toLong())
-        }
+        }*/
         notifyDataSetChanged()
     }
-
-
 }
