@@ -152,6 +152,10 @@
     <string name="get_notified_when_engine_starts">Get notified when engine starts</string>
     <string name="get_notified_when_engine_stops">Get notified when engine stops</string>
     <string name="stop_engine">Stop Engine</string>
+    <string name="moving_without_driver">Moving Without Driver</string>
+    <string name="get_notified_when_move_without_driver">Get notified when unit moves without driver</string>
+    <string name="max_weight">Max Weight</string>
+    <string name="kg">Kg</string>
     <string name="top_speed_limit">Top Speed Limit</string>
     <string name="hh">HH</string>
     <string name="min">Min</string>

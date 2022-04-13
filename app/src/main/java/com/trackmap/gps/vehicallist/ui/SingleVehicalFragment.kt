@@ -376,7 +376,7 @@ class SingleVehicalFragment :
 
 //        (activity as MainActivity).chk_check.tag = isAllChecked
         (activity as MainActivity).chk_check.isChecked = isAllChecked != 0
-        if (isOneCheck) {
+        if (carId.size>0) {
             binding.btnShowOnMap.isEnabled = true
             binding.btnShowOnMap.setTextColor(
                 ContextCompat.getColor(

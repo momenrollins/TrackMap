@@ -149,6 +149,10 @@
     <string name="get_notified_when_engine_starts">احصل على اشعار عند تشغيل المحرك</string>
     <string name="get_notified_when_engine_stops">احصل على اشعار عند توقف المحرك</string>
     <string name="stop_engine">إيقاف المحرك</string>
+    <string name="moving_without_driver">تحرك المركبة بدون سائق</string>
+    <string name="get_notified_when_move_without_driver">احصل على اشعار عند تحرك المركبة بدون سائق</string>
+    <string name="max_weight">اقصى وزن</string>
+    <string name="kg">كجم</string>
     <string name="top_speed_limit">الحد الأقصى للسرعة</string>
     <string name="hh">ساعات</string>
     <string name="min">دقائق</string>

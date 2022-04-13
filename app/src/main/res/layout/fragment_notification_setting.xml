@@ -18,30 +18,18 @@
             app:layout_constraintBottom_toTopOf="@+id/save_setting"
             -->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_20">
+                android:layout_margin="@dimen/margin_15"
+                android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/startGuideLine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_begin="12dp" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/endGuideLine"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.97" />
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_startEngine"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_19"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
@@ -118,22 +106,19 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_stopEngine"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
                     android:visibility="visible"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="@dimen/padding_3"
-                    app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
-                    app:layout_constraintStart_toEndOf="@+id/startGuideLine"
-                    app:layout_constraintTop_toBottomOf="@+id/const_startEngine">
+                    app:cardElevation="@dimen/padding_3">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -203,13 +188,95 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/const_top_speed_limit"
-                    android:layout_width="0dp"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/const_movingWithout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
+                    android:clipToPadding="true"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_8"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="@dimen/padding_3">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/no_driver"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_margin="@dimen/margin_13"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/no_driver"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txt_no_driver"
+                            app:layout_constraintHorizontal_bias="0.07"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="#e3000f" />
+
+                        <TextView
+                            android:id="@+id/txt_no_driver"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="@dimen/margin_11"
+                            android:fontFamily="@font/sf_open_sans_bold"
+                            android:text="@string/moving_without_driver"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/txt_no_driver2"
+                            app:layout_constraintEnd_toStartOf="@+id/img_no_driver"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/no_driver"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.615" />
+
+                        <TextView
+                            android:id="@+id/txt_no_driver2"
+                            android:layout_width="280dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/margin_10"
+                            android:fontFamily="@font/sf_open_sans_regular"
+                            android:text="@string/get_notified_when_move_without_driver"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/color_black_60_opacity"
+                            android:textSize="@dimen/_14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/txt_no_driver"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_no_driver" />
+
+                        <ImageView
+                            android:id="@+id/img_no_driver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/margin_16"
+                            android:contentDescription="@string/app_name"
+                            android:rotation="90"
+                            android:src="@drawable/ic_upper_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/const_top_speed_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
@@ -231,7 +298,6 @@
                             android:layout_margin="@dimen/margin_13"
                             android:contentDescription="@string/app_name"
                             android:src="@drawable/ic_speedometer"
-                            app:layout_constraintBottom_toTopOf="@+id/seekBar_speed0"
                             app:layout_constraintEnd_toStartOf="@+id/txt_top_speed_limit"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -267,7 +333,6 @@
                             android:textColor="@color/color_black_60_opacity"
                             android:textSize="@dimen/_14sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/seekBar_speed0"
                             app:layout_constraintStart_toStartOf="@+id/txt_top_speed_limit"
                             app:layout_constraintTop_toBottomOf="@+id/txt_top_speed_limit" />
 
@@ -326,17 +391,15 @@
                         </LinearLayout>
 
 
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_idling_time"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
@@ -473,18 +536,17 @@
                             tools:text="@string/min" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_connectio_loss"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="@dimen/padding_3"
                     app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
@@ -617,18 +679,17 @@
                             tools:text="@string/min" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_weight"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="@dimen/padding_3"
                     app:layout_constraintEnd_toStartOf="@+id/endGuideLine"
@@ -682,16 +743,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textColor="@color/color_black_60_opacity"
-                                android:text="Out of range" />
+                                android:text="Out of range"
+                                android:textColor="@color/color_black_60_opacity" />
 
                             <RadioButton
                                 android:id="@+id/in_range"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textColor="@color/color_black_60_opacity"
-                                android:text="In range" />
+                                android:text="In range"
+                                android:textColor="@color/color_black_60_opacity" />
                         </RadioGroup>
 
                         <TextView
@@ -721,79 +782,145 @@
                             android:src="@drawable/ic_upper_arrow"
                             app:layout_constraintBottom_toBottomOf="@+id/img_weight_time"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/txt_weight_loss"
                             app:layout_constraintTop_toTopOf="@+id/txt_weight" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txt_weight_HH1"
-                            android:layout_width="65dp"
-                            android:layout_height="35dp"
-                            android:layout_margin="@dimen/margin_4"
-                            android:background="@drawable/grey_border_background"
-                            android:fontFamily="@font/sf_open_sans_regular"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:hint="0"
-                            android:inputType="number"
-                            android:textColor="@color/color_black_60_opacity"
-                            android:textSize="@dimen/_14sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/weight_et_hh1"
-                            app:layout_constraintStart_toEndOf="@+id/weight_et_hh1"
-                            app:layout_constraintTop_toTopOf="@+id/weight_et_hh1" />
-
-                        <TextView
-                            android:id="@+id/weight_et_hh1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_marginTop="@dimen/margin_4"
-                            android:layout_marginBottom="@dimen/margin_16"
-                            android:gravity="center"
-                            android:padding="@dimen/_7sdp"
-                            android:text="@string/from"
-                            android:textColor="@color/color_black_60_opacity"
-                            android:textSize="@dimen/_14sp"
+                            android:orientation="vertical"
+                            android:layout_marginBottom="20dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/radioGroup"
-                            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                            app:layout_constraintEnd_toStartOf="@+id/img_weight_Arrow"
+                            app:layout_constraintStart_toEndOf="@+id/img_weight_time"
+                            app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                            <LinearLayout
+                                android:id="@+id/weight_gps3"
+                                android:layout_width="270dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/weight"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_weight="8"
+                                    android:background="@drawable/grey_border_background"
+                                    android:hint="@string/max_weight"
+                                    android:inputType="number"
+                                    android:paddingHorizontal="@dimen/_10sdp"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/txt_speed"
+                                    app:layout_constraintEnd_toEndOf="@+id/imgtopSpeedArrow"
+                                    app:layout_constraintStart_toStartOf="@+id/img_top_speed_limit" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/sf_open_sans_regular"
+                                    android:padding="@dimen/padding_8"
+                                    android:text="@string/kg"
+                                    android:textAlignment="viewEnd"
+                                    android:textColor="@color/color_black_60_opacity"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/txt_speed"
+                                    app:layout_constraintEnd_toEndOf="@+id/imgtopSpeedArrow"
+                                    app:layout_constraintStart_toStartOf="@+id/img_top_speed_limit" />
+                            </LinearLayout>
 
 
-                        <TextView
-                            android:id="@+id/weight_et_Min1"
-                            android:layout_width="50dp"
-                            android:layout_height="35dp"
-                            android:fontFamily="@font/sf_open_sans_regular"
-                            android:gravity="center"
-                            android:hint="@string/to"
-                            android:textColor="@color/color_black_60_opacity"
-                            android:textSize="@dimen/_14sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/txt_weight_HH1"
-                            app:layout_constraintStart_toEndOf="@+id/txt_weight_HH1"
-                            app:layout_constraintTop_toTopOf="@+id/txt_weight_HH1" />
+                            <LinearLayout
+                                android:id="@+id/weight_gps"
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txt_weight_Min"
-                            android:layout_width="65dp"
-                            android:layout_height="35dp"
-                            android:layout_margin="@dimen/margin_4"
-                            android:background="@drawable/grey_border_background"
-                            android:fontFamily="@font/sf_open_sans_regular"
-                            android:gravity="center"
-                            android:hint="00"
-                            android:inputType="number"
-                            android:padding="@dimen/padding_8"
-                            android:textColor="@color/color_black_60_opacity"
-                            android:textSize="@dimen/_14sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/weight_et_Min1"
-                            app:layout_constraintStart_toEndOf="@+id/weight_et_Min1"
-                            app:layout_constraintTop_toTopOf="@+id/weight_et_Min1" />
+                                android:layout_width="276dp"
+                                android:layout_height="48dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/img_weight_Arrow"
+                                app:layout_constraintStart_toEndOf="@+id/img_weight_time"
+                                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                                <TextView
+                                    android:id="@+id/weight_et_hh1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="35dp"
+
+                                    android:gravity="center"
+                                    android:padding="@dimen/_7sdp"
+                                    android:text="@string/from"
+                                    android:textColor="@color/color_black_60_opacity"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                                    app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_weight_HH1"
+                                    android:layout_width="65dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_4"
+                                    android:background="@drawable/grey_border_background"
+                                    android:fontFamily="@font/sf_open_sans_regular"
+                                    android:gravity="center"
+                                    android:hint="0"
+                                    android:inputType="number"
+                                    android:textColor="@color/color_black_60_opacity"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/weight_et_hh1"
+                                    app:layout_constraintStart_toEndOf="@+id/weight_et_hh1"
+                                    app:layout_constraintTop_toTopOf="@+id/weight_et_hh1" />
+
+
+                                <TextView
+                                    android:id="@+id/weight_et_Min1"
+                                    android:layout_width="50dp"
+                                    android:layout_height="35dp"
+                                    android:fontFamily="@font/sf_open_sans_regular"
+                                    android:gravity="center"
+                                    android:hint="@string/to"
+                                    android:textColor="@color/color_black_60_opacity"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/txt_weight_HH1"
+                                    app:layout_constraintStart_toEndOf="@+id/txt_weight_HH1"
+                                    app:layout_constraintTop_toTopOf="@+id/txt_weight_HH1" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/txt_weight_Min"
+                                    android:layout_width="65dp"
+                                    android:layout_height="35dp"
+                                    android:layout_margin="@dimen/margin_4"
+                                    android:background="@drawable/grey_border_background"
+                                    android:fontFamily="@font/sf_open_sans_regular"
+                                    android:gravity="center"
+                                    android:hint="00"
+                                    android:inputType="number"
+                                    android:padding="@dimen/padding_8"
+                                    android:textColor="@color/color_black_60_opacity"
+                                    android:textSize="@dimen/_14sp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/weight_et_Min1"
+                                    app:layout_constraintStart_toEndOf="@+id/weight_et_Min1"
+                                    app:layout_constraintTop_toTopOf="@+id/weight_et_Min1" />
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_geoZoneEnter"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:clipToPadding="true"
                     android:gravity="center"
                     android:padding="@dimen/padding_8"
@@ -875,14 +1002,13 @@
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/const_geoZoneExit"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_margin="@dimen/margin_5"
                     android:layout_marginBottom="@dimen/margin_32"
                     android:clipToPadding="true"
                     android:gravity="center"
@@ -976,9 +1102,9 @@
                             app:layout_constraintTop_toTopOf="@+id/txtGeoZoneExit" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout

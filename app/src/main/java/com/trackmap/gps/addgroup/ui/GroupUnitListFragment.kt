@@ -249,7 +249,6 @@ class GroupUnitListFragment : BaseFragment() {
     }
 
 
-
     private val TAG = "GroupUnitListFragment"
 
     @SuppressLint("NotifyDataSetChanged")
@@ -345,17 +344,23 @@ class GroupUnitListFragment : BaseFragment() {
                     "remove"
                 )
                 viewModel.updatedUnitList.observeOnce { b: Boolean? ->
-                    if (b == true) {
-                        Toast.makeText(
-                            context, getString(R.string.successfully_removed_unit_in_group),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.something_goes_wrong),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    try {
+                        if (b == true) {
+                            Toast.makeText(
+                                context, getString(R.string.successfully_removed_unit_in_group),
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        } else {
+
+                            Toast.makeText(
+                                context,
+                                getString(R.string.something_goes_wrong),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } catch (e: Exception) {
+                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
                     }
                 }
                 /*viewModel.updatedUnitList.observe(viewLifecycleOwner) {
@@ -403,18 +408,23 @@ class GroupUnitListFragment : BaseFragment() {
                 )
 //                viewModel.callApiForUpdateGroupItems(groupName.id,selectedCarIds)
                 viewModel.updatedUnitList.observeOnce { b: Boolean? ->
-                    if (b == true) {
-                        Toast.makeText(
-                            context, getString(R.string.successfully_removed_unit_in_group),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            getString(R.string.something_goes_wrong),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    try {
+                        if (b == true) {
+                            Toast.makeText(
+                                context, getString(R.string.successfully_removed_unit_in_group),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                context,
+                                getString(R.string.something_goes_wrong),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } catch (e: Exception) {
+                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
                     }
+
                 }
                 /*
 
@@ -580,7 +590,7 @@ class GroupUnitListFragment : BaseFragment() {
         super.onResume()
         if (carIdList != null && carIdList.size > 0)
             binding.btnShowOnMap.isEnabled = true
-        if (comingFrom.equals("Dash" )|| comingFrom.equals("GeoZonesFragment")) {
+        if (comingFrom.equals("Dash") || comingFrom.equals("GeoZonesFragment")) {
             handleActionBarAString("${groupName.nm} (${groupName.u.size})")
         } else
             if (serverData.contains("s3")) handleActionBarAStringUpdateUnit(groupNameGps3.name)
