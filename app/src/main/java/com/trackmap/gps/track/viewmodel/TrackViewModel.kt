@@ -244,7 +244,7 @@ class  TrackViewModel : BaseViewModel(), LifecycleObserver {
             "timeTo" to timeTo,
             "flags" to 0,
             "flagsMask" to 65280,
-            "loadCount" to 10000
+            "loadCount" to 100000
         )
         val sid = MyPreference.getValueString(Constants.E_ID, "").toString()
         val json = JSONObject(map as Map<*, *>).toString()
