@@ -137,7 +137,7 @@ class TracksFragment : BaseFragment() {
         dateDialogListener()
         setSpinner()
         binding.btnExecute.setOnClickListener {
-            if (handler != null) handler!!.removeCallbacks(runnable!!)
+//            if (handler != null) handler!!.removeCallbacks(runnable!!)
             trackPathModelProvider.dataList.clear()
             trackPathModelProvider.stopDataList.clear()
             trackPathModelProvider.dataListGps3.clear()
@@ -267,6 +267,7 @@ class TracksFragment : BaseFragment() {
                 },
                 year, month, day
             )
+            datePickerDialog.datePicker.minDate = 1325368800000
             datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
             datePickerDialog.show()
         }
@@ -306,6 +307,8 @@ class TracksFragment : BaseFragment() {
                 },
                 year, month, day
             )
+            Log.d(TAG, "dateDialogListener: ${System.currentTimeMillis()}")
+            datePickerDialog1.datePicker.minDate = 1325368800000
             datePickerDialog1.datePicker.maxDate = System.currentTimeMillis()
             datePickerDialog1.show()
 
