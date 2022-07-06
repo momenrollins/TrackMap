@@ -39,7 +39,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_username"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_round_perm_identity_24"
+                        app:drawableTint="#6C6C6C"    android:layout_height="wrap_content"
                         android:hint="@string/user_name"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>

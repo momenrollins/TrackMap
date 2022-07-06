@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.media.AudioAttributes
 import android.media.RingtoneManager
 import android.os.Build
@@ -47,22 +48,101 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Log.d("TAG", "onNewToken:2 onResume: ttkn $token")
     }
 
+    override fun onMessageReceived(message: RemoteMessage) {
+        super.onMessageReceived(message)
+        /*val mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        mNotificationManager.cancelAll()*/
+
+        val intent = Intent(this, MainActivity::class.java)
+        val bundle = Bundle()
+        bundle.putBoolean("isFromNotificaiton", true)
+        intent.putExtras(bundle)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val stackBuilder = TaskStackBuilder.create(this)
+        stackBuilder.addParentStack(MainActivity::class.java)
+        stackBuilder.addNextIntent(intent)
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            stackBuilder.getPendingIntent(
+                0,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
+        } else {
+            stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotificationChannel(notificationManager)
+        }
+        val count = message.data["badge"]!!.toInt()
+
+        Log.d(TAG, "onMessageReceived: badge ${message.data["badge"]}")
+
+        val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+            .setContentTitle(getString(R.string.app_name))
+            .setContentText(message.data["message"])
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setAutoCancel(true)
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(message.data["message"])
+            )
+            .setContentIntent(pendingIntent).setGroup(NOTIFICATION_GROUP)
+            .build()
+
+        notificationManager.notify(getNewNotificationId(), notification)
+
+
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+    private fun createNotificationChannel(notificationManager: NotificationManager) {
+        val channel1 = NotificationChannel(
+            NOTIFICATION_CHANNEL_ID,
+            getString(R.string.app_name),
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            enableLights(true)
+            lightColor = Color.YELLOW
+        }
+        notificationManager.createNotificationChannel(channel1)
+
+        /*
+        val channelName = "channelName"
+        val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_HIGH).apply {
+            enableLights(true)
+            lightColor = Color.YELLOW
+        }
+        notificationManager.createNotificationChannel(channel)
+         */
+    }
+
+
+/*
+    fun onMaessageReceived(remoteMessage: RemoteMessage) {
 
         //Verify if the message contains data
 
-        if (!serverData.contains("s3") && remoteMessage.data.isNotEmpty()) {
-             Log.d(TAG, "Message data : " + remoteMessage.data)
+        Log.d(
+            TAG,
+            "onMessageReceived: DATA ${remoteMessage.data} \n COUNT ${remoteMessage.notification?.notificationCount}"
+        )
+        if (remoteMessage.data.isNotEmpty()) {
+//             Log.d(TAG, "Message data : " + remoteMessage.data)
             remoteMessage.data.let {
                 sendNotificationSound(it)
             }
-        } else if (serverData.contains("s3") && remoteMessage.notification != null && remoteMessage.notification?.body!!.isNotEmpty())
-            remoteMessage.notification?.body!!.let {
-                val map: MutableMap<String, String> = HashMap()
-                map["message"] = it
-                sendNotificationSound(map)
-            }
+        } else if (serverData.contains("s3")) {
+
+            */
+/* remoteMessage.notification?.body!!.let {
+                 val map: MutableMap<String, String> = HashMap()
+                 map["message"] = it
+                 sendNotificationSound(map)
+             }*//*
+
+        }
         mDeleteReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
                 //updateNumberOfNotifications(notificationManager)
@@ -77,8 +157,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
         super.onMessageReceived(remoteMessage)
     }
+*/
 
 
+/*
     private fun sendNotificationSound(messageBody: MutableMap<String, String>) {
         try {
 
@@ -104,15 +186,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                if (MyPreference.getValueString(PrefKey.NOTIFICATION_SOUND, "").equals("1")) {
+                if (true) {
 
                     NOTIFICATION_CHANNEL_ID = "123"
                     channel1 = NotificationChannel(
                         NOTIFICATION_CHANNEL_ID,
                         getString(R.string.app_name),
-                        NotificationManager.IMPORTANCE_DEFAULT
+                        NotificationManager.IMPORTANCE_HIGH
                     )
-                    channel1.enableVibration(false)
+                    channel1.enableVibration(true)
                     channel1.enableLights(true)
                     channel1.lightColor = R.color.colorAccent
                     channel1.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
@@ -142,22 +224,28 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
 
 //        val s2 = date!![1].split("&").toTypedArray()
+            val count = messageBody["badge"]!!.toInt()
 
             val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             val builder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.notification)
                 .setContentTitle(getString(R.string.app_name))
-                .setContentText(messageBody["message"])
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .setDeleteIntent(mDeletePendingIntent)
                 .setSound(defaultSoundUri)
+                .setContentText("You've received $count new messages.")
                 .setStyle(
                     NotificationCompat.BigTextStyle()
                         .bigText(messageBody["message"])
                 )
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setGroup(NOTIFICATION_GROUP)
+                .setNumber(count)
+//            ShortcutBadger.applyCount(this,99)
+            */
+/*builder.setNumber(0)
+            builder.setNumber(messageBody["badge"]!!.toInt())*//*
 
             Log.d(TAG, "sendNotificationSound: msg ${messageBody["message"]}")
 
@@ -172,6 +260,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             Log.e(TAG, "sendNotificationSound: CATCH ${e.message}")
         }
     }
+*/
 
 
     private fun getNewNotificationId(): Int {
