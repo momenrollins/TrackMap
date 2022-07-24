@@ -28,7 +28,7 @@
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 
 
-        <com.trackmap.gps.utils.CustomViewPager
+        <com.houseofdevelopment.gps.utils.CustomViewPager
             android:id="@+id/viewPager"
             android:layout_width="0dp"
             android:layout_height="0dp"

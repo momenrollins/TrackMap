@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Tracking Maps</string>
+    <string name="app_name">دار التطوير</string>
     <string name="error_map_app">Please install a maps application</string>
     <string name="internet_connection_slow_or_disconnected" tools:keep="@string/internet_connection_slow_or_disconnected">"Internet connection slow or disconnected please check network connection."</string>
 
@@ -240,7 +240,7 @@
     <string name="notification">التبليغات</string>
     <string name="website">موقع إلكتروني :</string>
     <string name="contact_us">وتساب :</string>
-    <string name="web_url"><u>http://gpstracmap.com/</u></string>
+    <string name="web_url"><u>http://gps.hod.sa/</u></string>
     <!--<string name="notification_data_for_start_engine_off">(AVL)المركبة:%UNIT%,تم_إيقاف_التشغيل_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
     <string name="notification_data_for_start_engine_on">(AVL)المركبة:%UNIT%,تم_تشغيل_المحرك_في:%LOCATION%,في_الوقت:%POS_TIME%,الطول:%LOND%,العرض:%LATD%</string>
     <string name="api_call_for_speed_notification_test">(AVL)المركبة:%UNIT%,متحركة_بسرعة:%SPEED%,في_الوقت:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
@@ -256,7 +256,7 @@
     <string name="api_call_for_idle_time_notification_test">(AVL)المركبة:%UNIT%,تجاوزت_الوقت_المحدد_في:%LOCATION%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
     <string name="api_call_for_geozone_in_notification">(AVL)المركبة:%UNIT%,دخلت_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
     <string name="api_call_for_geozone_out_notification">(AVL)المركبة:%UNIT%,خرجت_من_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
-    <string name="server_1_gps">http://www.avltracmap.com</string>
+    <string name="server_1_gps">http://gps.hod.sa</string>
     <string name="server_2_gps2">http://gps2.tawasolmap.com</string>
     <string name="pls_chs_srvr">من فضلك اختر السيرفر!</string>
     <string name="group_units">تجميع المركبات</string>

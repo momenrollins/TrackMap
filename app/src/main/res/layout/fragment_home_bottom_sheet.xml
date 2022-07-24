@@ -20,12 +20,12 @@
 
         <variable
             name="selectedCar"
-            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+            type="com.houseofdevelopment.gps.homemap.ui.ClusterRender" />
 
         <variable
 
             name="selectedCarGPS3"
-            type="com.trackmap.gps.homemap.ui.ClusterRenderGPS3" />
+            type="com.houseofdevelopment.gps.homemap.ui.ClusterRenderGPS3" />
 
     </data>
     <!--

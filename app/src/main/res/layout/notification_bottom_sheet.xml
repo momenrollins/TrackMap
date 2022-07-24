@@ -22,7 +22,7 @@
 
         <variable
             name="selectedCar"
-            type="com.trackmap.gps.homemap.ui.ClusterRender" />
+            type="com.houseofdevelopment.gps.homemap.ui.ClusterRender" />
 
     </data>
 

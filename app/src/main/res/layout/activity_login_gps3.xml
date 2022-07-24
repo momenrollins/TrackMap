@@ -40,6 +40,7 @@
                         android:id="@+id/et_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:drawableTint="#6C6C6C"         android:drawableEnd="@drawable/ic_round_perm_identity_24"
                         android:hint="@string/user_name"
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -94,16 +95,26 @@
         </ScrollView>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:src="@drawable/ic_back_arrow" />
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:src="@drawable/ic_back_arrow"
+            />
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

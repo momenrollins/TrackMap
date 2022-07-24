@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Tracking Maps</string>
+    <string name="app_name">دار التطوير</string>
     <string name="default_notification_channel_id" translatable="false">TawasolMap_app_channel</string>
     <string name="google_maps_key">AIzaSyCVSid0VeNHYZOnCwkppsm8O9x7lhO4krE</string>
     <string name="error_map_app">Please install a maps application</string>
@@ -237,7 +237,7 @@
     <string name="notification">Notifications</string>
     <string name="website">Website : </string>
     <string name="contact_us">WhatsApp : </string>
-    <string name="web_url"><u>http://gpstracmap.com/</u></string>
+    <string name="web_url"><u>http://gps.hod.sa/</u></string>
     <!--<string name="notification_data_for_start_engine_off">Vehicle:%UNIT%,EngineOFFLocation:%LOCATION%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
     <string name="notification_data_for_start_engine_on">Vehicle:%UNIT%,EngineOnLocaton:%LOCATION%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
     <string name="api_call_for_speed_notification_test">Vehicle:%UNIT%,SPEED:%SPEED%,Time:%POS_TIME%,LAT:%LATD%,LON:%LOND%</string>
@@ -254,7 +254,7 @@
     <string name="api_call_for_geozone_in_notification">(AVL)المركبة:%UNIT%,دخلت_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
     <string name="api_call_for_geozone_out_notification">(AVL)المركبة:%UNIT%,خرجت_من_المنطقة:%ZONE%,Time:%POS_TIME%,LON:%LOND%,LAT:%LATD%</string>
     <string name="choose_server">Choose server</string>
-    <string name="server_1_gps">http://www.avltracmap.com</string>
+    <string name="server_1_gps">http://gps.hod.sa</string>
     <string name="server_2_gps2">http://gps2.tawasolmap.com</string>
     <string name="pls_chs_srvr">Please choose server!</string>
     <string name="group_units">Group Units</string>
