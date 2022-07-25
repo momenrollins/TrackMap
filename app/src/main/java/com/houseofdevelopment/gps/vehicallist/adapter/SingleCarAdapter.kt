@@ -249,6 +249,15 @@ class SingleCarAdapter(
                     ) itemView.img_topUpperArrow.rotation = 270f
                     else
                         itemView.img_topUpperArrow.rotation = 90f
+
+                    itemView.img_topUpperArrow.setOnClickListener {
+                        Toast.makeText(
+                            context,
+                            AppBase.instance.getString(R.string.device_is_not_connected),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
                     itemView.car_name.text = " ${itemList.nm} "
                     itemView.car_name.setTextColor(getColor(context, R.color.dash_red))
                     itemView.const_cardetails.setOnClickListener {
