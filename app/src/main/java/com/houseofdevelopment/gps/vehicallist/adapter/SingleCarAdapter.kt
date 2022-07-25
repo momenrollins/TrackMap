@@ -197,6 +197,7 @@ class SingleCarAdapter(
                     }
                     itemView.btn_commands.tag = position
                     itemView.btn_commands.setOnClickListener {
+                        Utils.showProgressBar(context)
                         clickHandler.onCommandClick(filteredData[it.tag as Int].id.toString())
                     }
                     itemView.img_topUpperArrow.tag = position
@@ -222,7 +223,7 @@ class SingleCarAdapter(
                     }
                 } else {
                     itemView.car_time_1.text = "--:-- AM"
-                    itemView.car_time_2.text = "--:-- AM"
+                    itemView.car_time_2.text = "-- h -- min"
                     itemView.car_speed.text = "-- km/h"
                     itemView.car_distance.visibility = View.GONE
 
@@ -305,7 +306,8 @@ class SingleCarAdapter(
 
                     } catch (error: Throwable) {
                         error.toString()
-                        status.value = ApiStatus.ERROR
+                        Log.d(TAG, "callApiForCarAddress: CATCH ${error.message}")
+                        status.value = ApiStatus.DONE
                     }
                 }
             }

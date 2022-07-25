@@ -194,6 +194,7 @@ class SingleCarAdapterGps3(
                 }
                 itemView.btn_commands.tag = position
                 itemView.btn_commands.setOnClickListener {
+                    Utils.showProgressBar(context)
                     clickHandler.onCommandClick(filteredData[it.tag as Int].imei)
                 }
                 itemView.img_topUpperArrow.tag = position
@@ -331,10 +332,10 @@ class SingleCarAdapterGps3(
         return object : Filter() {
             override fun performFiltering(charSequence: CharSequence): FilterResults {
                 val charS = charSequence.toString()
-                val filterList: java.util.ArrayList<ItemGps3> = if (charS.isEmpty()) {
+                val filterList = if (charS.isEmpty()) {
                     value
                 } else {
-                    val filteredList = ArrayList<ItemGps3>()
+                    val filteredList = java.util.ArrayList<ItemGps3>()
                     for (document in value)
                         if (document.name.lowercase().trim().contains(charS.lowercase().trim()))
                             filteredList.add(document)

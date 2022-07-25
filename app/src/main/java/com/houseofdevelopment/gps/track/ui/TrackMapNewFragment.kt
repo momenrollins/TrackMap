@@ -995,7 +995,7 @@ class TrackMapNewFragment : BaseFragment(), OnMapReadyCallback, Serializable,
             else bluePolylineOptions.color(
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.color_red
+                    R.color.dash_red
                 )
             )
             bluePolylineOptions.width(width)

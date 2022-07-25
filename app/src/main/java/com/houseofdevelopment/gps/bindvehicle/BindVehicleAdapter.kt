@@ -135,7 +135,7 @@ class BindVehicleAdapter(
 
                 if (((Calendar.getInstance().timeInMillis / 1000) - (itemList.trip_m?.toLong()
                         ?: 0)) / 60 >= 60) {
-                    itemView.car_name.setTextColor(getColor(context,R.color.color_red))
+                    itemView.car_name.setTextColor(getColor(context,R.color.dash_red))
 
                 } else {
                     itemView.car_name.setTextColor(getColor(context,R.color.colorBlack))

@@ -102,7 +102,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_margin="20dp"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/color_white"
         app:cardCornerRadius="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -114,6 +114,7 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/_16sdp"
             android:layout_marginVertical="@dimen/_8sdp"
+            app:tint="@color/colorPrimary"
             android:src="@drawable/ic_back_arrow"
             />
     </com.google.android.material.card.MaterialCardView>

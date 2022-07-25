@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorHeight="4dp"
             app:tabTextColor="@color/color_white_60_opacity"
-            app:tabIndicatorColor="@color/color_red"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
             app:tabSelectedTextColor="@color/color_white"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
 

@@ -1058,7 +1058,7 @@ class HomeFragment : BaseFragment(), OnMapReadyCallback, GoogleApiClient.Connect
                                 ?: 0)) / 60 >= 60
                         ) {
                             binding.bottomSheet.carName.setTextColor(
-                                getColor(requireContext(), R.color.color_red)
+                                getColor(requireContext(), R.color.dash_red)
                             )
                         } else {
                             binding.bottomSheet.carName.setTextColor(
@@ -1121,7 +1121,7 @@ class HomeFragment : BaseFragment(), OnMapReadyCallback, GoogleApiClient.Connect
                     )) / 1000) / 60 >= 60
                 ) {
                     binding.bottomSheet.carName.setTextColor(
-                        getColor(requireContext(), R.color.color_red)
+                        getColor(requireContext(), R.color.dash_red)
                     )
                 } else {
                     binding.bottomSheet.carName.setTextColor(
@@ -1547,7 +1547,7 @@ class HomeFragment : BaseFragment(), OnMapReadyCallback, GoogleApiClient.Connect
                             ?: 0)) / 60 >= 60
                     ) {
                         binding.bottomSheet.carName.setTextColor(
-                            getColor(requireContext(), R.color.color_red)
+                            getColor(requireContext(), R.color.dash_red)
                         )
                     } else {
                         binding.bottomSheet.carName.setTextColor(
@@ -1588,7 +1588,7 @@ class HomeFragment : BaseFragment(), OnMapReadyCallback, GoogleApiClient.Connect
                         )) / 1000) / 60 >= 60
                     ) {
                         binding.bottomSheet.carName.setTextColor(
-                            getColor(requireContext(), R.color.color_red)
+                            getColor(requireContext(), R.color.dash_red)
                         )
                     } else {
                         binding.bottomSheet.carName.setTextColor(

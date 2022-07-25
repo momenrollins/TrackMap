@@ -51,10 +51,10 @@ class GroupCarAdapter(
                 itemView.car_lastUpdate.text =
                     context.getString(R.string.total_units) + " " + itemList?.u?.size.toString()
                 Glide.with(context)
-                    .load("https://gps.tawasolmap.com" + itemList?.uri)
+                    .load("http://gps.hod.sa" + itemList?.uri)
                     .placeholder(R.drawable.default_car)
                     .into(itemView.car_image)
-                Log.d(TAG, "bind: URI Group ${"https://gps.tawasolmap.com" + itemList?.uri}")
+                Log.d(TAG, "bind: URI Group ${"http://gps.hod.sa" + itemList?.uri}")
                 if (itemList != null && itemList.isSelected)
                     itemView.const_cardetails.setBackgroundColor(
                         ContextCompat.getColor(context!!, R.color.selected_color)

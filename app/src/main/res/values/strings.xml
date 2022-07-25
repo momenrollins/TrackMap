@@ -216,6 +216,9 @@
     <string name="no_track_available_on_this_dates">NO TRACK AVAILABLE ON THIS DATES</string>
     <string name="some_problem_with_request_please_try_again">Oops!! There is some problem with request. Please try again</string>
     <string name="something_goes_wrong">Something goes wrong</string>
+    <string name="group_created_successfully">Group created successfully</string>
+    <string name="delete_unit">Delete Unit </string>
+    <string name="are_you_sure_want_to_delete_this_unit">Are you sure want to delete this unit </string>
     <string name="zone_added_successfully">Zone added successfully</string>
     <string name="zone_deleted_successfully">Zone deleted successfully</string>
     <string name="notification_added_successfully">Notification added successfully</string>

@@ -24,10 +24,15 @@ public class CreateGroupModelGps3 {
     public void setData(ItemCreateGroupModel data) {
         this.data = data;
     }
+
+    public String getId()
+    {
+        return data.group_id;
+    }
 }
 
-class ItemCreateGroupModel{
-    String group_id;
+class ItemCreateGroupModel {
+    public String group_id;
     int inserted_imeis;
 
     public String getGroup_id() {

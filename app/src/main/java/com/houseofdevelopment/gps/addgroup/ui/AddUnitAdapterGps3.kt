@@ -20,7 +20,7 @@ class AddUnitAdapterGps3(
 
     ) : RecyclerView.Adapter<AddUnitAdapterGps3.ViewHolder>() {
 
-    lateinit var value: ArrayList<ItemGps3>
+    var value = ArrayList<ItemGps3>()
     var selectedItem = ArrayList<Long>()
     var isSelectAll: Boolean = false
 
@@ -32,7 +32,7 @@ class AddUnitAdapterGps3(
     }
 
     override fun getItemCount(): Int {
-        return if (value == null) 0 else value.size
+        return value.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -40,7 +40,7 @@ class AddUnitAdapterGps3(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(value?.get(position), position, mContext)
+        holder.bind(value[position], position, mContext)
     }
 
     inner class ViewHolder(var binding: View) : RecyclerView.ViewHolder(binding.rootView) {
@@ -50,30 +50,30 @@ class AddUnitAdapterGps3(
             position: Int,
             mContext: Context?
         ) {
-            itemView.car_name.text = itemList?.name
+            itemView.car_name.text = itemList.name
             /*       Glide.with(mContext!!)
                        .load(R.drawable.default_car)
                        .into(itemView.car_image)*/
 
             itemView.car_image.setImageResource(R.drawable.default_car)
 
-            itemView.chk_check.isChecked = itemList?.isSelected!!
+            itemView.chk_check.isChecked = itemList.isSelected
 //            itemView.const_carName.tag = position
             itemView.add_unit_card.setOnClickListener {
                 try {
-                    Log.d(TAG, "bind: qw ${value[position].isSelected}")
+                    Log.d(tag, "bind: qw ${value[position].isSelected}")
                     itemView.chk_check.isChecked = !itemView.chk_check.isChecked
 
                     if (value[position].isSelected) {
-                        itemList.imei.let { it1 ->
+                        itemList.imei.let {
                             selectedItem.remove(itemList.imei.toLong())
                         }
                     } else {
-                        itemList.imei?.let { it1 -> selectedItem.add(itemList.imei.toLong()) }
+                        itemList.imei.let { selectedItem.add(itemList.imei.toLong()) }
                     }
 
                 } catch (e: Exception) {
-                    Log.e(TAG, "bind: CATCH ${e.message}")
+                    Log.e(tag, "bind: CATCH ${e.message}")
                 }
                 value[position].isSelected = (!value[position].isSelected)
                 var selectedCounter = 0
@@ -90,20 +90,22 @@ class AddUnitAdapterGps3(
         }
     }
 
-    private val TAG = "AddUnitAdapterGps3"
+    private val tag = "AddUnitAdapterGps3"
+
+    @SuppressLint("NotifyDataSetChanged")
     fun selectDeselectAll(check: Boolean) {
 //        selectedItem.clear()
-        for (f in value!!) {
+        for (f in value) {
             try {
                 if (check) {
                     f.isSelected = (true)
-                    f.imei?.let { selectedItem.add(it.toLong()) }
+                    f.imei.let { selectedItem.add(it.toLong()) }
                 } else {
                     f.isSelected = (false)
-                    f.imei?.let { selectedItem.remove(it.toLong()) }
+                    f.imei.let { selectedItem.remove(it.toLong()) }
                 }
             } catch (e: Exception) {
-                Log.d(TAG, "bind: ${e.message}")
+                Log.d(tag, "bind: ${e.message}")
             }
         }
         notifyDataSetChanged()
@@ -113,7 +115,7 @@ class AddUnitAdapterGps3(
         if (model != null) {
             value.add(model)
         }
-        notifyItemInserted(value?.size!! - 1)
+        notifyItemInserted(value.size - 1)
     }
 
     fun addAll(mList: ArrayList<ItemGps3>) {
@@ -131,6 +133,7 @@ class AddUnitAdapterGps3(
         return selectedItem
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateList(filterList: ArrayList<ItemGps3>) {
         value = filterList
         /*selectedItem.clear()

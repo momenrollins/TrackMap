@@ -162,20 +162,24 @@ class CommonMapFragment : BaseFragment(), OnMapReadyCallback,
         }
 
         geoZoneViewModel.isGeoZoneAdded.observe(requireActivity()) {
-            if (it) {
+            try {
                 Utils.hideProgressBar()
-                Toast.makeText(
-                    AppBase.instance.applicationContext,
-                    AppBase.instance.getString(R.string.zone_added_successfully),
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (it) {
+                    Toast.makeText(
+                        AppBase.instance.applicationContext,
+                        AppBase.instance.getString(R.string.zone_added_successfully),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                findNavController().navigateUp()
+            } catch (e: Exception) {
+                Log.e(TAG, "viewsVisibility: CATCH ${e.message}")
             }
-            findNavController().navigateUp()
         }
 
         binding.btnSaveSelection.setOnClickListener {
+            Utils.showProgressBar(requireContext())
             if (coming_from == "addGeoGps3") {
-                Utils.showProgressBar(requireContext())
 
                 var zoneVertices = ""
                 for (latLng in latLngArrayList) {
@@ -536,5 +540,4 @@ class CommonMapFragment : BaseFragment(), OnMapReadyCallback,
         mGoogleApiClient.disconnect()
     }
 }
-
 

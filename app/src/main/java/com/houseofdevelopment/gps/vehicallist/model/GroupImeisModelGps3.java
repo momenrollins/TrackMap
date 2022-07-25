@@ -9,6 +9,16 @@ public class GroupImeisModelGps3 implements Serializable {
     public String group_id;
     public List<String> data;
 
+    public GroupImeisModelGps3() {
+    }
+
+    public GroupImeisModelGps3(boolean status, String name, String group_id, List<String> data) {
+        this.status = status;
+        this.name = name;
+        this.group_id = group_id;
+        this.data = data;
+    }
+
     public String getGroup_id() {
         return group_id;
     }

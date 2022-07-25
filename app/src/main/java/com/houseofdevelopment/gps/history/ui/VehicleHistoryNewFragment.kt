@@ -271,7 +271,7 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
                 dateTimeStamp
             )) / 1000) / 60 >= 60
         ) {
-            binding.carName.setTextColor(getColor(requireContext(), R.color.color_red))
+            binding.carName.setTextColor(getColor(requireContext(), R.color.dash_red))
         } else {
             binding.carName.setTextColor(getColor(requireContext(), R.color.colorBlack))
         }
@@ -387,7 +387,7 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
         if (((Calendar.getInstance().timeInMillis / 1000) - (car.trip_m?.toLong()
                 ?: 0)) / 60 >= 60
         ) {
-            binding.carName.setTextColor(getColor(requireContext(), R.color.color_red))
+            binding.carName.setTextColor(getColor(requireContext(), R.color.dash_red))
         } else {
             binding.carName.setTextColor(getColor(requireContext(), R.color.colorBlack))
         }
@@ -932,7 +932,7 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
             if (((Calendar.getInstance().timeInMillis / 1000) -
                         (clusterItem.mCarModel.trip_m?.toLong() ?: 0)) / 60 >= 60
             ) {
-                textView.setTextColor(getColor(requireContext(), R.color.color_red))
+                textView.setTextColor(getColor(requireContext(), R.color.dash_red))
 
             } else {
                 textView.setTextColor(getColor(requireContext(), R.color.color_dark_blue))

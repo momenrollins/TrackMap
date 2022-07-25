@@ -38,7 +38,7 @@ import kotlinx.android.synthetic.main.layout_custom_action_bar.*
 class SingleVehicalFragment :
     BaseFragment() {
 
-    private var vehicleList: ArrayList<Item> = ArrayList()
+    private var vehicleList: ArrayList<Item>? = ArrayList()
     private var vehicleListGps3: ArrayList<ItemGps3> = ArrayList()
     lateinit var binding: FragmentSingleVehicleBinding
     lateinit var viewmodel: VehiclesListViewModel
@@ -48,6 +48,7 @@ class SingleVehicalFragment :
     lateinit var adapterGps3: SingleCarAdapterGps3
     private var carId = ArrayList<String>()
     private var serverData: String = ""
+    var inquiryTitle = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +84,7 @@ class SingleVehicalFragment :
         initializeRecyclerview()
         if (serverData.contains("s3")) {
             (requireActivity() as MainActivity).homeMapViewModel.carCarDetailsGPS3.observe(this) {
-                Log.d(TAG, "addObserver: LIST Obs1")
+                Log.d(mTAG, "addObserver: LIST Obs1")
                 val vehiclesGps3 = it
                 for (i in 0 until vehicleListGps3.size) {
                     for (j in 0 until vehiclesGps3!!.size) {
@@ -107,9 +108,9 @@ class SingleVehicalFragment :
                         (requireActivity() as MainActivity).homeMapViewModel.getCarImageFromData(
                             it, requireContext()
                         )
-                        Log.d(TAG, "addObserver: LIST Obs")
+                        Log.d(mTAG, "addObserver: LIST Obs")
                         val vehicleList1 = Utils.getCarListingData(requireContext()).items
-                        for (i in 0 until vehicleList.size) {
+                        for (i in 0 until vehicleList!!.size) {
                             for (j in 0 until vehicleList1.size) {
                                 if (vehicleList1[j].id.toString()
                                         .equals(vehicleList!![i].id.toString(), true)
@@ -123,7 +124,7 @@ class SingleVehicalFragment :
                         vehicleList?.addAll(vehicleList1)
                         adapter.notifyDataSetChanged()
                         adapter.filter.filter(binding.etSearch.text.toString()); } catch (e: Exception) {
-                        Log.e(TAG, "addObserver: CATCH ${e.message}")
+                        Log.e(mTAG, "addObserver: CATCH ${e.message}")
                     }
                 }
             }
@@ -147,14 +148,14 @@ class SingleVehicalFragment :
             val temp = adapter.getFilteredList()
 
             for (i in 0 until adapter.getFilteredList().size) {
-                adapter.getFilteredList()!![i].isSelected = isChecked
+                adapter.getFilteredList()[i].isSelected = isChecked
                 vehicleList?.map { item ->
                     if (item.id == temp[i].id) item.isSelected = isChecked
                 }
             }
             adapter.notifyDataSetChanged()
         }
-        Log.d(TAG, "onCreateView: SELECTED $isChecked")
+        Log.d(mTAG, "onCreateView: SELECTED $isChecked")
 
         manageCheckBox()
     }
@@ -182,7 +183,7 @@ class SingleVehicalFragment :
                     val bundle = bundleOf(
                         "carId" to carId
                     )
-                    Log.d("TAG", "onCommandClick: $carId")
+                    Log.d(mTAG, "onCommandClick: $carId")
                     findNavController().navigate(
                         R.id.action_vehicalsListFragment_to_commandFragment,
                         bundle
@@ -198,11 +199,11 @@ class SingleVehicalFragment :
                 }
 
                 override fun onMapIconClick(position: Int) {
-                    val lat = vehicleListGps3!![position].lat
-                    val lng = vehicleListGps3!![position].lng
+                    val lat = vehicleListGps3[position].lat
+                    val lng = vehicleListGps3[position].lng
 
                     val urlAddress =
-                        "http://maps.google.com/maps?q=" + lat + "," + lng + "(" + vehicleListGps3!![position].name + ")&iwloc=A&hl=es"
+                        "http://maps.google.com/maps?q=" + lat + "," + lng + "(" + vehicleListGps3[position].name + ")&iwloc=A&hl=es"
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress))
                     context!!.startActivity(intent)
                 }
@@ -264,7 +265,7 @@ class SingleVehicalFragment :
                 "comingFrom" to "ShowOnSingleVehicle",
                 "carId" to carId
             )
-            Log.d(TAG, "initializeRecyclerview: SHOW $carId")
+            Log.d(mTAG, "initializeRecyclerview: SHOW $carId")
             MyPreference.setValueString(PrefKey.SELECTED_CAR_LISTING, setListOfCar())
             findNavController().navigate(
                 R.id.homemapFragment,
@@ -281,20 +282,20 @@ class SingleVehicalFragment :
 
                 if (serverData.contains("s3")) {
                     val t = ArrayList<ItemGps3>()
-                    vehicleListGps3.forEach() { itemGps3 ->
+                    vehicleListGps3.forEach { itemGps3 ->
                         if (itemGps3.name.lowercase().contains(charSequence.toString().lowercase()))
                             t.add(itemGps3)
                     }
-                    Log.d(TAG, "addTextChangedListener: SIZE ${t.size}")
+                    Log.d(mTAG, "addTextChangedListener: SIZE ${t.size}")
                     adapterGps3.addAllFiltered(t as MutableList<ItemGps3>)
                     adapterGps3.notifyDataSetChanged()
                 } else {
                     val t = ArrayList<Item>()
-                    vehicleList.forEach() { item ->
+                    vehicleList?.forEach { item ->
                         if (item.nm!!.lowercase().contains(charSequence.toString().lowercase()))
                             t.add(item)
                     }
-                    Log.d(TAG, "addTextChangedListener: SIZE ${t.size}")
+                    Log.d(mTAG, "addTextChangedListener: SIZE ${t.size}")
                     adapter.addAllFiltered(t as MutableList<Item>)
                     adapter.notifyDataSetChanged()
                 }
@@ -308,7 +309,7 @@ class SingleVehicalFragment :
         binding.rvSingleCar.layoutManager =
             LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
         if (serverData.contains("s3")) {
-            adapterGps3 = SingleCarAdapterGps3(handlerGps3, vehicleListGps3!!, false)
+            adapterGps3 = SingleCarAdapterGps3(handlerGps3, vehicleListGps3, false)
 
             binding.rvSingleCar.isNestedScrollingEnabled = false
             binding.rvSingleCar.adapter = adapterGps3
@@ -318,7 +319,7 @@ class SingleVehicalFragment :
         }
     }
 
-    private val TAG = "SingleVehicalFragment"
+    private val mTAG = "SingleVehicalFragment"
     private fun setListOfCar(): String {
         val data = StringBuilder()
 
@@ -336,8 +337,6 @@ class SingleVehicalFragment :
 
     fun manageCheckBox() {
         var isAllChecked = 1
-        var isOneCheck = false
-//        carId.clear()
         if (serverData.contains("s3")) {
             if (adapterGps3.getFilteredListGps3().isEmpty())
                 isAllChecked = 0
@@ -346,12 +345,9 @@ class SingleVehicalFragment :
                     if (item.isSelected) {
                         if (!carId.contains(item.imei)) carId.add(item.imei)
                     } else carId.remove(item.imei)
-
                 for (int in 0 until adapterGps3.getFilteredListGps3().size) {
                     if (!carId.contains(adapterGps3.getFilteredListGps3()[int].imei.trim())) {
                         isAllChecked = 0
-                    } else {
-                        isOneCheck = true
                     }
                 }
             }
@@ -359,24 +355,21 @@ class SingleVehicalFragment :
             if (adapter.getFilteredList().isEmpty())
                 isAllChecked = 0
             else {
-                for (item in vehicleList)
+                for (item in vehicleList!!)
                     if (item.isSelected) {
                         if (!carId.contains(item.id!!.toString())) carId.add(item.id!!.toString())
                     } else carId.remove(item.id!!.toString())
                 for (int in 0 until adapter.getFilteredList().size) {
                     if (!carId.contains(adapter.getFilteredList()[int].id.toString().trim())) {
                         isAllChecked = 0
-                    } else {
-                        isOneCheck = true
                     }
                 }
             }
-            Log.d(TAG, "onCreateView: SELECTED $isAllChecked")
+            Log.d(mTAG, "onCreateView: SELECTED $isAllChecked")
         }
 
-//        (activity as MainActivity).chk_check.tag = isAllChecked
         (activity as MainActivity).chk_check.isChecked = isAllChecked != 0
-        if (carId.size>0) {
+        if (carId.size > 0) {
             binding.btnShowOnMap.isEnabled = true
             binding.btnShowOnMap.setTextColor(
                 ContextCompat.getColor(
@@ -391,7 +384,7 @@ class SingleVehicalFragment :
 
     override fun onResume() {
         super.onResume()
-        Log.d("TAG", "onResume:aa $isFromGroup")
+        Log.d(mTAG, "onResume:aa $isFromGroup")
         if (isFromGroup) {
             (activity as MainActivity).chk_check.isChecked = false
             checkAllItems(false)

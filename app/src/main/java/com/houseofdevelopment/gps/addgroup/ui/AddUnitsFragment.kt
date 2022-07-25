@@ -13,10 +13,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.os.postDelayed
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.houseofdevelopment.gps.DataValues.isFromGroup
@@ -34,8 +36,10 @@ import com.houseofdevelopment.gps.preference.MyPreference
 import com.houseofdevelopment.gps.preference.PrefKey
 import com.houseofdevelopment.gps.utils.DebugLog
 import com.houseofdevelopment.gps.utils.Utils
+import com.houseofdevelopment.gps.vehicallist.model.GroupListDataModel
 import kotlinx.android.synthetic.main.layout_custom_action_bar.*
 import org.json.JSONArray
+import org.json.JSONObject
 import kotlin.collections.ArrayList
 
 
@@ -54,7 +58,9 @@ class AddUnitsFragment : BaseFragment() {
     lateinit var adapterGps3: AddUnitAdapterGps3
     private var carDetailList: MutableList<Item>? = null
     private var carDetailListGps3 = ArrayList<ItemGps3>()
+    var groupData: GroupListDataModel.Item = GroupListDataModel.Item()
 
+    var list = ArrayList<String>()
     var filterList = mutableListOf<Item>()
     var filterListGps3 = ArrayList<ItemGps3>()
 
@@ -62,9 +68,12 @@ class AddUnitsFragment : BaseFragment() {
     private var allCarIdList = ArrayList<Long>()
     private var carIdListGps3 = ArrayList<String>()
     private var selectedCarListGps3 = java.util.ArrayList<ItemGps3>()
+    private var selectedCarListImeisGps3 = ArrayList<String>()
     private var selectedCarList = java.util.ArrayList<Item>()
 
     private var groupID = ""
+    private var userId = ""
+
     private var groupName = ""
     private var createdGId = ""
     private var geoZoneName = ""
@@ -72,8 +81,9 @@ class AddUnitsFragment : BaseFragment() {
     private var isNotiCreated: Boolean = false
     private var isNotification: Boolean = false
     private var isStopNotification: Boolean = false
-    private var isidlingNotification: Boolean = false
-    private var isconnectionNotification: Boolean = false
+    private var isMovingWithoutDriver: Boolean = false
+    private var isIdlingNotification: Boolean = false
+    private var isConnectionNotification: Boolean = false
     private var isWeightNotification: Boolean = false
     private var isGeoZoneInNotification: Boolean = false
     private var isGeoZoneOutNotification: Boolean = false
@@ -81,12 +91,14 @@ class AddUnitsFragment : BaseFragment() {
     private var fromWeight: Int = 0
     private var toWeight: Int = 0
     private var typeWeight: Int = 0
+    private var totalWeight: Int = 0
     private var speedValue: Int = 0
     private var convertedRGB: Int? = 0
     private var isGeoZoneAdd: Boolean = false
     private var unitsItemList = mutableListOf<String>()
-    private var geozone_ids = java.util.ArrayList<String>()
+    private var geozone_ids = ArrayList<String>()
     private var uniteImeis: String = ""
+    private val TAG = "AddUnitsFragment"
 
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreateView(
@@ -97,9 +109,9 @@ class AddUnitsFragment : BaseFragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_add_units, container, false
         )
-        viewmodel = ViewModelProvider(this).get(AddUnitsViewModel::class.java)
-        viewModel = ViewModelProvider(this).get(NotificationViewModel::class.java)
-        geoZoneViewModel = ViewModelProvider(this).get(GeoZoneViewModel::class.java)
+        viewmodel = ViewModelProvider(this)[AddUnitsViewModel::class.java]
+        viewModel = ViewModelProvider(this)[NotificationViewModel::class.java]
+        geoZoneViewModel = ViewModelProvider(this)[GeoZoneViewModel::class.java]
 
         binding.lifecycleOwner = this
         (activity as MainActivity).chk_check.tag = 0
@@ -133,27 +145,15 @@ class AddUnitsFragment : BaseFragment() {
                 }
                 comingFrom.equals("IdleTimeNotification", true) -> {
                     isNotification = true
-                    isidlingNotification=true
+                    isIdlingNotification = true
                     notificationName = arguments!!.getString("notificationName").toString()
                     totalMin = arguments!!.getInt("totalMin")
                     binding.btnAddUnit.text = getString(R.string.create_notification)
                 }
                 comingFrom.equals("ConnectionTimeNotification", true) -> {
                     isNotification = true
-                    isconnectionNotification=true
+                    isConnectionNotification = true
                     notificationName = arguments!!.getString("notificationName").toString()
-                    totalMin = arguments!!.getInt("totalMin")
-
-                    binding.btnAddUnit.text = getString(R.string.create_notification)
-                }
-                comingFrom.equals("WeightNotification", true) -> {
-                    isNotification = true
-                    isWeightNotification=true
-                    notificationName = arguments!!.getString("notificationName").toString()
-                    fromWeight = arguments!!.getInt("from")
-                    toWeight = arguments!!.getInt("to")
-                    Log.d(TAG, "onCreateView:from $fromWeight ")
-                    typeWeight = arguments!!.getInt("type")
                     binding.btnAddUnit.text = getString(R.string.create_notification)
                 }
                 comingFrom.equals("CreateGeoZone", true) -> {
@@ -186,6 +186,7 @@ class AddUnitsFragment : BaseFragment() {
                     isGeoZoneAdd = false
                     groupName = arguments!!.getString("groupName").toString()
                     groupID = arguments!!.getString("groupId").toString()
+                    Log.d(TAG, "onCreateView: name $groupName $groupID")
                     if (serverData.contains("s3")) {
                         selectedCarListGps3 =
                             arguments!!.get("UnitList") as ArrayList<ItemGps3>
@@ -217,7 +218,8 @@ class AddUnitsFragment : BaseFragment() {
         viewmodel.groupIdData.observe(this) {
             createdGId = it
             val jsonArray = JSONArray(carIdList)
-            viewmodel.callApiForAddUnitsToGroup(jsonArray, createdGId.toLong(),false)
+            groupID = createdGId
+            viewmodel.callApiForAddUnitsToGroup(jsonArray, createdGId.toLong(), false)
         }
         viewmodel.unitList.observe(this) {
             it.let {
@@ -226,12 +228,32 @@ class AddUnitsFragment : BaseFragment() {
                 unitsItemList = it as MutableList<String>
                 if (unitsItemList.size > 0) {
                     Utils.hideProgressBar()
+                    groupData.nm = groupName
+                    groupData.id = groupID.toInt()
+                    if (allCarIdList.isNotEmpty())
+                        allCarIdList.forEach { s ->
+                            list!!.add(s.toString())
+                        }
+                    else carIdList.forEach { s ->
+                        list!!.add(s.toString())
+                    }
+                    groupData.u = list
+                    val bundle = bundleOf(
+                        "groupName" to groupData
+                    )
+
                     if (comingFrom.equals("CreateGroup", true)) {
-                        findNavController().popBackStack(R.id.createGroupFragment, true)
-
+                        findNavController().navigate(
+                            R.id.groupUnitListFragment,
+                            bundle, NavOptions.Builder()
+                                .setPopUpTo(R.id.createGroupFragment, true).build()
+                        )
                     } else {
-                        findNavController().popBackStack(R.id.groupUnitListFragment, true)
-
+                        findNavController().navigate(
+                            R.id.groupUnitListFragment,
+                            bundle, NavOptions.Builder()
+                                .setPopUpTo(R.id.groupUnitListFragment, true).build()
+                        )
                     }
                     Toast.makeText(
                         context!!,
@@ -267,6 +289,63 @@ class AddUnitsFragment : BaseFragment() {
                 }
             }
         }
+        viewmodel.unitItemsGps3.observe(this) {
+            Utils.hideProgressBar()
+            it.let {
+                binding.btnAddUnit.isEnabled = true
+                if (it.data.size > 0) {
+
+                    val bundle = bundleOf(
+                        "groupNameGps3" to it
+                    )
+                    MyPreference.setValueBoolean("unit", false)
+                    findNavController().navigate(
+                        R.id.groupUnitListFragment,
+                        bundle, NavOptions.Builder()
+                            .setPopUpTo(R.id.createGroupFragment, true).build()
+                    )
+                    Toast.makeText(
+                        context!!,
+                        getString(R.string.group_created_successfully),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        context!!,
+                        getString(R.string.something_goes_wrong),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+        viewmodel.updateGroupItemsGps3.observe(this) {
+            it.let {
+                binding.btnAddUnit.isEnabled = true
+                if (it.data != null && it.data.size > 0) {
+
+                    val bundle = bundleOf(
+                        "groupNameGps3" to it
+                    )
+                    MyPreference.setValueBoolean("unit", false)
+                    findNavController().navigate(
+                        R.id.groupUnitListFragment,
+                        bundle, NavOptions.Builder()
+                            .setPopUpTo(R.id.groupUnitListFragment, true).build()
+                    )
+                    Toast.makeText(
+                        context!!,
+                        getString(R.string.successfully_added_unit_in_group),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        context!!,
+                        getString(R.string.something_goes_wrong),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
         viewModel.isNotificationONCreated.observe(this) {
             isNotiCreated = it
             binding.btnAddUnit.isEnabled = true
@@ -284,8 +363,6 @@ class AddUnitsFragment : BaseFragment() {
         }
     }
 
-    private val TAG = "AddUnitsFragment"
-
     @SuppressLint("UseRequireInsteadOfGet", "NotifyDataSetChanged", "SetTextI18n")
     private fun initRecyclerView() {
         binding.rvAddedCar.layoutManager =
@@ -295,6 +372,7 @@ class AddUnitsFragment : BaseFragment() {
             carDetailListGps3 = Utils.getCarListingDataGps3(context!!).items
 
             for (x in selectedCarListGps3.indices) {
+                selectedCarListImeisGps3.add(selectedCarListGps3[x].imei)
                 for (item in carDetailListGps3.indices) {
                     if (selectedCarListGps3[x].imei == carDetailListGps3[item].imei) {
                         carDetailListGps3.remove(carDetailListGps3[item])
@@ -331,6 +409,7 @@ class AddUnitsFragment : BaseFragment() {
         }
 
         binding.btnAddUnit.setOnClickListener {
+            Utils.showProgressBar(requireContext())
             binding.btnAddUnit.isEnabled = false
             if (comingFrom.equals("notification", true)) {
                 Toast.makeText(context, notificationName, Toast.LENGTH_SHORT).show()
@@ -339,12 +418,10 @@ class AddUnitsFragment : BaseFragment() {
 //                Navigation.findNavController(getView()).popBackStack();
                 findNavController().popBackStack(R.id.geoZoneFragment, true)
             } else if (comingFrom.equals("GroupUnitList")) {
-                if (serverData.contains("s3")) {
-                    carIdList = adapterGps3.getArrayList()
-
+                carIdList = if (serverData.contains("s3")) {
+                    adapterGps3.getArrayList()
                 } else {
-                    carIdList = adapter.getArrayList()
-
+                    adapter.getArrayList()
                 }
                 if (carIdList.isEmpty()) {
                     binding.btnAddUnit.isEnabled = true
@@ -353,21 +430,22 @@ class AddUnitsFragment : BaseFragment() {
                         getString(R.string.unit_list_is_empty),
                         Toast.LENGTH_SHORT
                     ).show()
-
                 } else {
                     if (isGeoZoneAdd) {
                         geoZoneViewModel.callApiForAddGeoZoneData(geoZoneName, convertedRGB)
                     } else {
-
                         if (serverData.contains("s3")) {
                             for (item in carIdList) {
                                 carIdListGps3.add(item.toString())
                             }
                             viewmodel.callApiForUpdateGroupImeisGps3(
-                                groupID.toInt(), carIdListGps3, "add"
+                                groupID.toInt(),
+                                carIdListGps3,
+                                "add",
+                                selectedCarListImeisGps3,
+                                groupName
                             )
                         } else {
-
                             selectedCarList.forEach { item ->
                                 allCarIdList.add(item.id!!.toLong())
                             }
@@ -375,10 +453,12 @@ class AddUnitsFragment : BaseFragment() {
                                 allCarIdList.add(l)
                             }
                             val jsonArray = JSONArray(allCarIdList)
-                            viewmodel.callApiForAddUnitsToGroup(jsonArray, groupID.toLong(),false);
+                            Log.d(
+                                TAG,
+                                "initRecyclerView:callApiForAddUnitsToGroup ${jsonArray} ${groupID} "
+                            )
+                            viewmodel.callApiForAddUnitsToGroup(jsonArray, groupID.toLong(), false)
                         }
-
-
                     }
                 }
             } else {
@@ -502,27 +582,16 @@ class AddUnitsFragment : BaseFragment() {
                                     jsonArray, notificationName, speedValue, requireContext()
                                 )
                             } else {
-
-                                Log.d(TAG, "initRecyclerView:isconnectionNotification ${isconnectionNotification} ")
                                 when {
-
                                     isStopNotification -> {
                                         viewModel.callApiForStartEngineOFFNotification(
                                             jsonArray, notificationName, requireContext()
                                         )
                                     }
-                                    isidlingNotification ->{
+                                    isIdlingNotification -> {
                                         viewModel.callApiForIdleTimeNotification(
                                             jsonArray, notificationName, totalMin, requireContext()
                                         )
-                                    }
-                                    isconnectionNotification->{
-                                        viewModel.callApiForConnectionLossNotificationEmail(jsonArray, notificationName, totalMin *60, requireContext())
-
-                                    }
-                                    isWeightNotification->{
-                                        viewModel.callApiForSensorWeightNotification(jsonArray, notificationName,fromWeight.toString(),toWeight.toString(),typeWeight, requireContext())
-
                                     }
                                     isGeoZoneInNotification -> {
                                         val sValue: String = TextUtils.join(", ", geozone_ids)
@@ -573,7 +642,6 @@ class AddUnitsFragment : BaseFragment() {
                                 for (item in carIdList) {
                                     carIdListGps3.add(item.toString())
                                 }
-                                Utils.showProgressBar(context!!)
                                 viewmodel.callApiForCreateGroupGps3(groupName, carIdListGps3)
                             }
                         }

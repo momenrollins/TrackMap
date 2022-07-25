@@ -113,9 +113,7 @@
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spinner_card_view"
-                    app:layout_constraintVertical_bias="0.416"
-                    tools:targetApi="lollipop"
-                    tools:text="Go" />
+                    app:layout_constraintVertical_bias="0.416" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

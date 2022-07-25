@@ -2,6 +2,8 @@ package com.houseofdevelopment.gps.addgroup.ui
 
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -28,6 +30,7 @@ import com.houseofdevelopment.gps.R
 import com.houseofdevelopment.gps.addgroup.viewmodel.AddUnitsViewModel
 import com.houseofdevelopment.gps.base.BaseFragment
 import com.houseofdevelopment.gps.databinding.FragmentGroupUnitListBinding
+import com.houseofdevelopment.gps.databinding.LayoutDeleteCarBinding
 import com.houseofdevelopment.gps.homemap.model.Item
 import com.houseofdevelopment.gps.preference.MyPreference
 import com.houseofdevelopment.gps.preference.PrefKey
@@ -40,6 +43,7 @@ import com.houseofdevelopment.gps.vehicallist.model.ItemGps3
 import com.houseofdevelopment.gps.vehicallist.viewmodel.VehiclesListViewModel
 import kotlinx.android.synthetic.main.layout_custom_action_bar.*
 import org.json.JSONArray
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -68,7 +72,7 @@ class GroupUnitListFragment : BaseFragment() {
     var vehicalList = ArrayList<Item>()
     var vehicalListGps3 = ArrayList<ItemGps3>()
     var comingFrom = ""
-    var dashTitle = ""
+    var inquiryTitle = ""
 
 
     override fun onCreateView(
@@ -85,9 +89,6 @@ class GroupUnitListFragment : BaseFragment() {
         if (arguments != null) {
 //            Utils.hideProgressBar()
             comingFrom = arguments?.getSerializable("comingFrom").toString()
-            if (comingFrom == "Dash") {
-                dashTitle = arguments?.getSerializable("dashTitle").toString()
-            }
             if (serverData.contains("s3")) {
                 groupNameGps3 = arguments?.getSerializable("groupNameGps3") as GroupImeisModelGps3
             } else {
@@ -102,19 +103,6 @@ class GroupUnitListFragment : BaseFragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun getGroupUnitList() {
         if (serverData.contains("s3")) {
-            /* if (Utils.getCarListingDataGps3(requireContext()).items.size > 0 && selectedCarListGps3.size == 0)
-                 carDetailListGps3 = Utils.getCarListingDataGps3(requireContext()).items
-
-
-             selectedCarListGps3.clear()
-             for (imei in groupNameGps3.data) {
-                 for (carId in carDetailListGps3!!) {
-                     if (imei == carId.imei) {
-                         selectedCarListGps3.add(carId)
-                         break
-                     }
-                 }
-             }*/
             (requireActivity() as MainActivity).homeMapViewModel.getCarList()
             Log.d(TAG, "getGroupUnitList: selectedCarListGps3 SIZE0 ${groupNameGps3.data?.size}")
             if (groupNameGps3.data != null && groupNameGps3.data.size > 0) {
@@ -127,24 +115,21 @@ class GroupUnitListFragment : BaseFragment() {
 
                     val vehicleList1 = Utils.getCarListingDataGps3(requireContext()).items
                     vehicalListGps3.clear()
-                    if (comingFrom == "Dash") {
-//                        detectedDashStateGps3(vehicleList1)
-                    } else
-                        for (imei in groupNameGps3.data) {
-                            for (carId in vehicleList1!!) {
-                                if (imei == carId.imei) {
-                                    vehicalListGps3.add(carId)
-                                    break
-                                }
+                    for (imei in groupNameGps3.data) {
+                        for (carId in vehicleList1!!) {
+                            if (imei == carId.imei) {
+                                vehicalListGps3.add(carId)
+                                break
                             }
                         }
-                    for (i in 0 until selectedCarListGps3!!.size) {
+                    }
+                    for (i in 0 until selectedCarListGps3.size) {
                         for (j in 0 until vehicalListGps3.size) {
                             if (vehicalListGps3[j].imei
-                                    .equals(selectedCarListGps3!![i].imei, true)
+                                    .equals(selectedCarListGps3[i].imei, true)
                             ) {
-                                vehicalListGps3[j].isExpanded = selectedCarListGps3!![i].isExpanded
-                                vehicalListGps3[j].isSelected = selectedCarListGps3!![i].isSelected
+                                vehicalListGps3[j].isExpanded = selectedCarListGps3[i].isExpanded
+                                vehicalListGps3[j].isSelected = selectedCarListGps3[i].isSelected
                             }
                         }
                     }
@@ -154,20 +139,20 @@ class GroupUnitListFragment : BaseFragment() {
                         TAG,
                         "getGroupUnitList: selectedCarListGps3 SIZE ${selectedCarListGps3.size}"
                     ); adapterGps3.notifyDataSetChanged()
-                    adapterGps3.filter.filter(binding.etSearch.text.toString());
+                    adapterGps3.filter.filter(binding.etSearch.text.toString())
                     if (comingFrom.equals("Dash") || comingFrom.equals("GeoZonesFragment")) {
                         Log.d(
                             TAG, "get: selectedCarListGps3 SIZE ${selectedCarListGps3.size}"
                         )
+                        handleActionBarAString("${groupNameGps3.name} (${selectedCarListGps3.size})")
                     }
-                    Utils.hideProgressBar()
                 }
 
             } else {
                 binding.rvGroupCar.visibility = View.INVISIBLE
                 binding.txtGroupUnitsEmpty.visibility = View.VISIBLE
-                Utils.hideProgressBar()
             }
+            Utils.hideProgressBar()
 
         } else {
             if (groupName.u != null) {
@@ -183,28 +168,23 @@ class GroupUnitListFragment : BaseFragment() {
                         binding.txtGroupUnitsEmpty.visibility = View.INVISIBLE
                         val vehicalList1 = Utils.getCarListingData(requireContext()).items
                         vehicalList.clear()
-
-                        if (comingFrom == "Dash") {
-//                            detectedDashState(vehicalList1)
-
-                        } else {
-                            for (ut in groupName.u) {
-                                Log.d(TAG, "getGroupUnitList:wasl $ut")
-                                for (carId in vehicalList1) {
-                                    if (carId.id.toString().equals(ut, true)) {
-                                        vehicalList.add(carId)
-                                    }
+                        for (ut in groupName.u) {
+                            Log.d(TAG, "getGroupUnitList:wasl $ut")
+                            for (carId in vehicalList1) {
+                                if (carId.id.toString().equals(ut, true)) {
+                                    vehicalList.add(carId)
                                 }
                             }
                         }
 
-                        for (i in 0 until selectedCarList!!.size) {
+
+                        for (i in 0 until selectedCarList.size) {
                             for (j in 0 until vehicalList.size) {
                                 if (vehicalList[j].id.toString()
-                                        .equals(selectedCarList!![i].id.toString(), true)
+                                        .equals(selectedCarList[i].id.toString(), true)
                                 ) {
-                                    vehicalList[j].isExpanded = selectedCarList!![i].isExpanded
-                                    vehicalList[j].isSelected = selectedCarList!![i].isSelected
+                                    vehicalList[j].isExpanded = selectedCarList[i].isExpanded
+                                    vehicalList[j].isSelected = selectedCarList[i].isSelected
                                 }
                             }
                         }
@@ -216,7 +196,7 @@ class GroupUnitListFragment : BaseFragment() {
                         )
                             handleActionBarAString(groupName.nm + " (${vehicalList.size})")
                         else handleActionBarAStringUpdateUnit(groupName.nm + " (${vehicalList.size})")
-                        adapter.filter.filter(binding.etSearch.text.toString());
+                        adapter.filter.filter(binding.etSearch.text.toString())
 
                         if (vehicalList.size > 0) {
                             binding.rvGroupCar.visibility = View.VISIBLE
@@ -323,6 +303,7 @@ class GroupUnitListFragment : BaseFragment() {
                     selectedCarListGps3.remove(filterd[position])
                 filterd.remove(filterd[position])
                 adapterGps3.notifyDataSetChanged()
+                handleActionBarAStringUpdateUnit("${groupNameGps3.name} (${selectedCarListGps3.size})")
                 /* groupNameGps3.data.removeAt(position).also {
                      selectedCarListGps3.removeAt(position)
                      Log.d(TAG, "onRemoveClick: $position")
@@ -339,26 +320,30 @@ class GroupUnitListFragment : BaseFragment() {
                 viewModel.callApiForUpdateGroupImeisGps3(
                     groupNameGps3.group_id.toInt(),
                     removedCarListGps3,
-                    "remove"
+                    "remove",
+                    java.util.ArrayList<String>(),
+                    ""
                 )
                 viewModel.updatedUnitList.observeOnce { b: Boolean? ->
-                    try {
-                        if (b == true) {
+                    if (b == true) {
+                        try {
                             Toast.makeText(
                                 context, getString(R.string.successfully_removed_unit_in_group),
                                 Toast.LENGTH_SHORT
                             ).show()
+                        } catch (e: Exception) {
+                            Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
+                        }
 
-                        } else {
-
+                    } else {
+                        try {
                             Toast.makeText(
-                                context,
-                                getString(R.string.something_goes_wrong),
+                                context, getString(R.string.something_goes_wrong),
                                 Toast.LENGTH_SHORT
                             ).show()
+                        } catch (e: Exception) {
+                            Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
                         }
-                    } catch (e: Exception) {
-                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
                     }
                 }
                 /*viewModel.updatedUnitList.observe(viewLifecycleOwner) {
@@ -381,49 +366,11 @@ class GroupUnitListFragment : BaseFragment() {
         val handler = object : SingleCarAdapter.NotificationCommandHandler {
             override fun onRemoveClick(position: Int) {
                 recyclerViewState = binding.rvGroupCar.layoutManager!!.onSaveInstanceState()
-                val filtered = adapter.getFilteredList()
-                Log.d(TAG, "onRemoveClick: SIZE ${filtered.size} ${selectedCarList.size}")
-                groupName.u.remove(filtered[position].id.toString())
-                carIdList.remove(filtered[position].id.toString())
-                if (carIdList.size == 0)
-                    binding.btnShowOnMap.isEnabled = false
-                if (selectedCarList.size != filtered.size)
-                    selectedCarList.remove(filtered[position])
-                filtered.remove(filtered[position])
-                adapter.notifyDataSetChanged()
-                if (selectedCarList.size == 0) {
-                    binding.rvGroupCar.visibility = View.INVISIBLE
-                    binding.txtGroupUnitsEmpty.visibility = View.VISIBLE
-                } else {
-                    binding.rvGroupCar.visibility = View.VISIBLE
-                    binding.txtGroupUnitsEmpty.visibility = View.INVISIBLE
-                }
 
-                viewModel.callApiForAddUnitsToGroup(
-                    JSONArray(groupName.u),
-                    groupName.id.toLong(),
-                    true
-                )
+                showYesNoAlerter(position)
+
 //                viewModel.callApiForUpdateGroupItems(groupName.id,selectedCarIds)
-                viewModel.updatedUnitList.observeOnce { b: Boolean? ->
-                    try {
-                        if (b == true) {
-                            Toast.makeText(
-                                context, getString(R.string.successfully_removed_unit_in_group),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Toast.makeText(
-                                context,
-                                getString(R.string.something_goes_wrong),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    } catch (e: Exception) {
-                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
-                    }
 
-                }
                 /*
 
 
@@ -482,7 +429,7 @@ class GroupUnitListFragment : BaseFragment() {
                 val lat = selectedCarList[position].pos?.y
                 val lng = selectedCarList[position].pos?.x
                 val urlAddress =
-                    "http://maps.google.com/maps?q=" + lat + "," + lng + "(" + selectedCarList[position]?.nm + ")&iwloc=A&hl=es"
+                    "http://maps.google.com/maps?q=" + lat + "," + lng + "(" + selectedCarList[position].nm + ")&iwloc=A&hl=es"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlAddress))
                 context!!.startActivity(intent)
 
@@ -501,27 +448,28 @@ class GroupUnitListFragment : BaseFragment() {
         }
 
         (activity as MainActivity).add_vehicle.setOnClickListener {
-            var bundle: Bundle;
+            val bundle: Bundle
             if (serverData.contains("s3")) {
                 bundle = bundleOf(
                     "comingFrom" to "GroupUnitList",
-                    "groupName" to binding.etSearch.text.toString(),
+                    "groupName" to groupNameGps3.name,
                     "UnitList" to selectedCarListGps3,
                     "groupId" to groupNameGps3.group_id
                 )
 
             } else {
-
+                val from = if (comingFrom == "DriverDash") "DriverDash" else "GroupUnitList"
                 bundle = bundleOf(
-                    "comingFrom" to "GroupUnitList",
+                    "comingFrom" to from,
                     "groupName" to groupName.nm,
                     "UnitList" to selectedCarList,
                     "groupId" to groupName.id.toString()
                 )
+                Log.d(TAG, "initRecyclerView: GroupUnitList ${selectedCarList.size}")
             }
             Log.d(TAG, "initRecyclerView:groupID11 ${groupName.id}")
 
-            findNavController()?.navigate(
+            findNavController().navigate(
                 R.id.addunitsFragment, bundle
             )
         }
@@ -540,7 +488,7 @@ class GroupUnitListFragment : BaseFragment() {
             override fun afterTextChanged(editable: Editable) {
                 if (serverData.contains("s3")) {
                     adapterGps3.filter.filter(editable.toString())
-                    for (name in selectedCarListGps3!!) {
+                    for (name in selectedCarListGps3) {
                         if (name.name.lowercase().trim()
                                 .contains(editable.toString().lowercase().trim())
                         ) {
@@ -561,7 +509,11 @@ class GroupUnitListFragment : BaseFragment() {
             adapterGps3.notifyDataSetChanged()
         } else {
             Log.d(TAG, "initRecyclerView: selectedCarList SIZE ${selectedCarList.size}")
-            adapter = SingleCarAdapter(handler, selectedCarList, comingFrom != "Dash")
+            adapter = SingleCarAdapter(
+                handler,
+                selectedCarList,
+                comingFrom != "Dash"
+            )
             binding.rvGroupCar.adapter = adapter
         }
     }
@@ -584,15 +536,109 @@ class GroupUnitListFragment : BaseFragment() {
         })
     }
 
+    fun showYesNoAlerter(
+        position: Int
+    ): Dialog {
+        val mDialog = Dialog(requireContext(), R.style.DialogTheme)
+        val binding2: LayoutDeleteCarBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(context),
+            R.layout.layout_delete_car,
+            null,
+            false
+        )
+        mDialog.setContentView(binding2.root)
+
+        binding2.lblDeleteCar.text = getString(R.string.delete_unit)
+        binding2.lblDescriptiveMsg.text = getString(R.string.are_you_sure_want_to_delete_this_unit)
+        binding2.btnYes.setOnClickListener {
+            Utils.showProgressBar(requireContext())
+            val filtered = adapter.getFilteredList()
+            Log.d(TAG, "onRemoveClick: SIZE ${filtered.size} ${selectedCarList.size}")
+            groupName.u.remove(filtered[position].id.toString())
+            carIdList.remove(filtered[position].id.toString())
+            if (carIdList.size == 0)
+                binding.btnShowOnMap.isEnabled = false
+            if (selectedCarList.size != filtered.size)
+                selectedCarList.remove(filtered[position])
+
+            viewModel.callApiForAddUnitsToGroup(
+                JSONArray(groupName.u),
+                groupName.id.toLong(),
+                true
+            )
+
+            viewModel.updatedUnitList.observeOnce { b: Boolean? ->
+                if (b == true) {
+                    try {
+
+                        Toast.makeText(
+                            context, getString(R.string.successfully_removed_unit_in_group),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } catch (e: Exception) {
+                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
+                    }
+
+                } else {
+                    try {
+                        Toast.makeText(
+                            context,
+                            getString(R.string.something_goes_wrong),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } catch (e: Exception) {
+                        Log.e(TAG, "onRemoveClick: CATCH ${e.message}")
+                    }
+                }
+            }
+            filtered.remove(filtered[position])
+            adapter.notifyDataSetChanged()
+            handleActionBarAString(groupName.nm + " (${selectedCarList.size})")
+            if (selectedCarList.size == 0) {
+                binding.rvGroupCar.visibility = View.INVISIBLE
+                binding.txtGroupUnitsEmpty.visibility = View.VISIBLE
+            } else {
+                binding.rvGroupCar.visibility = View.VISIBLE
+                binding.txtGroupUnitsEmpty.visibility = View.INVISIBLE
+            }
+            handleActionBarAStringUpdateUnit("${groupName.nm} (${groupName.u.size})")
+            mDialog.dismiss()
+        }
+
+        binding2.btnNo.setOnClickListener {
+            mDialog.dismiss()
+        }
+
+        mDialog.window!!.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        mDialog.setCancelable(false)
+
+        binding2.executePendingBindings()
+        try {
+            if (!mDialog.isShowing)
+                mDialog.show()
+        } catch (e: Exception) {
+        }
+        return mDialog
+
+    }
+
+
     override fun onResume() {
         super.onResume()
         if (carIdList != null && carIdList.size > 0)
             binding.btnShowOnMap.isEnabled = true
         if (comingFrom.equals("Dash") || comingFrom.equals("GeoZonesFragment")) {
-            handleActionBarAString("${groupName.nm} (${groupName.u.size})")
-        } else
-            if (serverData.contains("s3")) handleActionBarAStringUpdateUnit(groupNameGps3.name)
-            else handleActionBarAStringUpdateUnit(groupName.nm)
+            Log.d(TAG, "onResume:dash ${groupNameGps3.name}  ")
+            if (serverData.contains("s3")) handleActionBarAString("${groupNameGps3.name} (${selectedCarListGps3.size})")
+            else handleActionBarAString("${groupName.nm} (${selectedCarList.size})")
+        } else {
+            Log.d(TAG, "onResume:dash2 ${groupNameGps3.name}  ")
+            if (serverData.contains("s3")) handleActionBarAStringUpdateUnit("${groupNameGps3.name} (${groupNameGps3.data.size})")
+            else handleActionBarAStringUpdateUnit("${groupName.nm} (${groupName.u.size})")
+        }
     }
-
 }

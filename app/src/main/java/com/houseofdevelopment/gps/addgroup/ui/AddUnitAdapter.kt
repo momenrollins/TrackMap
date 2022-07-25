@@ -26,7 +26,8 @@ class AddUnitAdapter(
     lateinit var value: MutableList<Item>
     var selectedItem = ArrayList<Long>()
     var isSelectAll: Boolean = false
-    private val TAG = "AddUnitAdapter"
+    var count: Int = 0
+    private val tag = "AddUnitAdapter"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -63,32 +64,36 @@ class AddUnitAdapter(
 //            itemView.add_unit_card.tag = position
                 itemView.add_unit_card.setOnClickListener {
                     itemView.chk_check.isChecked = !itemView.chk_check.isChecked
-
                     if (value[position].isSelected) {
-                        itemList.id?.let { it1 -> selectedItem.remove(it1.toLong()) }
+                        itemList.id?.let { it1 ->
+                            selectedItem.remove(it1.toLong())
+                        }
                     } else {
-                        itemList.id?.let { it1 -> selectedItem.add(it1.toLong()) }
+                        itemList.id?.let { it1 ->
+                            selectedItem.add(it1.toLong())
+                        }
                     }
-
-                    if (selectedItem.size == value.size) {
+                    value[position].isSelected = (!value[position].isSelected)
+                    count = 0
+                    value.forEach { item -> if (item.isSelected) count++ }
+                    if (count == value.size) {
                         (mContext as MainActivity).chk_check.isChecked = true
                         mContext.chk_check.tag = 1
                     } else {
                         (mContext as MainActivity).chk_check.isChecked = false
                         mContext.chk_check.tag = 0
                     }
-                    value[position].isSelected = (!value[position].isSelected)
 //                notifyDataSetChanged()
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "bind: CATCH ${e.message}")
+                Log.e(tag, "bind: CATCH ${e.message}")
             }
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun selectDeselectAll(check: Boolean) {
-        selectedItem.clear()
+        // selectedItem.clear()
         if (value != null)
             for (f in value) {
                 if (check) {
@@ -106,7 +111,7 @@ class AddUnitAdapter(
         if (model != null) {
             value?.add(model)
         }
-        notifyItemInserted(value?.size!! - 1)
+        notifyItemInserted(value?.size - 1)
     }
 
     fun addAll(mList: MutableList<Item>) {
@@ -121,17 +126,19 @@ class AddUnitAdapter(
         return selectedItem
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(filterList: MutableList<Item>) {
         try {
             value = filterList
-            selectedItem.clear()
-            value.forEach() { item ->
-                if (item.isSelected) selectedItem.add(item.id!!.toLong())
-            }
+            /*
+             selectedItem.clear()
+             value.forEach() { item ->
+                 if (item.isSelected) selectedItem.add(item.id!!.toLong())
+             }*/
             notifyDataSetChanged()
         } catch (e: Exception) {
-            Log.d(TAG, "updateList: CATCH ${e.message}")
+            Log.d(tag, "updateList: CATCH ${e.message}")
         }
     }
 }

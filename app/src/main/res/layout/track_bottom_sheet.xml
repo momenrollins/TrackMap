@@ -142,7 +142,7 @@
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_black_60_opacity"
                 android:textSize="@dimen/_14sp"
-                android:tint="@color/color_red"
+                
                 app:layout_constraintBottom_toTopOf="@+id/txt_km"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -163,7 +163,7 @@
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_black_60_opacity"
                 android:textSize="@dimen/_14sp"
-                android:tint="@color/color_red"
+                
                 app:layout_constraintBottom_toBottomOf="@+id/car_image"
                 app:layout_constraintEnd_toStartOf="@+id/txt_km"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -181,7 +181,6 @@
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_black_60_opacity"
                 android:textSize="@dimen/_14sp"
-                android:tint="@color/color_red"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_min"
                 app:layout_constraintEnd_toStartOf="@+id/txt_km_h"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -199,7 +198,6 @@
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_black_60_opacity"
                 android:textSize="@dimen/_14sp"
-                android:tint="@color/color_red"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_km"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

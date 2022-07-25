@@ -10,6 +10,8 @@ import com.houseofdevelopment.gps.preference.PrefKey
 import com.houseofdevelopment.gps.utils.Constants
 import com.houseofdevelopment.gps.utils.DebugLog
 import com.houseofdevelopment.gps.utils.NetworkUtil
+import com.houseofdevelopment.gps.utils.Utils
+import com.houseofdevelopment.gps.vehicallist.model.GroupImeisModelGps3
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
@@ -24,6 +26,9 @@ class AddUnitsViewModel : BaseViewModel() {
     val unitsData = MutableLiveData<Boolean>()
     var unitList = MutableLiveData<List<String>>()
     var updatedUnitList = MutableLiveData<Boolean>()
+    var userUnitList = MutableLiveData<Boolean>()
+    var unitItemsGps3 = MutableLiveData<GroupImeisModelGps3>()
+    var updateGroupItemsGps3 = MutableLiveData<GroupImeisModelGps3>()
 
     /**
      *  Call api for create group
@@ -47,7 +52,9 @@ class AddUnitsViewModel : BaseViewModel() {
 
             DebugLog.d("RequestBody CreateGroup =$body")
             if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
-                _status.value = ApiStatus.NOINTERNET
+                com.houseofdevelopment.gps.utils.Utils.hideProgressBar()
+
+                groupIdData.postValue("")
             } else {
                 try {
                     // this will run on a thread managed by Retrofit
@@ -80,12 +87,19 @@ class AddUnitsViewModel : BaseViewModel() {
             val parms = JSONObject(map as Map<*, *>).toString()
             Log.d(TAG, "callApiForCreateGroupGps3: $parms")
             if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
-                _status.value = ApiStatus.NOINTERNET
+                Utils.hideProgressBar()
+
+                unitList.postValue(ArrayList())
             } else {
                 try {
                     _status.value = ApiStatus.DONE
                     val call = client.createGroupCall(parms).awaitResponse()
-                    if (call.isSuccessful) unitList.postValue(listOf(call.body().toString()))
+                    if (call.isSuccessful) {
+//                        updatedUnitList.postValue(call.body()!!.status)
+//                        Log.d(TAG, "callApiForCreateGroupGps3:id ${call.body()!!.id}")
+                        val item = GroupImeisModelGps3(true, groupName, call.body()!!.id, imeisList)
+                        unitItemsGps3.postValue(item)
+                    }
                 } catch (error: java.lang.Exception) {
                     errorMsg = error.toString()
                     _status.value = ApiStatus.ERROR
@@ -95,7 +109,13 @@ class AddUnitsViewModel : BaseViewModel() {
 
     }
 
-    fun callApiForUpdateGroupImeisGps3(group_id: Int, imeisList: ArrayList<String>, type: String) {
+    fun callApiForUpdateGroupImeisGps3(
+        group_id: Int,
+        imeisList: ArrayList<String>,
+        type: String,
+        selectedCarListGps3: ArrayList<String>,
+        groupName: String
+    ) {
 
         coroutineScope.launch {
 
@@ -112,11 +132,27 @@ class AddUnitsViewModel : BaseViewModel() {
             Log.d("TAG", "initRecyclerView: $parms")
 
             if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
-                _status.value = ApiStatus.NOINTERNET
+                Utils.hideProgressBar()
+                if (type == "remove")
+                    updatedUnitList.postValue(false)
+                else
+                    updateGroupItemsGps3.postValue(GroupImeisModelGps3())
             } else {
                 try {
                     val call = client.UpdateGroupImeis(parms).awaitResponse()
-                    if (call.isSuccessful) updatedUnitList.postValue(call.body()!!.status)
+                    if (call.isSuccessful) {
+                        if (type == "remove")
+                            updatedUnitList.postValue(call.body()!!.status)
+                        else
+                            updateGroupItemsGps3.postValue(
+                                GroupImeisModelGps3(
+                                    true,
+                                    groupName,
+                                    group_id.toString(),
+                                    imeisList + selectedCarListGps3
+                                )
+                            )
+                    }
                     _status.value = ApiStatus.DONE
                 } catch (error: java.lang.Exception) {
                     errorMsg = error.toString()
@@ -151,7 +187,8 @@ class AddUnitsViewModel : BaseViewModel() {
 
             DebugLog.d("RequestBody check_updates =$body")
             if (NetworkUtil.getConnectionStatus(AppBase.instance) == NetworkUtil.NOT_CONNECTED) {
-                _status.value = ApiStatus.NOINTERNET
+                Utils.hideProgressBar()
+                updatedUnitList.postValue(false)
             } else {
                 try {
                     // this will run on a thread managed by Retrofit

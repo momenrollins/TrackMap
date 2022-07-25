@@ -85,6 +85,7 @@ class GeoZonesFragment : BaseFragment() {
 
         if (arguments != null) {
             cFrom = arguments!!.getString("comingFrom").toString()
+            if (cFrom.equals("Dash", true))
             unitsMode = arguments?.getSerializable("groupName") as GroupListDataModel.Item
 
 
@@ -114,6 +115,7 @@ class GeoZonesFragment : BaseFragment() {
             viewmodel.callApiForGetGeoZonesGps3()
 
             viewmodel.geoZoneListGps3.observe(this) {
+                Utils.hideProgressBar()
                 if (it.getStatus()) {
                     geoZoneListGps3 = it.data as ArrayList<GeoZoneModelItemGps3>?
                     filterListGps3.clear()
@@ -137,6 +139,7 @@ class GeoZonesFragment : BaseFragment() {
             viewmodel.callApiForGeoZoneListData()
 
             viewmodel.geoZoneList.observe(this) {
+                Utils.hideProgressBar()
                 geoZoneList = it as MutableList<GeoZoneListModel.Item>?
 
                 hs = HashSet<String>()
@@ -223,6 +226,7 @@ class GeoZonesFragment : BaseFragment() {
 
         }
         viewmodel.isGeoZoneAdded.observe(this) {
+            Utils.hideProgressBar()
             isZoneCreated = it
 
             if (isZoneCreated) {
@@ -515,6 +519,7 @@ class GeoZonesFragment : BaseFragment() {
                 } else geoZoneList.removeAt(position) //here
                 adapterGps3.notifyDataSetChanged()
                 viewmodel.geoZoneDeletedGps3.observeOnce { b: Boolean? ->
+                    Utils.hideProgressBar()
                     if (b == true) {
                         Toast.makeText(
                             requireContext(),
@@ -538,6 +543,7 @@ class GeoZonesFragment : BaseFragment() {
                 zlObjectList?.remove(item)
 
                 viewmodel.isGeoZoneDeleted.observeOnce { b: Boolean? ->
+                    Utils.hideProgressBar()
                     if (b == true) {
                         Toast.makeText(
                             requireContext(),
@@ -574,6 +580,7 @@ class GeoZonesFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
+        Utils.showProgressBar(requireContext())
         if (coming_from.equals("notification", true)) {
             (activity as MainActivity).add_vehicle.visibility = View.INVISIBLE
             binding.showOnMap.visibility = View.VISIBLE

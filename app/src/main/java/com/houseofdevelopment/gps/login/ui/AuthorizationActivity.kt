@@ -24,7 +24,7 @@ import java.util.*
 class AuthorizationActivity : BaseActivity() {
 
     private var isFirstTime: Boolean = false
-    private var url = BuildConfig.BaseURL + "login.html?client_id=دار_التطوير&access_type=-1&activation_time=0&duration=0&flags=1"
+    private var url = BuildConfig.BaseURL + "login.html?client_id=HouseOfDevelopment&access_type=-1&activation_time=0&duration=0&flags=1"
 
     lateinit var authorizationViewModel: AuthorizationViewModel
     private var isApiCall = false
@@ -34,7 +34,7 @@ class AuthorizationActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         authorizationViewModel = ViewModelProvider(this)[AuthorizationViewModel::class.java]
         setContentView(R.layout.layout_authorization)
-        url = MyPreference.getValueString(PrefKey.SELECTED_SERVER_DATA, BuildConfig.BaseURL) + "login.html?client_id=دار_التطوير&access_type=-1&activation_time=0&duration=0&flags=1"
+        url = MyPreference.getValueString(PrefKey.SELECTED_SERVER_DATA, BuildConfig.BaseURL) + "login.html?client_id=HouseOfDevelopment&access_type=-1&activation_time=0&duration=0&flags=1"
         webView.loadUrl(url)
         webView.settings.setSupportZoom(true)
         webView.settings.javaScriptEnabled = true

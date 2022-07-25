@@ -71,15 +71,13 @@ class VehiclesListViewModel : BaseViewModel() {
                 try {
                     // this will run on a thread managed by Retrofit
                     val response = client.getGroupListData(body)
-                    DebugLog.d("ResponseBody search_items = $response")
+                    DebugLog.d("ResponseBody search_items = ${response.items.size}")
+                    groupData.postValue(response.items)
                     if (response.items!!.isNotEmpty()) {
-                        groupData.postValue(response.items)
                         getGroupData = response.items
                     }
                     _status.value = ApiStatus.DONE
-                    Utils.hideProgressBar()
                 } catch (error: Throwable) {
-                    Utils.hideProgressBar()
                     errorMsg = error.toString()
                     _status.value = ApiStatus.ERROR
                 }
@@ -103,12 +101,10 @@ class VehiclesListViewModel : BaseViewModel() {
                     loading(false)
                     groupDataGps3.postValue(call.body()!!)
                 }
-                Utils.hideProgressBar()
             }
         }
     }
 
-    private val TAG = "VehiclesListViewModel"
     fun callApiForGetGroupDataGps3(group_id: Int, isMaping: Boolean) {
         coroutineScope.launch {
             val map = mutableMapOf<String, Any?>(
@@ -158,10 +154,6 @@ class VehiclesListViewModel : BaseViewModel() {
                         deleteGroup.postValue(false)
                     }
                     DebugLog.d("ResponseBody delete group =$body")
-                    /*response.let {
-
-                    }*/
-
                 } catch (error: Throwable) {
                     deleteGroup.postValue(false)
                     error.toString()
