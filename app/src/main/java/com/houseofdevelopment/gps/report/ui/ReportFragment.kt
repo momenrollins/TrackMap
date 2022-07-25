@@ -220,7 +220,6 @@ class ReportFragment : BaseFragment(), View.OnClickListener {
             writeResponseBodyToDisk(it)
         }
     }
-
     private fun setValues() {
         binding.txtObject.text = objValues
         if (serverData.contains("s3") && templateListGps3 != null) {
