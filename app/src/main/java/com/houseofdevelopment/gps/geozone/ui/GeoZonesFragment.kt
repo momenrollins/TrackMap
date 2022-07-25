@@ -115,23 +115,26 @@ class GeoZonesFragment : BaseFragment() {
             viewmodel.callApiForGetGeoZonesGps3()
 
             viewmodel.geoZoneListGps3.observe(this) {
-                Utils.hideProgressBar()
-                if (it.getStatus()) {
-                    geoZoneListGps3 = it.data as ArrayList<GeoZoneModelItemGps3>?
-                    filterListGps3.clear()
-                    filterListGps3.addAll(geoZoneListGps3!!)
-                    getZoneCars(geoZoneListGps3)
-                    if (geoZoneListGps3!!.size > 0) {
-                        binding.noDataLay.visibility = View.GONE
-                        binding.rvGeoZone.visibility = View.VISIBLE
+                if(it !=null){
+                    Utils.hideProgressBar()
+                    if (it.getStatus()) {
+                        geoZoneListGps3 = it.data as ArrayList<GeoZoneModelItemGps3>?
+                        filterListGps3.clear()
+                        filterListGps3.addAll(geoZoneListGps3!!)
+                        getZoneCars(geoZoneListGps3)
+                        if (geoZoneListGps3!!.size > 0) {
+                            binding.noDataLay.visibility = View.GONE
+                            binding.rvGeoZone.visibility = View.VISIBLE
+                        } else {
+                            binding.noDataLay.visibility = View.VISIBLE
+                            binding.rvGeoZone.visibility = View.GONE
+                        }
                     } else {
                         binding.noDataLay.visibility = View.VISIBLE
                         binding.rvGeoZone.visibility = View.GONE
                     }
-                } else {
-                    binding.noDataLay.visibility = View.VISIBLE
-                    binding.rvGeoZone.visibility = View.GONE
                 }
+                viewmodel.geoZoneListGps3.postValue(null)
             }
 
 
@@ -139,88 +142,92 @@ class GeoZonesFragment : BaseFragment() {
             viewmodel.callApiForGeoZoneListData()
 
             viewmodel.geoZoneList.observe(this) {
-                Utils.hideProgressBar()
-                geoZoneList = it as MutableList<GeoZoneListModel.Item>?
 
-                hs = HashSet<String>()
-                val nameList = mutableListOf<String>()
-                val colorList = mutableListOf<String>()
-                val idList = mutableListOf<String>()
+                if (it != null){
+                    Utils.hideProgressBar()
+                    geoZoneList = it as MutableList<GeoZoneListModel.Item>?
 
-                var gList = mutableListOf<GeoZoneListModel.ZLObj>()
+                    hs = HashSet<String>()
+                    val nameList = mutableListOf<String>()
+                    val colorList = mutableListOf<String>()
+                    val idList = mutableListOf<String>()
 
-                if (geoZoneList != null && geoZoneList!!.size > 0) {
+                    var gList = mutableListOf<GeoZoneListModel.ZLObj>()
 
-                    for (md in geoZoneList!!) {
+                    if (geoZoneList != null && geoZoneList!!.size > 0) {
 
-                        var zl = md.zl
+                        for (md in geoZoneList!!) {
 
-                        var gson = Gson()
-                        var str = gson.toJson(zl)
+                            var zl = md.zl
 
-                        var jsonObject = JSONObject(str)
+                            var gson = Gson()
+                            var str = gson.toJson(zl)
 
-                        val keys = jsonObject.keys()
-                        while (keys.hasNext()) {
-                            val key = keys.next()
-                            hs.add(key)
+                            var jsonObject = JSONObject(str)
 
-                            var value = jsonObject.get(key)
-                            if (value is JSONObject) {
-                                var name = value.getString("n")
-                                nameList.add(name)
+                            val keys = jsonObject.keys()
+                            while (keys.hasNext()) {
+                                val key = keys.next()
+                                hs.add(key)
 
-                                var color = value.getString("c")
-                                colorList.add(color)
-                                Log.d(TAG, "addObserver: COLOR $color")
+                                var value = jsonObject.get(key)
+                                if (value is JSONObject) {
+                                    var name = value.getString("n")
+                                    nameList.add(name)
 
-                                var id = value.getString("id")
-                                idList.add(id)
+                                    var color = value.getString("c")
+                                    colorList.add(color)
+                                    Log.d(TAG, "addObserver: COLOR $color")
 
-                                // store data into model object
-                                var zlObject = GeoZoneListModel().ZLObj()
-                                zlObject.n = value.getString("n")
-                                zlObject.c = value.getLong("c")
-                                zlObject.id = value.getInt("id")
-                                zlObject.w = value.getDouble("w")
+                                    var id = value.getString("id")
+                                    idList.add(id)
 
-                                val obj = value.getJSONObject("b")
+                                    // store data into model object
+                                    var zlObject = GeoZoneListModel().ZLObj()
+                                    zlObject.n = value.getString("n")
+                                    zlObject.c = value.getLong("c")
+                                    zlObject.id = value.getInt("id")
+                                    zlObject.w = value.getDouble("w")
 
-                                val bModel = GeoZoneListModel.BModel()
-                                bModel.cen_x = obj.getDouble("cen_x")
-                                bModel.cen_y = obj.getDouble("cen_y")
-                                bModel.min_x = obj.getDouble("min_x")
-                                bModel.min_y = obj.getDouble("min_y")
-                                bModel.max_x = obj.getDouble("max_x")
-                                bModel.max_y = obj.getDouble("max_y")
+                                    val obj = value.getJSONObject("b")
 
-                                zlObject.b = bModel
+                                    val bModel = GeoZoneListModel.BModel()
+                                    bModel.cen_x = obj.getDouble("cen_x")
+                                    bModel.cen_y = obj.getDouble("cen_y")
+                                    bModel.min_x = obj.getDouble("min_x")
+                                    bModel.min_y = obj.getDouble("min_y")
+                                    bModel.max_x = obj.getDouble("max_x")
+                                    bModel.max_y = obj.getDouble("max_y")
 
-                                gList.add(zlObject)
+                                    zlObject.b = bModel
+
+                                    gList.add(zlObject)
+                                }
                             }
                         }
-                    }
-                    zlObjectList.clear()
-                    zlObjectList.addAll(gList)
+                        zlObjectList.clear()
+                        zlObjectList.addAll(gList)
 //                geoNameList!!.addAll(nameList)
 
 //                initializeAdapter(nameList, colorList, idList)
 
 
 //                    initZoneUnitList(zlObjectList)
-                    initializeAdapter(zlObjectList)
-                    binding.noDataLay.visibility = View.GONE
-                    if (zlObjectList.size > 0) {
+                        initializeAdapter(zlObjectList)
                         binding.noDataLay.visibility = View.GONE
-                        binding.rvGeoZone.visibility = View.VISIBLE
+                        if (zlObjectList.size > 0) {
+                            binding.noDataLay.visibility = View.GONE
+                            binding.rvGeoZone.visibility = View.VISIBLE
+                        } else {
+                            binding.noDataLay.visibility = View.VISIBLE
+                            binding.rvGeoZone.visibility = View.GONE
+                        }
                     } else {
                         binding.noDataLay.visibility = View.VISIBLE
                         binding.rvGeoZone.visibility = View.GONE
                     }
-                } else {
-                    binding.noDataLay.visibility = View.VISIBLE
-                    binding.rvGeoZone.visibility = View.GONE
                 }
+                viewmodel.geoZoneList.postValue(null)
             }
 
 
