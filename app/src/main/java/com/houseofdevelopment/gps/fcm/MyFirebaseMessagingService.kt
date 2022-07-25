@@ -45,11 +45,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         MyPreference.setValueString(PrefKey.FCM_TOKEN, token)
-        Log.d("TAG", "onNewToken:2 onResume: ttkn $token")
     }
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
+        Log.d("TAG", "onNewToken:2 onResume: ttkn $message")
         /*val mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         mNotificationManager.cancelAll()*/
 
@@ -75,9 +75,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel(notificationManager)
         }
-        val count = message.data["badge"]!!.toInt()
 
-        Log.d(TAG, "onMessageReceived: badge ${message.data["badge"]}")
 
         val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
             .setContentTitle(getString(R.string.app_name))
