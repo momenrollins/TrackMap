@@ -107,7 +107,7 @@ class SingleCarAdapterGps3(
                     itemView.car_distance.text = itemList!!.dist.toString()
                 }
                 getSens(itemList?.imei, itemView)
-
+                Log.d(TAG, "bind: IMEI ${itemList.imei}, ${itemList.name}")
                 if (itemList.isExpanded) {
                     itemView.const_noti_comm_btn.visibility = View.VISIBLE
                     itemView.const_address.visibility = View.VISIBLE

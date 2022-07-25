@@ -9,6 +9,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -89,7 +90,10 @@ class SingleCarAdapter(
                 itemView.const_address.visibility = View.GONE
                 itemView.img_googleMap.visibility = View.GONE
 
-                Log.d(TAG, "bind: trip_curr_speed ${itemList!!.id} ${itemList!!.nm} ${itemList.pos?.y} ${itemList.pos?.x}")
+                Log.d(
+                    TAG,
+                    "bind: trip_curr_speed ${itemList!!.id} ${itemList!!.nm} ${itemList.pos?.y} ${itemList.pos?.x}"
+                )
 
                 if (itemList != null && itemList.trip_m != null && itemList.pos != null && itemList.sens != null) {
                     if (itemList != null && itemList.trip_curr_speed != null && !itemList.trip_curr_speed.equals(
@@ -200,6 +204,8 @@ class SingleCarAdapter(
                         Utils.showProgressBar(context)
                         clickHandler.onCommandClick(filteredData[it.tag as Int].id.toString())
                     }
+                    itemView.img_topUpperArrow.isVisible = true
+
                     itemView.img_topUpperArrow.tag = position
                     itemView.img_topUpperArrow.setOnClickListener {
                         filteredData[it.tag as Int].isExpanded =
@@ -244,23 +250,9 @@ class SingleCarAdapter(
                     itemView.const_address.visibility = View.GONE
                     itemView.img_googleMap.visibility = View.GONE
                     itemView.txt_min.text = "---"
-                    if (Locale.getDefault().displayLanguage
-                            .equals("العربية")
-                    ) itemView.img_topUpperArrow.rotation = 270f
-                    else
-                        itemView.img_topUpperArrow.rotation = 90f
-
-                    itemView.img_topUpperArrow.setOnClickListener {
-                        Toast.makeText(
-                            context,
-                            AppBase.instance.getString(R.string.device_is_not_connected),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                    }
+                    itemView.img_topUpperArrow.isVisible = false
                     itemView.car_name.text = " ${itemList.nm} "
                     itemView.car_name.setTextColor(getColor(context, R.color.dash_red))
-                    itemView.img_topUpperArrow.isEnabled=false;
                     itemView.const_cardetails.setOnClickListener {
                         Toast.makeText(
                             context,

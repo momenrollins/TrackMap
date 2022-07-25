@@ -430,6 +430,7 @@ class AddUnitsFragment : BaseFragment() {
                         getString(R.string.unit_list_is_empty),
                         Toast.LENGTH_SHORT
                     ).show()
+                    Utils.hideProgressBar()
                 } else {
                     if (isGeoZoneAdd) {
                         geoZoneViewModel.callApiForAddGeoZoneData(geoZoneName, convertedRGB)
@@ -474,6 +475,7 @@ class AddUnitsFragment : BaseFragment() {
                                 getString(R.string.unit_list_is_empty),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Utils.hideProgressBar()
                         } else {
                             Log.d(TAG, "initRecyclerView: carIdList size ${carIdList.size}")
 
@@ -575,6 +577,7 @@ class AddUnitsFragment : BaseFragment() {
                                 getString(R.string.unit_list_is_empty),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Utils.hideProgressBar()
                         } else {
                             val jsonArray = JSONArray(carIdList)
                             if (speedValue > 0) {
@@ -635,6 +638,7 @@ class AddUnitsFragment : BaseFragment() {
                                 getString(R.string.unit_list_is_empty),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Utils.hideProgressBar()
                         } else {
                             if (isGeoZoneAdd) {
                                 geoZoneViewModel.callApiForAddGeoZoneData(geoZoneName, convertedRGB)
@@ -655,6 +659,7 @@ class AddUnitsFragment : BaseFragment() {
                                 getString(R.string.unit_list_is_empty),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Utils.hideProgressBar()
                         } else {
                             if (isGeoZoneAdd) {
                                 geoZoneViewModel.callApiForAddGeoZoneData(geoZoneName, convertedRGB)

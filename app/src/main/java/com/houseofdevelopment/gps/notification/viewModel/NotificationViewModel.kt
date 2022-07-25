@@ -18,6 +18,7 @@ import com.houseofdevelopment.gps.preference.PrefKey
 import com.houseofdevelopment.gps.utils.Constants
 import com.houseofdevelopment.gps.utils.DebugLog
 import com.houseofdevelopment.gps.utils.NetworkUtil
+import com.houseofdevelopment.gps.utils.Utils
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
@@ -118,6 +119,7 @@ class NotificationViewModel : BaseViewModel() {
                             } else {
                                 val notificationDataRoot = response.body()!!
                                 Log.d(TAG, "onResponse: st ${notificationDataRoot.status}")
+                                Utils.hideProgressBar()
                                 if (notificationDataRoot.status) {
                                     notiNameListGps3.postValue(notificationDataRoot.data)
                                     _status.value = ApiStatus.SUCCESSFUL
