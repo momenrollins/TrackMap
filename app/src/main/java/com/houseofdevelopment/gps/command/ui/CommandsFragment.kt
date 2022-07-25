@@ -71,12 +71,15 @@ class CommandsFragment : BaseFragment() {
         if (DataValues.serverData.contains("s3")) {
             viewmodel.getCommandsGps3()
             viewmodel.commDataModelGps3.observe(viewLifecycleOwner) {
+                Utils.hideProgressBar()
+
                 if (it?.data != null && it.data!!.isNotEmpty())
                     initializeAdapterGps3(it.data!!)
             }
         } else {
             viewmodel.getCommands(carId)
             viewmodel.commDataModel.observe(viewLifecycleOwner) {
+                Utils.hideProgressBar()
                 if (it?.items != null && it.items!!.cmds != null && it.items!!.cmds!!.isNotEmpty())
                     initializeAdapter(it.items!!.cmds)
             }

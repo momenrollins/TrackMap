@@ -19,6 +19,7 @@ import com.houseofdevelopment.gps.notification.model.NotificationListData
 import com.houseofdevelopment.gps.notification.viewModel.NotificationViewModel
 import com.houseofdevelopment.gps.preference.MyPreference
 import com.houseofdevelopment.gps.preference.PrefKey
+import com.houseofdevelopment.gps.utils.Utils
 import kotlinx.android.synthetic.main.layout_custom_action_bar.*
 
 class NotificationHomeFragment : BaseFragment() {
@@ -79,6 +80,7 @@ class NotificationHomeFragment : BaseFragment() {
                 }
             }
         else viewModel.notiNameList.observe(this) {
+            Utils.hideProgressBar()
             notiNameList.clear()
             notiNameList.addAll(it)
             if (notiNameList.size > 0) {
