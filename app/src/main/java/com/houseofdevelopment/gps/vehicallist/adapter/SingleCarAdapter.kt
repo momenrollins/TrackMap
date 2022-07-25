@@ -260,6 +260,7 @@ class SingleCarAdapter(
                     }
                     itemView.car_name.text = " ${itemList.nm} "
                     itemView.car_name.setTextColor(getColor(context, R.color.dash_red))
+                    itemView.img_topUpperArrow.isEnabled=false;
                     itemView.const_cardetails.setOnClickListener {
                         Toast.makeText(
                             context,

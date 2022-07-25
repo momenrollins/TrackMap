@@ -358,8 +358,9 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
     //this foe car time details
     @SuppressLint("SetTextI18n")
     private fun setCarDetailData(car: Item) {
+        Log.d(TAG, "setCarDetailData:car.uri ${"http://gps.hod.sa/" + car.uri} ")
         Glide.with(this)
-            .load("http://gps.hod.sa/" + car.uri)
+            .load("http://gps.hod.sa" + car.uri)
             .placeholder(R.drawable.default_car)
             .into(binding.carImage)
 
@@ -961,11 +962,12 @@ class VehicleHistoryNewFragment : BaseFragment(), OnMapReadyCallback,
             } else {
                 imageArrow.visibility = View.GONE
             }
+            Log.d(TAG, "createCustomMarker:history ${"http://gps.hod.sa" + clusterItem.snippet} ");
             // marker.setIcon(null)
             Glide.with(requireContext()).asBitmap()
                 .placeholder(R.drawable.default_car)
                 .error(R.drawable.default_car)
-                .load("http://gps.hod.sa/" + clusterItem.snippet).fitCenter()
+                .load("http://gps.hod.sa" + clusterItem.snippet).fitCenter()
 
                 .into(object : CustomTarget<Bitmap?>(30, 40) {
                     override fun onResourceReady(
