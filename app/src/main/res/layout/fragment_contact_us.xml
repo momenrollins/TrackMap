@@ -163,7 +163,7 @@
                     android:drawableStart="@drawable/whats"
                     android:fontFamily="@font/sf_open_sans_regular"
                     android:paddingVertical="@dimen/_8sdp"
-                    android:text="0508803086"
+                    android:text="+966508803086"
                     android:textColor="#20AE00"
                     android:textSize="20sp"
                     android:textStyle="bold"

@@ -124,7 +124,7 @@ class ContactUsFragment : BaseFragment() {
         }
         binding.contactNumber.setOnClickListener {
 
-            val url = "https://api.whatsapp.com/send?phone=0508803086"
+            val url = "https://api.whatsapp.com/send?phone=+966508803086"
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             startActivity(i)
